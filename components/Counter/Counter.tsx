@@ -6,28 +6,22 @@ interface CounterProps {
   initialCount?: number;
 }
 
-function Counter({ initialCount = 99 }: CounterProps) {
+const Counter = ({ initialCount = 99 }: CounterProps) => {
   const [count, setCount] = useState(initialCount);
 
-  const increment = () => {
-    setCount((prevCount) => prevCount + 1);
-  };
-
-  const decrement = () => {
-    setCount((prevCount) => prevCount - 1);
-  };
+  const updateCount = (amount: number) => () => setCount(count + amount);
 
   return (
     <div className={styles.counter}>
-      <button className={styles.btn} onClick={decrement}>
+      <button className={styles.btn} onClick={updateCount(-1)}>
         -
       </button>
       <span className={styles.count}>{count}</span>
-      <button className={styles.btn} onClick={increment}>
+      <button className={styles.btn} onClick={updateCount(1)}>
         +
       </button>
     </div>
   );
-}
+};
 
 export default Counter;
