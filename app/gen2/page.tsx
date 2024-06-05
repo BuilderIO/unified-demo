@@ -13,7 +13,6 @@ export default async function App() {
         // userAttributes: { urlPath },
       });
 
-      console.log('content', content);
 
       const header = await fetchEntries({
         query: {

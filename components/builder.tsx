@@ -14,9 +14,9 @@ export function RenderBuilderContent({ content, model }: BuilderPageProps) {
   // Call the useIsPreviewing hook to determine if
   // the page is being previewed in Builder
 
-  if(model === 'header-section'){
-    console.log('content', content?.data?.slug, 'key:', model)
-  }
+  // if(model === 'header-section'){
+  //   console.log('content', content?.data?.slug, 'key:', model)
+  // }
 
   const isPreviewing = useIsPreviewing();
   // If "content" has a value or the page is being previewed in Builder,

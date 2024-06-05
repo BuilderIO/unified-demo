@@ -8,7 +8,6 @@ interface HeaderProps {
 }
 
 const Header = async ({ headerData }: HeaderProps) => {
-  console.log('headerDataInChild', headerData)
   return (
     <header>
       <div>

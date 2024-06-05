@@ -13,7 +13,6 @@ export interface NavigationProps {
 export default function Navigation({ headerData }: NavigationProps) {
   const { data, name } = headerData;
   const { title, slug } = data;
-  console.log('rerender component?');
 
   return (
     <div>
