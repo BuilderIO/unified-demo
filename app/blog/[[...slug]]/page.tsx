@@ -1,14 +1,23 @@
+import { builder } from "@builder.io/sdk";
 import { Content, fetchOneEntry, isEditing, isPreviewing, fetchEntries } from '@builder.io/sdk-react';
 import { redirect } from 'next/navigation';
 
 const key = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
-// Initialize Builder SDK
 
+if (!key) {
+  throw new Error("Builder.io API key is not defined. Please set NEXT_PUBLIC_BUILDER_API_KEY in your environment.");
+}
+
+// Initialize Builder SDK
+builder.init(key);
 
 interface PageProps {
   params: { slug: string[] };
   searchParams: Record<string, string>;
 }
+
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
 
 export default async function BlogPostPage({ params, searchParams }: PageProps) {
   const urlPath = '/' + (params?.slug?.join('/') || '');
