@@ -1,5 +1,6 @@
-import { Video,  BuilderBlocks, Image } from '@builder.io/react';
+import { Video,  BuilderBlocks } from '@builder.io/react';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface HeroProps {
   backgroundType: 'video' | 'image';
@@ -14,7 +15,6 @@ interface HeroProps {
   imageOptions?: {
     alt: string
   }
-//   children: React.FC
 block :any []
 }
 
@@ -26,7 +26,7 @@ const Hero: React.FC<HeroProps> = ({ backgroundType, VideoSource, imageSource, v
           fieldName={VideoSource}
           />
           ) : (
-            <img src={imageSource} alt={imageOptions?.alt} /> 
+            <Image src={imageSource} alt={imageOptions?.alt ?? 'Image'} width={100} height={100} /> 
           )}
         </div>
       );
