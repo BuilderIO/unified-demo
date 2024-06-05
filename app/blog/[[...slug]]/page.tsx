@@ -1,79 +1,79 @@
-import { builder } from "@builder.io/sdk";
-import { Content, fetchOneEntry, isEditing, isPreviewing, fetchEntries } from '@builder.io/sdk-react';
-import { redirect } from 'next/navigation';
+// import { builder } from "@builder.io/sdk";
+// import { Content, fetchOneEntry, isEditing, isPreviewing, fetchEntries } from '@builder.io/sdk-react';
+// import { redirect } from 'next/navigation';
 
-const key = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
+// const key = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
 
-if (!key) {
-  throw new Error("Builder.io API key is not defined. Please set NEXT_PUBLIC_BUILDER_API_KEY in your environment.");
-}
+// if (!key) {
+//   throw new Error("Builder.io API key is not defined. Please set NEXT_PUBLIC_BUILDER_API_KEY in your environment.");
+// }
 
-// Initialize Builder SDK
-builder.init(key);
+// // Initialize Builder SDK
+// builder.init(key);
 
-interface PageProps {
-  params: { slug: string[] };
-  searchParams: Record<string, string>;
-}
+// interface PageProps {
+//   params: { slug: string[] };
+//   searchParams: Record<string, string>;
+// }
 
-export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+// export const revalidate = 0;
+// export const dynamic = 'force-dynamic';
 
-export default async function BlogPostPage({ params, searchParams }: PageProps) {
-  const urlPath = '/' + (params?.slug?.join('/') || '');
-  const builderBlogArticleModelName = "blog-article";
-  const builderBlogArticleTemplateModelName = "blog-article-template";
+// export default async function BlogPostPage({ params, searchParams }: PageProps) {
+//   const urlPath = '/' + (params?.slug?.join('/') || '');
+//   const builderBlogArticleModelName = "blog-article";
+//   const builderBlogArticleTemplateModelName = "blog-article-template";
 
-  // Fetch all articles to find the correct slug
-  const articles = await fetchEntries({
-    apiKey: key,
-    model: builderBlogArticleModelName,
-    options: { noTargeting: true },
-    fields: 'data.slug',
-  });
+//   // Fetch all articles to find the correct slug
+//   const articles = await fetchEntries({
+//     apiKey: key,
+//     model: builderBlogArticleModelName,
+//     options: { noTargeting: true },
+//     fields: 'data.slug',
+//   });
 
-  const articleUrl = articles.map((article) => `/blog/${article.data?.slug}`);
+//   const articleUrl = articles.map((article) => `/blog/${article.data?.slug}`);
 
-  // Fetch specific article content based on slug
-  const content = await fetchOneEntry({
-    query: {
-      'data.slug': params?.slug.join('/'),
-    },
-    cacheSeconds: 1,
-    apiKey: key,
-    options: {
-      enrich: true,
-    },
-    model: builderBlogArticleModelName,
-    userAttributes: { urlPath },
-  }) || null;
+//   // Fetch specific article content based on slug
+//   const content = await fetchOneEntry({
+//     query: {
+//       'data.slug': params?.slug.join('/'),
+//     },
+//     cacheSeconds: 1,
+//     apiKey: key,
+//     options: {
+//       enrich: true,
+//     },
+//     model: builderBlogArticleModelName,
+//     userAttributes: { urlPath },
+//   }) || null;
 
-  // Fetch article template
-  const template = await fetchOneEntry({
-    apiKey: key,
-    model: builderBlogArticleTemplateModelName,
-    enrich: true,
-    userAttributes: { urlPath },
-  });
+//   // Fetch article template
+//   const template = await fetchOneEntry({
+//     apiKey: key,
+//     model: builderBlogArticleTemplateModelName,
+//     enrich: true,
+//     userAttributes: { urlPath },
+//   });
 
-  const canShowContent = content || isPreviewing(searchParams) || isEditing(searchParams);
-  if (!canShowContent) {
-    console.log('ArticleData not found');
-    return redirect('/404');
-  }
+//   const canShowContent = content || isPreviewing(searchParams) || isEditing(searchParams);
+//   if (!canShowContent) {
+//     console.log('ArticleData not found');
+//     return redirect('/404');
+//   }
 
-  return (
-    <>
-      {content && template && (
-        <Content 
-          apiKey={key} 
-          model={builderBlogArticleModelName}
-          data={{ article: content }} 
-          content={template} 
-          enrich={true}
-          context={{ article: content }}
-        />
-      )}
-    </>
-  );
-}
+//   return (
+//     <>
+//       {content && template && (
+//         <Content 
+//           apiKey={key} 
+//           model={builderBlogArticleModelName}
+//           data={{ article: content }} 
+//           content={template} 
+//           enrich={true}
+//           context={{ article: content }}
+//         // /
+//       )}
+//     </>
+//   );
+// }

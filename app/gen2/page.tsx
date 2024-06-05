@@ -1,4 +1,3 @@
-// for example, in $.tsx
 import { Content, fetchOneEntry, isEditing, isPreviewing, fetchEntries} from '@builder.io/sdk-react';
 import  {customComponents}  from '@/builder-registry';
 
