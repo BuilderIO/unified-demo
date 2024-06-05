@@ -6,7 +6,6 @@ import ChildComponent from "@/components/child/child";
 // export const dynamic = "force-dynamic";
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
-console.log('process', process.env.NEXT_PUBLIC_BUILDER_API_KEY)
 interface PageProps {
   params: {
     page: string[];

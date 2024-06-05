@@ -17,7 +17,7 @@ const PartnerLogo: React.FC<PartnerLogoProps> = ({
   aspectRatio,
   width,
 }) => (
-  <img
+  <Image
     loading="lazy"
     src={src}
     alt={alt}

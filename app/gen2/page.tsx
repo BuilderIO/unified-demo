@@ -1,9 +1,10 @@
 // for example, in $.tsx
 import { Content, fetchOneEntry, isEditing, isPreviewing, fetchEntries} from '@builder.io/sdk-react';
 import  {headerComponent}  from '@/builder-registry';
+
+
 const apiKey :string = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
 
-console.log('apiKey', apiKey);
 export default async function App() {
     const content = await fetchOneEntry({
         apiKey: apiKey,
@@ -24,7 +25,8 @@ export default async function App() {
         },
         model: 'header',
       }).then(header => header.flatMap(item => item?.data?.logo));
-      console.log('header', header[0]);
+
+
   return (
     <>
     {header && content && (

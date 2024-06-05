@@ -22,7 +22,6 @@ export default async function BlogPostPage(props: PageProps) {
   const builderBlogArticleModelName = "blog-article";
   const builderBlogArticleTemplateModelName = "blog-article-template";
   
-  console.log('props.params?.slug', props.params?.slug);
   const articles = await fetchEntries({
         apiKey: key,
         model: 'blog-article',
@@ -32,7 +31,6 @@ export default async function BlogPostPage(props: PageProps) {
 
   const articleUrl = articles.map((article) => `/blog/${article.data?.slug}`);
 
-  console.log('articleUrl', articleUrl);
   const content = await fetchOneEntry({
     query: {
       'data.slug': props.params?.slug.join('/'),
