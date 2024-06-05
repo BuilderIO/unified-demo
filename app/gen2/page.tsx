@@ -1,6 +1,6 @@
 // for example, in $.tsx
 import { Content, fetchOneEntry, isEditing, isPreviewing, fetchEntries} from '@builder.io/sdk-react';
-import  {headerComponent}  from '@/builder-registry';
+import  {customComponents}  from '@/builder-registry';
 
 
 const apiKey :string = process.env.NEXT_PUBLIC_BUILDER_API_KEY!;
@@ -34,7 +34,7 @@ export default async function App() {
        data={{header: header}}
        content={content}
        apiKey={apiKey}
-       customComponents={headerComponent} // <-- Add component here
+       customComponents={customComponents} // <-- Add component here
      />
     )}
    

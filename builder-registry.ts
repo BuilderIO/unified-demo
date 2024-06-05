@@ -9,6 +9,30 @@ import Header from "./components/Header/Header";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
+
+export const customComponents:RegisteredComponent[] = []
+
+
+register("Counter", {
+  name: Counter,
+  items: [
+    {
+      name: "initialCount",
+      type: "number",
+    },
+  ],
+});
+
+// Builder.registerComponent(Counter, {
+//   name: "Counter",
+//   inputs: [
+//     {
+//       name: "initialCount",
+//       type: "number",
+//     },
+//   ],
+// });
+
 register("editor.settings", {
   strictMode: true, // optional
   designTokens: {
@@ -114,16 +138,6 @@ export const headerComponent: RegisteredComponent[] = [
   },
 ];
 
-Builder.registerComponent(Counter, {
-  name: "Counter",
-  // models:["page"],
-  inputs: [
-    {
-      name: "initialCount",
-      type: "number",
-    },
-  ],
-});
 const HerowithBuilderChildren = withChildren(Hero);
 
 Builder.registerComponent(HerowithBuilderChildren, {
@@ -223,8 +237,4 @@ Builder.registerComponent(Hero, {
       required: true,
     },
   ],
-});
-
-Builder.registerComponent(Footer, {
-  name: "Footer",
 });
