@@ -12,6 +12,11 @@
     "@builder.io/dev-tools": "^1.0.2",
     "@builder.io/react": "^3.2.6",
     "@builder.io/sdk": "^2.2.2",
+    "@builder.io/sdk-react": "^1.0.17",
+    "@builder.io/widgets": "^1.2.24",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.15",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18"

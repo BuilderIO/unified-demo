@@ -1,22 +1,17 @@
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "../../components/builder";
-import Head from "next/head";
-import ChildComponent from "@/components/child/child";
 
-// export const dynamic = "force-dynamic";
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
-console.log('process', process.env.NEXT_PUBLIC_BUILDER_API_KEY)
+
 interface PageProps {
   params: {
     page: string[];
   };
 }
-export const revalidate = 0;
-
 
 export default async function Page(props: PageProps) {
-  const builderModelName = "page";
+  const builderModelName = "figma-imports";
 
   const content = await builder
     // Get the page content from Builder with the specified options
@@ -29,10 +24,10 @@ export default async function Page(props: PageProps) {
     // Convert the result to a promise
     .toPromise();
 
-    const data= 'data'
   return (
-      <>
-      <RenderBuilderContent content={content} model={builderModelName} context={data}  />
-      </>
+    <>
+      {/* Render the Builder page */}
+      <RenderBuilderContent content={content} model={builderModelName} />
+    </>
   );
 }
