@@ -1,4 +1,3 @@
-"use client"
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "../../components/builder";
 
@@ -12,7 +11,7 @@ interface PageProps {
 }
 
 export default async function Page(props: PageProps) {
-  const builderModelName = "page";
+  const builderModelName = "figma-imports";
 
   const content = await builder
     // Get the page content from Builder with the specified options

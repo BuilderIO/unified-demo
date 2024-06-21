@@ -1,3 +1,4 @@
+// "use client"
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "../components/builder";
 
@@ -12,7 +13,6 @@ interface PageProps {
 
 export default async function Homepage(props: PageProps) {
   const builderModelName = "homepage";
-
   const content = await builder
     // Get the page content from Builder with the specified options
     .get(builderModelName, {
@@ -27,7 +27,9 @@ export default async function Homepage(props: PageProps) {
   return (
     <>
       {/* Render the Builder page */}
+      <div>Hello</div>
       <RenderBuilderContent content={content} model={builderModelName} />
     </>
   );
 }
+
