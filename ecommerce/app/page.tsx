@@ -1,6 +1,7 @@
 // "use client"
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "../components/builder";
+import { AuthSlider } from "@/components/Layout/AuthSlider";
 
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
