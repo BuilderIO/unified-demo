@@ -1,7 +1,7 @@
 // "use client"
 import { builder } from "@builder.io/sdk";
+import { Builder, Columns } from "@builder.io/react";
 import { RenderBuilderContent } from "../components/builder";
-import { AuthSlider } from "@/components/Layout/AuthSlider";
 
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
@@ -28,7 +28,6 @@ export default async function Homepage(props: PageProps) {
   return (
     <>
       {/* Render the Builder page */}
-      <div>Hello</div>
       <RenderBuilderContent content={content} model={builderModelName} />
     </>
   );

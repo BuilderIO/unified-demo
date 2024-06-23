@@ -1,10 +1,7 @@
-import { Inter } from "next/font/google";
 import { Header } from "@/components/Layout/Header";
 import { builder } from "@builder.io/sdk";
 import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default async function RootLayout({
   children,
@@ -17,12 +14,14 @@ export default async function RootLayout({
   
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <main>
           <>
             <HydrationOverlay>
               <Header headerContent={headerContent.data} />
-              {children}
+              <div className="px-16">
+                {children}
+              </div>
             </HydrationOverlay>
           </>
         </main>
