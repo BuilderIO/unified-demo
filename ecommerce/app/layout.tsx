@@ -1,5 +1,7 @@
+"use client"
 import { Header } from "@/components/Layout/Header";
 import { builder } from "@builder.io/sdk";
+import { BuilderContent } from "@builder.io/react"
 import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 import "./globals.css";
 
@@ -18,7 +20,11 @@ export default async function RootLayout({
         <main>
           <>
             <HydrationOverlay>
-              <Header headerContent={headerContent.data} />
+              <BuilderContent model="header-links" content={headerContent}>
+                {(data) => {
+                  return <Header headerContent={data} />
+                }}
+              </BuilderContent>
               <div className="px-16">
                 {children}
               </div>
