@@ -1,5 +1,4 @@
 "use client"
-
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
@@ -25,7 +24,7 @@ export function AuthSlider() {
         <SheetHeader>
             <SheetTitle>Edit profile</SheetTitle>
             <SheetDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&rsquore done.
             </SheetDescription>
         </SheetHeader>
         <div className="grid gap-4 py-4">

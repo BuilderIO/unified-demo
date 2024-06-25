@@ -1,4 +1,3 @@
-"use client"
 import { Header } from "@/components/Layout/Header";
 import { builder } from "@builder.io/sdk";
 import { BuilderContent } from "@builder.io/react"
@@ -20,11 +19,7 @@ export default async function RootLayout({
         <main>
           <>
             <HydrationOverlay>
-              <BuilderContent model="header-links" content={headerContent}>
-                {(data) => {
-                  return <Header headerContent={data} />
-                }}
-              </BuilderContent>
+              <Header headerContent={headerContent} />
               <div className="px-16 w-3/4 mx-auto">
                 {children}
               </div>

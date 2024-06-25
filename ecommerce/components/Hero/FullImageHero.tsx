@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image'
 import { Button } from '../ui/button';
 
 interface FullImageHeroProps {
@@ -31,7 +30,7 @@ const FullImageHero: React.FC<FullImageHeroProps> = ({
 
   return (
     <div className={`flex overflow-hidden relative flex-col justify-center ${alignmentClasses[alignment]} w-full min-h-[442px] max-md:pr-5 max-md:max-w-full`}>
-      <Image
+      <img
         loading="lazy"
         src={backgroundImage}
         alt=""

@@ -1,7 +1,6 @@
 "use client"
 import * as React from "react"
 import Link from "next/link"
-import Image from 'next/image'
 import { Button } from "../ui/button"
 import { cn } from "@/lib/utils"
 import {
@@ -15,41 +14,50 @@ import {
 } from "@/components/ui/navigation-menu"
 import { AuthSlider } from "./AuthSlider"
 import { SideNav } from "./SideNav"
+import { BuilderContent } from '@builder.io/react';
+
 
 export function Header({ headerContent }: any) {
   console.log('HEADER CONTENT:', headerContent)
   return (
-    <div className="bg-secondary p-3 w-full flex flex-1 justify-between">
-      <NavigationMenuItem className="flex md:hidden">
-        <SideNav />
-      </NavigationMenuItem>
-      <Button variant="link" asChild>
-        <Link href="/" passHref>
-        <Image
-            className="h-8"
-            src="https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2Fe6a94bfbccd24ec8b4db085cd475b7eb?width=150"
-            alt="Builder.io Logo"
-            loading="lazy"
-          />
-        </Link>
-      </Button>
-      <NavigationMenu className="hidden md:flex space-x-5">
-        <NavigationMenuList className="justify-around w-full">
-          {headerContent?.headerLinks.map((item:any, index:number) => {
-            return(
-              <Button key={index} variant="link" className="text-md">
-                <Link href={item.slug || '/'} legacyBehavior passHref>
-                  {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                    {item.label}
-                  {/* </NavigationMenuLink> */}
-                </Link>
-              </Button>
-            )
-          })}
-        </NavigationMenuList>
-      </NavigationMenu>
-      <AuthSlider />
-    </div>
+    <BuilderContent model="header-links" content={headerContent}>
+      {(data) => {
+        console.log('HELLO', data);
+        return (  
+          <div className="bg-secondary p-3 w-full flex flex-1 justify-between">
+            <NavigationMenuItem className="flex md:hidden">
+              <SideNav />
+            </NavigationMenuItem>
+            <Button variant="link" asChild>
+              <Link href="/" passHref>
+              <img
+                  className="h-8"
+                  src="https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2Fe6a94bfbccd24ec8b4db085cd475b7eb"
+                  alt="Builder.io Logo"
+                  loading="lazy"
+                />
+              </Link>
+            </Button>
+            <NavigationMenu className="hidden md:flex space-x-5">
+              <NavigationMenuList className="justify-around w-full">
+                {data?.headerLinks.map((item:any, index:number) => {
+                  return(
+                    <Button key={index} variant="link" className="text-md">
+                      <Link href={item.slug || '/'} legacyBehavior passHref>
+                        {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
+                          {item.label}
+                        {/* </NavigationMenuLink> */}
+                      </Link>
+                    </Button>
+                  )
+                })}
+              </NavigationMenuList>
+            </NavigationMenu>
+            <AuthSlider />
+          </div>
+        )
+      }}
+    </BuilderContent>
   );
 }
 

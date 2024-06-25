@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import Link from "next/link"
-import Image from 'next/image'
 import { Button } from '../ui/button';
 
 interface SplitHeroProps {
@@ -39,7 +38,7 @@ const SplitHero: React.FC<SplitHeroProps> = ({ imageAlignment, title, descriptio
   const imageContent = (
     <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
       <div className="flex flex-col grow justify-center max-md:max-w-full">
-        <Image
+        <img
           loading="lazy"
           src={image}
           alt={altText}
