@@ -25,7 +25,7 @@ export default async function RootLayout({
                   return <Header headerContent={data} />
                 }}
               </BuilderContent>
-              <div className="px-16">
+              <div className="px-16 w-3/4 mx-auto">
                 {children}
               </div>
             </HydrationOverlay>

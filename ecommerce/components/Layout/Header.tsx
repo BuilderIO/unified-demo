@@ -22,25 +22,27 @@ export function Header({ headerContent }: any) {
       <NavigationMenuItem className="flex md:hidden">
         <SideNav />
       </NavigationMenuItem>
-      <Button variant="link">
+      <Button variant="link" asChild>
+        <Link href="/" passHref>
         <img
-          className="h-8"
-          src="https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F160d3724e72b4f88af781e0887df5601"
-          alt="Builder.io Logo"
-          loading="lazy"
-        />
+            className="h-8"
+            src="https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2Fe6a94bfbccd24ec8b4db085cd475b7eb?width=150"
+            alt="Builder.io Logo"
+            loading="lazy"
+          />
+        </Link>
       </Button>
       <NavigationMenu className="hidden md:flex space-x-5">
         <NavigationMenuList className="justify-around w-full">
-          {headerContent?.headerLinks.map((item:any) => {
+          {headerContent?.headerLinks.map((item:any, index:number) => {
             return(
-              <NavigationMenuItem>
+              <Button key={index} variant="link" className="text-md">
                 <Link href={item.slug || '/'} legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
                     {item.label}
-                  </NavigationMenuLink>
+                  {/* </NavigationMenuLink> */}
                 </Link>
-              </NavigationMenuItem>
+              </Button>
             )
           })}
         </NavigationMenuList>

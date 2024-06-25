@@ -1,25 +1,25 @@
-"use client"
+import ProductHero from "@/components/ProductPage/ProductHero";
 import { builder } from "@builder.io/sdk";
-import { RenderBuilderContent } from "../../components/builder";
+import { RenderBuilderContent } from "@/components/builder";
 
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-interface PageProps {
+interface ProductPageProps {
   params: {
-    page: string[];
+    handle: string;
   };
 }
 
-export default async function Page(props: PageProps) {
-  const builderModelName = "page";
-
+export default async function ProductPage(props: ProductPageProps) {
+  const builderModelName = "product-details-bottom";
+    console.log('HELLO ', props?.params)
   const content = await builder
     // Get the page content from Builder with the specified options
     .get(builderModelName, {
       userAttributes: {
         // Use the page path specified in the URL to fetch the content
-        urlPath: "/" + (props?.params?.page?.join("/") || "")
+        product: props?.params?.handle
       },
     })
     // Convert the result to a promise
@@ -28,7 +28,10 @@ export default async function Page(props: PageProps) {
   return (
     <>
       {/* Render the Builder page */}
-      <RenderBuilderContent content={content} model={builderModelName} />
+        <ProductHero></ProductHero>
+      {content ? 
+        <RenderBuilderContent content={content} model={builderModelName} />
+        : null}
     </>
   );
 }

@@ -19,7 +19,7 @@ export function AuthSlider() {
   return (
     <Sheet key="side">
         <SheetTrigger asChild>
-        <Button variant="link">Login</Button>
+        <Button variant="outline">Login</Button>
         </SheetTrigger>
         <SheetContent side="right">
         <SheetHeader>
