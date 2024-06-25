@@ -1,6 +1,7 @@
 "use client"
 import * as React from "react"
 import Link from "next/link"
+import Image from 'next/image'
 import { Button } from "../ui/button"
 import { cn } from "@/lib/utils"
 import {
@@ -24,7 +25,7 @@ export function Header({ headerContent }: any) {
       </NavigationMenuItem>
       <Button variant="link" asChild>
         <Link href="/" passHref>
-        <img
+        <Image
             className="h-8"
             src="https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2Fe6a94bfbccd24ec8b4db085cd475b7eb?width=150"
             alt="Builder.io Logo"
