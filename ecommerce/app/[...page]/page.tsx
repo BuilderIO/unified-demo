@@ -11,6 +11,8 @@ interface PageProps {
   };
 }
 
+export const revalidate = 500;
+
 export default async function Page(props: PageProps) {
   const builderModelName = "page";
 
