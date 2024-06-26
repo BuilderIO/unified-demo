@@ -5,22 +5,24 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 
-interface FullImageHeroProps {
+interface ImageHeroProps {
   title: string;
   description: string;
   buttonText: string;
   buttonLink: string;
   backgroundImage: string;
   alignment: 'left' | 'center' | 'right';
+  makeFullBleed: boolean;
 }
 
-const FullImageHero: React.FC<FullImageHeroProps> = ({
+const ImageHero: React.FC<ImageHeroProps> = ({
   title,
   description,
   buttonText,
   buttonLink,
   backgroundImage,
   alignment,
+  makeFullBleed
 }) => {
   const alignmentClasses = {
     left: 'items-start text-left',
@@ -29,14 +31,14 @@ const FullImageHero: React.FC<FullImageHeroProps> = ({
   };
 
   return (
-    <div className={`flex overflow-hidden relative flex-col justify-center ${alignmentClasses[alignment]} w-full min-h-[442px] max-md:pr-5 max-md:max-w-full`}>
+    <div className={`flex overflow-hidden relative flex-col justify-center ${alignmentClasses[alignment]} w-full min-h-[442px] max-md:pr-5 max-md:max-w-full ${makeFullBleed ? 'w-screen  ml-[calc(50%-50vw)] max-h-full' : ''}`}>
       <img
         loading="lazy"
         src={backgroundImage}
         alt=""
         className="object-cover absolute inset-0 size-full"
       />
-      <div className={`flex relative flex-col justify-center px-16 py-20 max-w-full w-2/3 max-md:px-5 ${alignmentClasses[alignment]}`}>
+      <div className={`flex relative flex-col justify-center lg:px-16 py-20 max-w-full w-2/3 max-md:px-5 ${alignmentClasses[alignment]}`}>
         <div className={`flex flex-col mt-8 mb-2.5 shadow-sm max-md:mr-1 max-md:max-w-full ${alignmentClasses[alignment]}`}>
           <div className="flex flex-col text-white max-md:max-w-full">
             <h1 className="text-5xl font-black leading-[52.8px] max-md:max-w-full">
@@ -55,4 +57,4 @@ const FullImageHero: React.FC<FullImageHeroProps> = ({
   );
 };
 
-export default FullImageHero;
+export default ImageHero;

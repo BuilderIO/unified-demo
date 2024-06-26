@@ -1,4 +1,5 @@
 "use client"
+import { IoCartOutline } from 'react-icons/io5'
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
@@ -13,15 +14,17 @@ import {
   SheetTrigger,
 } from "../ui/sheet"
 
-type AuthSliderProps = {
-  variant: 'white' | 'black';
-};
-
-export const AuthSlider: React.FC<AuthSliderProps> = ({ variant }) => {
+type CartSliderProps = {
+    variant: 'white' | 'black';
+  };
+  
+  export const CartSlider: React.FC<CartSliderProps> = ({ variant }) => {
   return (
     <Sheet key="side">
         <SheetTrigger asChild>
-        <Button variant={variant === "white" ? "outline" : "default"}>Login</Button>
+        <Button variant="link" >
+            <IoCartOutline className={`h-6 w-6 text-${variant}`}/>
+        </Button>
         </SheetTrigger>
         <SheetContent side="right">
         <SheetHeader>

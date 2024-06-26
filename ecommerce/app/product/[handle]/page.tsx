@@ -13,7 +13,6 @@ interface ProductPageProps {
 
 export default async function ProductPage(props: ProductPageProps) {
   const builderModelName = "product-details-bottom";
-    console.log('HELLO ', props?.params)
   const content = await builder
     // Get the page content from Builder with the specified options
     .get(builderModelName, {

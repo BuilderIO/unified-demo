@@ -13,18 +13,17 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { AuthSlider } from "./AuthSlider"
+import { CartSlider } from "./CartSlider"
 import { SideNav } from "./SideNav"
 import { BuilderContent } from '@builder.io/react';
 
 
 export function Header({ headerContent }: any) {
-  console.log('HEADER CONTENT:', headerContent)
   return (
     <BuilderContent model="header-links" content={headerContent}>
       {(data) => {
-        console.log('HELLO', data);
         return (  
-          <div className="bg-secondary p-3 w-full flex flex-1 justify-between">
+          <header className="bg-secondary p-3 w-full flex flex-1 justify-between">
             <NavigationMenuItem className="flex md:hidden">
               <SideNav />
             </NavigationMenuItem>
@@ -43,9 +42,9 @@ export function Header({ headerContent }: any) {
                 {data?.headerLinks.map((item:any, index:number) => {
                   return(
                     <Button key={index} variant="link" className="text-md">
-                      <Link href={item.slug || '/'} legacyBehavior passHref>
+                      <Link href={item.path || '/'} legacyBehavior passHref >
                         {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                          {item.label}
+                          <span className={item.highlight ? "text-rose-500" : ""}>{item.label}</span>
                         {/* </NavigationMenuLink> */}
                       </Link>
                     </Button>
@@ -53,8 +52,11 @@ export function Header({ headerContent }: any) {
                 })}
               </NavigationMenuList>
             </NavigationMenu>
-            <AuthSlider />
-          </div>
+            <div className="flex items-center">
+              <CartSlider variant="black"/>
+              <AuthSlider variant="black"/>
+            </div>
+          </header>
         )
       }}
     </BuilderContent>

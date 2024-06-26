@@ -1,7 +1,7 @@
 "use client";
 import { builder, Builder } from "@builder.io/react";
 import Counter from "./components/Counter/Counter";
-import FullImageHero from "./components/Hero/FullImageHero";
+import ImageHero from "./components/Hero/ImageHero";
 import IconCard from "./components/Card/IconCard";
 import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
@@ -24,7 +24,7 @@ Builder.register('insertMenu',{
   name: 'Heros',
   items: [
     { name: 'TextHero' },
-    { name: 'FullImageHero' },
+    { name: 'ImageHero' },
     { name: 'SplitHero' }
   ],
   priority: 2
@@ -107,6 +107,11 @@ Builder.registerComponent(SplitHero, {
         return options.get("hasCTA") == true;
       },
     },
+    {
+      name: "makeFullBleed",
+      type: "boolean",
+      defaultValue: false
+    }
   ],
 });
 
@@ -204,8 +209,8 @@ Builder.registerComponent(ProductCard, {
   ],
 });
 
-Builder.registerComponent(FullImageHero, {
-  name: "FullImageHero",
+Builder.registerComponent(ImageHero, {
+  name: "ImageHero",
   image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWltYWdlIj48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiByeT0iMiIvPjxjaXJjbGUgY3g9IjkiIGN5PSI5IiByPSIyIi8+PHBhdGggZD0ibTIxIDE1LTMuMDg2LTMuMDg2YTIgMiAwIDAgMC0yLjgyOCAwTDYgMjEiLz48L3N2Zz4=",
   inputs: [
     {
@@ -245,5 +250,10 @@ Builder.registerComponent(FullImageHero, {
       required: true,
       defaultValue: "Let's Talk"
     },
+    {
+      name: "makeFullBleed",
+      type: "boolean",
+      defaultValue: false
+    }
   ],
 });

@@ -14,9 +14,10 @@ interface SplitHeroProps {
   hasCTA: boolean;
   buttonText?: string;
   buttonLink?: any;
+  makeFullBleed: boolean;
 }
 
-const SplitHero: React.FC<SplitHeroProps> = ({ imageAlignment, title, description, image, altText, hasCTA, buttonText, buttonLink }) => {
+const SplitHero: React.FC<SplitHeroProps> = ({ imageAlignment, title, description, image, altText, hasCTA, buttonText, buttonLink, makeFullBleed }) => {
   const textContent = (
     <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
       <div className="flex flex-col grow px-10 w-full bg-white max-md:px-5 max-md:max-w-full">
@@ -49,7 +50,7 @@ const SplitHero: React.FC<SplitHeroProps> = ({ imageAlignment, title, descriptio
   );
 
   return (
-    <div className="justify-center self-stretch mb-6">
+    <div className={`justify-center self-stretch mb-6 ${makeFullBleed ? 'w-screen  ml-[calc(50%-50vw)] max-h-full' : ''}`}>
       <div className="flex gap-5 max-md:flex-col max-md:gap-0">
         {imageAlignment === 'left' ? (
           <>
