@@ -7,7 +7,7 @@ import { Button } from '../ui/button';
 
 interface ImageHeroProps {
   title: string;
-  description: string;
+  subTitle: string;
   buttonText: string;
   buttonLink: string;
   backgroundImage: string;
@@ -17,7 +17,7 @@ interface ImageHeroProps {
 
 const ImageHero: React.FC<ImageHeroProps> = ({
   title,
-  description,
+  subTitle,
   buttonText,
   buttonLink,
   backgroundImage,
@@ -25,9 +25,9 @@ const ImageHero: React.FC<ImageHeroProps> = ({
   makeFullBleed
 }) => {
   const alignmentClasses = {
-    left: 'items-start text-left',
-    center: 'items-center text-center',
-    right: 'items-end text-right',
+    left: 'md:items-start md:text-left',
+    center: 'md:items-center md:text-center',
+    right: 'md:items-end md:text-right',
   };
 
   return (
@@ -38,14 +38,13 @@ const ImageHero: React.FC<ImageHeroProps> = ({
         alt=""
         className="object-cover absolute inset-0 size-full"
       />
-      <div className={`flex relative flex-col justify-center lg:px-16 py-20 max-w-full w-2/3 max-md:px-5 ${alignmentClasses[alignment]}`}>
-        <div className={`flex flex-col mt-8 mb-2.5 shadow-sm max-md:mr-1 max-md:max-w-full ${alignmentClasses[alignment]}`}>
+      <div className={`flex relative flex-col justify-center md:px-16 py-20 max-w-full md:w-2/3 max-md:px-5 items-center text-center ${alignmentClasses[alignment]}`}>
+        <div className={`flex flex-col mt-8 mb-2.5 shadow-sm max-md:mr-1 max-md:max-w-full items-center text-center ${alignmentClasses[alignment]}`}>
           <div className="flex flex-col text-white max-md:max-w-full">
-            <h1 className="text-5xl font-black leading-[52.8px] max-md:max-w-full">
+            <h1 className="text-3xl font-black leading-[52.8px] max-md:max-w-full font-bold">
               {title}
             </h1>
-            <p className="mt-3 text-2xl leading-9 max-md:max-w-full">
-              {description}
+            <p className="mt-3 text-2xl leading-9 max-md:max-w-full" dangerouslySetInnerHTML={{ __html: subTitle }}>
             </p>
           </div>
           <Button className="flex flex-col justify-center mt-8 max-w-full w-[134px]" variant="secondary" size="lg" asChild>

@@ -13,6 +13,7 @@
     "@builder.io/react": "^3.2.8",
     "@builder.io/react-hydration-overlay": "^0.0.8",
     "@builder.io/sdk": "^2.2.4",
+    "@builder.io/widgets": "^1.2.24",
     "@radix-ui/react-dialog": "^1.1.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-navigation-menu": "^1.1.4",
