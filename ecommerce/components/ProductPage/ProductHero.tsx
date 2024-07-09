@@ -96,10 +96,9 @@ const ImageSelector: FC<ImageSelectorProps> = ({
     className="flex grow gap-5 justify-start max-md:flex-wrap"
   >
     {options?.map((option, index) => (
-      <div className={`shrink-0 rounded-lg flex overflow-hidden justify-center border-solid h-[119px] w-[136px] cursor-pointer ${
+      <div key={index} className={`shrink-0 rounded-lg flex overflow-hidden justify-center border-solid h-[119px] w-[136px] cursor-pointer ${
         selectedImage.image == option.image ? "border border-black border-solid" : ""}`}>
         <RadioGroupItem 
-        key={index} 
         id={`image-${option.image}`}
         // @ts-ignore
         value={option}
