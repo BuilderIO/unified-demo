@@ -18,7 +18,7 @@ const IconCard: React.FC<IconCardProps> = ({ icon, title, description, altText, 
   const iconAlignment = alignment === 'right' ? 'items-end' : `items-${alignment}`
 
   return (
-    <div className={`w-full ${coloredBackground ? 'bg-indigo-500 text-white': 'text-base'} rounded-lg shadow-md overflow-hidden flex-1`}>
+    <div className={`w-full ${coloredBackground ? 'bg-indigo-500 text-white': 'text-base'} rounded-lg overflow-hidden flex-1`}>
       <div className={`flex flex-col ${iconAlignment} ${textAlignment} p-6`}>
         <div className="w-16 h-16 flex items-center justify-center">
         <img src={icon} alt={altText} className="w-full h-full" />

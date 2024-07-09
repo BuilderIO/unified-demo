@@ -12,12 +12,12 @@ interface ProductPageProps {
 }
 
 export default async function ProductPage(props: ProductPageProps) {
-  const builderProductDataModel = "product-details-bottom";
+  const builderProductDataModel = "product-data";
   const builderProductDetailsModel = "product-details-bottom";
 
   const productData = await builder
     // Get the page content from Builder with the specified options
-    .get("product-data", {
+    .get(builderProductDataModel, {
       query: {
         data: {
           handle: props?.params?.handle
@@ -29,7 +29,7 @@ export default async function ProductPage(props: ProductPageProps) {
 
     const productDetailsContent = await builder
     // Get the page content from Builder with the specified options
-    .get("product-details-bottom", {
+    .get(builderProductDetailsModel, {
       userAttributes: {
         // Use the page path specified in the URL to fetch the content
         product: props?.params?.handle,
