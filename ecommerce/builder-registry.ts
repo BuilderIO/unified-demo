@@ -7,18 +7,10 @@ import ImageHero from "./components/Hero/ImageHero";
 import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
-// import { Carousel } from "@builder.io/widgets"
+import "@builder.io/widgets"
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-if (Builder.isBrowser) {
-  if (builder.editingModel === "homepage") {
-    Builder.register("insertMenu", {
-      name: "Layout",
-      items: [{ name: "Columns" }, { name: "Carousel" }],
-    });
-  }
-}
 Builder.register("insertMenu", {
   name: "Heros",
   items: [
@@ -34,6 +26,14 @@ Builder.register("insertMenu", {
   items: [{ name: "IconCard" }, { name: "ProductCard" }],
   // priority: 3,
 });
+if (Builder.isBrowser) {
+  if (builder.editingModel === "homepage") {
+    Builder.register("insertMenu", {
+      name: "Layout",
+      items: [{ name: "Columns" }, { name: "Builder:Carousel" }],
+    });
+  }
+}
 
 Builder.registerComponent(Counter, {
   name: "Counter",
@@ -95,6 +95,7 @@ Builder.registerComponent(SplitHero, {
       showIf: (options) => {
         return options.get("hasCTA") == true;
       },
+      defaultValue: '/'
     },
     {
       name: "buttonText",
@@ -133,7 +134,7 @@ Builder.registerComponent(IconCard, {
       defaultValue: false,
     },
     {
-      name: "subTitle",
+      name: "description",
       type: "richText",
       defaultValue:
         "<p>Give developers and marketers an AI-powered platform to quickly transform designs into optimized web and mobile experiences.</p>",
@@ -178,30 +179,49 @@ Builder.registerComponent(ProductCard, {
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNxdWFyZS1nYW50dC1jaGFydCI+PHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB4PSIzIiB5PSIzIiByeD0iMiIvPjxwYXRoIGQ9Ik05IDhoNyIvPjxwYXRoIGQ9Ik04IDEyaDYiLz48cGF0aCBkPSJNMTEgMTZoNSIvPjwvc3ZnPg==",
   inputs: [
     {
-      name: "brand",
-      type: "string",
+      name: "product",
+      type: "reference",
+      model: "product-data",
       required: true,
-      defaultValue: "Jordan",
-    },
-    {
-      name: "image",
-      type: "file",
-      required: true,
-      defaultValue:
-        "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5c249595e3d44970a88805b335f91953",
-    },
-    {
-      name: "name",
-      type: "string",
-      required: true,
-      defaultValue: "Long Sleeve Sweatshirt in White",
-    },
-    {
-      name: "price",
-      type: "string",
-      required: true,
-      defaultValue: "$99",
-    },
+      defaultValue: {
+        "@type": "@builder.io/core:Reference",
+        "id": "b0196147be5d4e6388bbdff62ee3ae7d",
+        "model": "product-data"
+      }
+    }
+    // {
+    //   name: "product",
+    //   type: "object",
+    //   required: true,
+    //   showIf: (options)
+    //   subFields: [
+    //     {
+    //       name: "color",
+    //       type: "string",
+    //       required: true,
+    //       defaultValue: "Jordan",
+    //     },
+    //     {
+    //       name: "image",
+    //       type: "file",
+    //       required: true,
+    //       defaultValue:
+    //         "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5c249595e3d44970a88805b335f91953",
+    //     },
+    //     {
+    //       name: "name",
+    //       type: "string",
+    //       required: true,
+    //       defaultValue: "Long Sleeve Sweatshirt in White",
+    //     },
+    //     {
+    //       name: "price",
+    //       type: "string",
+    //       required: true,
+    //       defaultValue: "$99",
+    //     }
+    //   ]
+    // },
   ],
 });
 
@@ -273,5 +293,10 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
       type: "string",
       defaultValue: "",
     },
+    {
+      name: "makeFullBleed",
+      type: "boolean",
+      defaultValue: false
+    }
   ],
 });

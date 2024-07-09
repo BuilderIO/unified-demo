@@ -41,9 +41,9 @@ const ImageHero: React.FC<ImageHeroProps> = ({
       <div className={`flex relative flex-col justify-center md:px-16 py-20 max-w-full md:w-2/3 max-md:px-5 items-center text-center ${alignmentClasses[alignment]}`}>
         <div className={`flex flex-col mt-8 mb-2.5 shadow-sm max-md:mr-1 max-md:max-w-full items-center text-center ${alignmentClasses[alignment]}`}>
           <div className="flex flex-col text-white max-md:max-w-full">
-            <h1 className="text-3xl font-black leading-[52.8px] max-md:max-w-full font-bold">
+            <h2 className="text-3xl font-semibold leading-[52.8px] max-md:max-w-full">
               {title}
-            </h1>
+            </h2>
             <p className="mt-3 text-2xl leading-9 max-md:max-w-full" dangerouslySetInnerHTML={{ __html: subTitle }}>
             </p>
           </div>

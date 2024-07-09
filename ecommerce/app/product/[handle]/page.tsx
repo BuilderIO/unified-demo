@@ -32,20 +32,21 @@ export default async function ProductPage(props: ProductPageProps) {
     .get("product-details-bottom", {
       userAttributes: {
         // Use the page path specified in the URL to fetch the content
-        product: props?.params?.handle
+        product: props?.params?.handle,
+        options: { enrich: true }
       },
     })
     // Convert the result to a promise
     .toPromise();
 
-    console.log('PRODUCT DATA: ', productData)
+    console.log('PRODUCT DATA from page: ', productData)
 
   return (
     <>
       {/* Render the Builder page */}
-        <ProductHero productData={productData?.data}></ProductHero>
+        <ProductHero product={productData}></ProductHero>
       {productDetailsContent ? 
-        <RenderBuilderContent content={productDetailsContent} model={builderProductDetailsModel} />
+        <RenderBuilderContent content={productDetailsContent} model={builderProductDetailsModel} options={{enrich: true}}/>
         : null}
     </>
   );

@@ -18,6 +18,11 @@ type SizeOption = {
   label: string;
 };
 
+type ImageOption = {
+  image: string;
+  altText: string;
+};
+
 type SpecificationItem = {
   material: string;
   care: string;
@@ -71,6 +76,49 @@ const ColorSelector: FC<ColorSelectorProps> = ({
   </RadioGroup>
 );
 
+type ImageSelectorProps = {
+  options: ImageOption[];
+  selectedImage: {image: string, altText?: string};
+  onImageChange: (image: string) => void;
+};
+
+const ImageSelector: FC<ImageSelectorProps> = ({
+  options,
+  selectedImage,
+  onImageChange,
+}) => {
+  console.log('INSIDE IMAGE SELECTOR: ',  options, selectedImage)
+  return (
+  <RadioGroup
+  // @ts-ignore
+    value={selectedImage}
+    onValueChange={onImageChange}
+    className="flex grow gap-5 justify-start max-md:flex-wrap"
+  >
+    {options?.map((option, index) => (
+      <div className={`shrink-0 rounded-lg flex overflow-hidden justify-center border-solid h-[119px] w-[136px] cursor-pointer ${
+        selectedImage.image == option.image ? "border border-black border-solid" : ""}`}>
+        <RadioGroupItem 
+        key={index} 
+        id={`image-${option.image}`}
+        // @ts-ignore
+        value={option}
+        className="sr-only" >
+        </RadioGroupItem>
+        <Label
+        htmlFor={`image-${option.image}`}
+        className="flex align-center cursor-pointer">
+          <img
+            src={option.image}
+            alt={option.altText}
+          />
+        </Label>
+      </div>
+    ))}
+  </RadioGroup>
+);
+}
+
 type SizeSelectorProps = {
   options: SizeOption[];
   selectedSize: string;
@@ -114,7 +162,7 @@ type SpecificationListProps = {
 };
 
 const SpecificationList: FC<SpecificationListProps> = ({ details = {} }) => (
-  <div className="flex flex-col self-end px-5 mt-20 max-w-full text-black w-[474px] max-md:mt-10">
+  <div className="flex flex-col self-end lg:pl-8 mt-20 max-w-full text-black w-[474px] max-md:mt-10">
     <div className="text-xl font-semibold tracking-[4.2px] max-md:max-w-full">
       Features & Specifications
     </div>
@@ -136,47 +184,57 @@ const SpecificationList: FC<SpecificationListProps> = ({ details = {} }) => (
 );
 
 type ProductHeroProps = {
-  productData: any;
+  product: any;
 };
 
 
-const ProductHero: FC<ProductHeroProps> = ({ productData }) => {
-  console.log('PRODUCT DATA: ', productData)
-  const [selectedColor, setSelectedColor] = useState(productData?.colors[0]?.label || null);
-  const [selectedSize, setSelectedSize] = useState(productData?.sizes[0]?.label || null);
-  const [currentImage, setCurrentImage] = useState(productData?.images[0]);
+const ProductHero: FC<ProductHeroProps> = ({ product }) => {
+  console.log('PRODUCT DATA from outside hero', product)
+  const [selectedColor, setSelectedColor] = useState(product?.data?.colors[0]?.label || null);
+  const [selectedSize, setSelectedSize] = useState(product?.data?.sizes[0]?.label || null);
+  const [selectedImage, setSelectedImage] = useState(product?.data?.images[0]);
   
   
   return (
-    <BuilderContent model="product-data" content={productData}>
+    <BuilderContent model="product-data" content={product}>
       {(productData) => {
+        console.log('PRODUCT DATA in hero: ', productData)
         const colorOptions: ColorOption[] = productData?.colors;
         const sizeOptions: SizeOption[] = productData?.sizes;
         const specificationDetails: SpecificationItem = productData?.details;
+        const imageOptions: ImageOption[] = productData?.images;
 
         return (
           <div className="flex flex-col">
             <div className="w-full max-md:max-w-full">
+                <div className="flex gap-3 text-base text-neutral-400 m-2">
+                  <div>{productData?.category}</div>
+                  {productData?.subCategory && <div className="flex-auto my-auto">/ {productData?.subCategory}</div>}
+                  
+                </div>
               <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                <div className="flex flex-col w-[58%] max-md:ml-0 max-md:w-full">
+                <div className="flex flex-col max-md:ml-0 md:w-1/2 w-full ">
                   <ProductImage
-                    src={currentImage?.image}
-                    alt={currentImage?.altText || ''}
-                    className="w-full border border-solid aspect-[1] border-zinc-300 max-md:mt-10 max-md:max-w-full"
+                    src={selectedImage?.image}
+                    alt={selectedImage?.altText || ''}
+                    className="border border-solid aspect-auto h-full border-zinc-300 max-md:max-w-full object-contain"
+                  />
+                   <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full mt-5">
+                  <ImageSelector
+                    options={imageOptions}
+                    selectedImage={selectedImage}
+                    onImageChange={setSelectedImage}
                   />
                 </div>
+                </div>
                 <div className="flex flex-col ml-5 w-[42%] max-md:ml-0 max-md:w-full">
-                  <div className="flex flex-col grow px-5 mt-2 max-md:mt-10 max-md:max-w-full">
+                  <div className="flex flex-col grow px-5 mt-2 md:mt-10 max-md:max-w-full">
                     <div className="max-md:max-w-full">
                       <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                        <div className="flex flex-col w-[86%] max-md:ml-0 max-md:w-full">
-                          <div className="flex flex-col grow max-md:mt-10">
-                            <div className="flex gap-3 text-base text-neutral-400">
-                              <div>{productData?.category}</div>
-                              {productData?.subCategory && <div className="flex-auto my-auto">/ {productData?.subCategory}</div>}
-                              
-                            </div>
-                            <div className="mt-11 text-2xl font-semibold text-center text-black tracking-[5.04px] max-md:mt-10">
+                        <div className="flex flex-col w-[86%] md:ml-0 max-md:w-full">
+                          <div className="flex flex-col grow">
+                            
+                            <div className="text-2xl font-semibold text-center text-black tracking-[5.04px] mt-8">
                               {productData?.productName}
                             </div>
                             {/* Implement product reviews that can use the write api ? <div className="flex gap-3.5 mt-5">
@@ -215,7 +273,7 @@ const ProductHero: FC<ProductHeroProps> = ({ productData }) => {
                           </div>
                         </div>
                         <div className="flex flex-col ml-5 w-[14%] max-md:ml-0 max-md:w-full">
-                          <div className="self-stretch my-auto text-2xl font-semibold text-center text-black tracking-[5.04px] max-md:mt-10">
+                          <div className="self-stretch my-auto text-2xl font-semibold text-center text-black tracking-[5.04px] mt-8">
                             ${productData?.price}
                           </div>
                         </div>
@@ -251,20 +309,7 @@ const ProductHero: FC<ProductHeroProps> = ({ productData }) => {
                         onSizeChange={setSelectedSize}
                       />
                     </>}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="mt-1 w-full max-md:max-w-full">
-              <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full">
-                  <div className="flex grow gap-5 justify-between px-5 max-md:flex-wrap max-md:mt-10">
-                    <div className="shrink-0 rounded-lg border border-black border-solid bg-zinc-100 h-[119px] w-[136px]" />
-                    <div className="shrink-0 rounded-lg border border-solid bg-zinc-100 border-zinc-300 h-[119px] w-[136px]" />
-                    <div className="shrink-0 rounded-lg border border-solid bg-zinc-100 border-zinc-300 h-[119px] w-[136px]" />
-                  </div>
-                </div>
-                <div className="flex flex-col ml-5 w-[41%] max-md:ml-0 max-md:w-full">
+                    <div className="flex flex-col ml-5 w-full max-md:ml-0 max-md:w-full">
                   <Button
                     className="grow justify-center items-center px-5 py-4 mt-16 w-full text-lg font-semibold text-white bg-black tracking-[3.78px] max-md:mt-10 max-md:max-w-full"
                     onClick={() => {
@@ -274,8 +319,16 @@ const ProductHero: FC<ProductHeroProps> = ({ productData }) => {
                     ADD TO CART
                   </Button>
                 </div>
+                  </div>
+                </div>
               </div>
             </div>
+            {/* <div className="mt-1 w-full max-md:max-w-full">
+              <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+               
+                
+              </div>
+            </div> */}
             <SpecificationList details={specificationDetails} />
           </div>
         )
