@@ -1,49 +1,50 @@
-import ProductHero from "@/components/ProductPage/ProductHero";
 import { builder } from "@builder.io/sdk";
-import { RenderBuilderContent } from "@/components/builder";
+import CategoryLanding from "@/components/PLP/CategoryLanding";
+import { capitalizeWord } from "@/lib/utils";
 
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-interface ProductPageProps {
+interface CategoryPageProps {
   params: {
     category: string;
   };
 }
 
-export default async function ProductPage(props: ProductPageProps) {
+export default async function CategoryPage(props: CategoryPageProps) {
   const plpTileModel = "plp-tile";
+  const plpProductDataModel = "product-data";
 
   const plpTileContent = await builder
     // Get the page content from Builder with the specified options
-    .get(plpTileModel, {
+    .getAll(plpTileModel, {
+      userAttributes: {
+        category: props?.params?.category.toLowerCase()
+      }
+    })
+
+    const productDetailsContent = await builder
+    // Get the page content from Builder with the specified options
+    .getAll(plpProductDataModel, {
       query: {
         data: {
-          category: props?.params?.category
+          category: props?.params?.category.toLowerCase()
         }
       }
     })
-    // Convert the result to a promise
-    .toPromise();
-
-    // const productDetailsContent = await builder
-    // // Get the page content from Builder with the specified options
-    // .get("product-details-bottom", {
-    //   userAttributes: {
-    //     // Use the page path specified in the URL to fetch the content
-    //     product: props?.params?.handle,
-    //     options: { enrich: true }
-    //   },
-    // })
-    // // Convert the result to a promise
-    // .toPromise();
 
     console.log('Tile Content: ', plpTileContent)
 
   return (
     <>
       {/* Render the Builder page */}
-      <RenderBuilderContent content={plpTileContent} model={plpTileModel}/>
+        <div className="flex gap-3 self-center mt-5 mr-auto text-base text-neutral-400">
+          <div className="grow">{capitalizeWord(props?.params?.category)}</div>
+        </div>
+        <div className="self-center mt-5 text-4xl font-semibold text-black tracking-[7.14px] max-md:max-w-full">
+          {props?.params?.category.toUpperCase()}
+        </div>
+      <CategoryLanding products={productDetailsContent} plpTiles={plpTileContent}/>
     </>
   );
 }

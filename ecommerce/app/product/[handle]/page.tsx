@@ -1,4 +1,4 @@
-import ProductHero from "@/components/ProductPage/ProductHero";
+import ProductDetails from "@/components/PDP/ProductDetails";
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "@/components/builder";
 
@@ -44,7 +44,7 @@ export default async function ProductPage(props: ProductPageProps) {
   return (
     <>
       {/* Render the Builder page */}
-        <ProductHero product={productData}></ProductHero>
+        <ProductDetails product={productData}></ProductDetails>
       {productDetailsContent ? 
         <RenderBuilderContent content={productDetailsContent} model={builderProductDetailsModel} options={{enrich: true}}/>
         : null}
