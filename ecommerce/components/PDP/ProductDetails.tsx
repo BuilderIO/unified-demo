@@ -97,7 +97,7 @@ const ImageSelector: FC<ImageSelectorProps> = ({
   >
     {options?.map((option, index) => (
       <div key={index} className={`shrink-0 rounded-lg flex overflow-hidden justify-center border-solid h-[119px] w-[136px] cursor-pointer ${
-        selectedImage.image == option.image ? "border border-black border-solid" : ""}`}>
+        selectedImage?.image == option.image ? "border border-black border-solid" : ""}`}>
         <RadioGroupItem 
         id={`image-${option.image}`}
         // @ts-ignore
@@ -182,12 +182,12 @@ const SpecificationList: FC<SpecificationListProps> = ({ details = {} }) => (
   </div>
 );
 
-type ProductHeroProps = {
+type ProductDetailsProps = {
   product: any;
 };
 
 
-const ProductHero: FC<ProductHeroProps> = ({ product }) => {
+const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
   console.log('PRODUCT DATA from outside hero', product)
   const [selectedColor, setSelectedColor] = useState(product?.data?.colors[0]?.label || null);
   const [selectedSize, setSelectedSize] = useState(product?.data?.sizes[0]?.label || null);
@@ -336,4 +336,4 @@ const ProductHero: FC<ProductHeroProps> = ({ product }) => {
   );
 };
 
-export default ProductHero;
+export default ProductDetails;
