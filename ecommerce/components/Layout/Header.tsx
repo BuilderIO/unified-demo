@@ -21,8 +21,7 @@ import { BuilderContent } from '@builder.io/react';
 export function Header({ headerContent }: any) {
   return (
     <BuilderContent model="header-links" content={headerContent}>
-      {(data) => {
-        return (  
+      {(data) => (  
           <header className="bg-secondary p-3 w-full flex flex-1 justify-between">
             <NavigationMenuItem className="flex md:hidden">
               <SideNav />
@@ -58,7 +57,7 @@ export function Header({ headerContent }: any) {
             </div>
           </header>
         )
-      }}
+      }
     </BuilderContent>
   );
 }

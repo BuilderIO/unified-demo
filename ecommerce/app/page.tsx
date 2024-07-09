@@ -20,6 +20,9 @@ export default async function Homepage(props: PageProps) {
       userAttributes: {
         // Use the page path specified in the URL to fetch the content
         urlPath: "/",
+        options: {
+          enrich: true
+        }
       },
     })
     // Convert the result to a promise
@@ -28,7 +31,7 @@ export default async function Homepage(props: PageProps) {
   return (
     <>
       {/* Render the Builder page */}
-      <RenderBuilderContent content={content} model={builderModelName} />
+      <RenderBuilderContent content={content} model={builderModelName} options={{ enrich: true }} />
     </>
   );
 }

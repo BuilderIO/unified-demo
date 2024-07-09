@@ -12,24 +12,41 @@ interface ProductPageProps {
 }
 
 export default async function ProductPage(props: ProductPageProps) {
-  const builderModelName = "product-details-bottom";
-  const content = await builder
+  const builderProductDataModel = "product-data";
+  const builderProductDetailsModel = "product-details-bottom";
+
+  const productData = await builder
     // Get the page content from Builder with the specified options
-    .get(builderModelName, {
+    .get(builderProductDataModel, {
+      query: {
+        data: {
+          handle: props?.params?.handle
+        }
+      }
+    })
+    // Convert the result to a promise
+    .toPromise();
+
+    const productDetailsContent = await builder
+    // Get the page content from Builder with the specified options
+    .get(builderProductDetailsModel, {
       userAttributes: {
         // Use the page path specified in the URL to fetch the content
-        product: props?.params?.handle
+        product: props?.params?.handle,
+        options: { enrich: true }
       },
     })
     // Convert the result to a promise
     .toPromise();
 
+    console.log('PRODUCT DATA from page: ', productData)
+
   return (
     <>
       {/* Render the Builder page */}
-        <ProductHero></ProductHero>
-      {content ? 
-        <RenderBuilderContent content={content} model={builderModelName} />
+        <ProductHero product={productData}></ProductHero>
+      {productDetailsContent ? 
+        <RenderBuilderContent content={productDetailsContent} model={builderProductDetailsModel} options={{enrich: true}}/>
         : null}
     </>
   );
