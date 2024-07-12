@@ -25,17 +25,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
   return (
     <>
-      <div className="box-border flex relative flex-col shrink-0 mt-4 bg-zinc-300 h-[5px]" />
-      <div className="flex gap-5 justify-between mt-3.5 font-semibold whitespace-nowrap tracking-[2.25px]">
-        <div className="my-auto">Category</div>
-        <img
-          loading="lazy"
-          sizes="(max-width: 638px) 4vw, (max-width: 998px) 3vw, 2vw"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/e30cc75c785fe59e1b12a7afa6196e8215f91dcee8a10ee8524131fc5c758170?apiKey=a87584e551b6472fa0f0a2eb10f2c0ff&width=24"
-          className="shrink-0 w-6 aspect-square"
-          alt="Category icon"
-        />
-      </div>
+
       {categories.map((category) => (
         <div key={category} className="flex gap-3.5 mt-4">
           <Checkbox
