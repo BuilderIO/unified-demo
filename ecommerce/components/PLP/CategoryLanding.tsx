@@ -10,6 +10,7 @@ import { SizeFilter } from './SizeFilter';
 import { Pagination } from './Pagination';
 import { RenderBuilderContent } from '../builder';
 import { BuilderContent } from '@builder.io/react';
+import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '@/components/ui/accordion';
 
 type CategoryLandingProps = {
   products: any;
@@ -29,18 +30,38 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
           <div className="flex gap-5 max-md:flex-col max-md:gap-0">
             <div className="flex flex-col w-[31%] max-md:ml-0 max-md:w-full">
               <div className="flex flex-col text-base tracking-wider text-black max-md:mt-10">
-                <CategoryFilter
-                  selectedCategories={selectedCategories}
-                  setSelectedCategories={setSelectedCategories}
-                />
-                <ColorFilter
-                  selectedColors={selectedColors}
-                  setSelectedColors={setSelectedColors}
-                />
-                <SizeFilter
-                  selectedSizes={selectedSizes}
-                  setSelectedSizes={setSelectedSizes}
-                />
+                <Accordion type="multiple" className="w-full" defaultValue={["category", "color", "size"]}>
+                  <AccordionItem value="category">
+                    <AccordionTrigger>Category
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <CategoryFilter
+                        selectedCategories={selectedCategories}
+                        setSelectedCategories={setSelectedCategories}
+                      />
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="color">
+                    <AccordionTrigger>Color
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ColorFilter
+                        selectedColors={selectedColors}
+                        setSelectedColors={setSelectedColors}
+                      />
+                    </AccordionContent>
+                  </AccordionItem>
+                 <AccordionItem value="size">
+                    <AccordionTrigger>Size
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <SizeFilter
+                      selectedSizes={selectedSizes}
+                      setSelectedSizes={setSelectedSizes}
+                      />
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
               </div>
             </div>
             <div className="flex flex-col ml-5 w-[69%] max-md:ml-0 max-md:w-full">
