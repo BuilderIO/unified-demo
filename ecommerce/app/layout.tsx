@@ -1,6 +1,5 @@
 import { Header } from "@/components/Layout/Header";
 import { builder } from "@builder.io/sdk";
-import { BuilderContent } from "@builder.io/react"
 import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 import "./globals.css";
 import Footer from "@/components/Layout/Footer";
@@ -20,11 +19,11 @@ export default async function RootLayout({
         <main>
           <>
             <HydrationOverlay>
-              <Header headerContent={headerContent} />
+              {/* <Header headerContent={headerContent} /> */}
               <div className="md:px-16 px-4 mx-auto lg:w-4/5">
                 {children}
               </div>
-              <Footer />
+              {/* <Footer /> */}
             </HydrationOverlay>
           </>
         </main>
