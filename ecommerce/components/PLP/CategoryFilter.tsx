@@ -25,7 +25,6 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
 
   return (
     <>
-
       {categories.map((category) => (
         <div key={category} className="flex gap-3.5 mt-4">
           <Checkbox

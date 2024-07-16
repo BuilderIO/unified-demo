@@ -16,4 +16,4 @@ const configWithOverlay = withHydrationOverlay({
   appRootSelector: "main",
 })(nextConfig);
 
-export default configWithOverlay;
+export default nextConfig;
