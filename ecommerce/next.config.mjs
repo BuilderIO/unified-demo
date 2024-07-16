@@ -5,7 +5,10 @@ import { withHydrationOverlay } from "@builder.io/react-hydration-overlay/next";
 const nextConfig = BuilderDevTools()({
   images: {
     domains: ['cdn.builder.io'],
-  }
+  },
+  experimental: {
+    serverComponentsExternalPackages: ["isolated-vm"],
+  },
 });
 
 const configWithOverlay = withHydrationOverlay({
