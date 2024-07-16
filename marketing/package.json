@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@builder.io/dev-tools": "^1.0.2",
-    "@builder.io/react": "^3.2.6",
+    "@builder.io/react": "^3.2.7",
     "@builder.io/sdk": "^2.2.2",
     "next": "14.1.4",
     "react": "^18",
