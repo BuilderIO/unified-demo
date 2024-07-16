@@ -8,6 +8,7 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { rgbaToHex, capitalizeWord } from "../../lib/utils";
 import { BuilderContent } from "@builder.io/react";
+import Link from 'next/link';
 
 type ColorOption = {
   label: string;
@@ -207,16 +208,19 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
           <div className="flex flex-col">
             <div className="w-full max-md:max-w-full">
                 <div className="flex gap-3 text-base text-neutral-400 m-2">
-                  <div>{productData?.category}</div>
-                  {productData?.subCategory && <div className="flex-auto my-auto">/ {productData?.subCategory}</div>}
+                  <Button variant="link" asChild>
+                    <Link href={`/category/${productData?.category}`}>{capitalizeWord(productData?.category)}
+                    </Link>
+                    </Button>
+                  {productData?.subCategory && <Button variant="link" className="flex-auto my-auto">/ {capitalizeWord(productData?.subCategory)}</Button>}
                   
                 </div>
               <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-                <div className="flex flex-col max-md:ml-0 md:w-1/2 w-full ">
+                <div className="flex flex-col max-md:ml-0 md:w-1/2 w-full lg:max-h-80 relative">
                   <ProductImage
                     src={selectedImage?.image}
                     alt={selectedImage?.altText || ''}
-                    className="border border-solid aspect-auto h-full border-zinc-300 max-md:max-w-full object-contain"
+                    className="border border-solid aspect-auto h-full border-zinc-300 max-md:max-w-full object-cover"
                   />
                    <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full mt-5">
                   <ImageSelector

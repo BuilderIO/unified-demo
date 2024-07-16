@@ -19,11 +19,11 @@ export default async function RootLayout({
         <main>
           <>
             <HydrationOverlay>
-              {/* <Header headerContent={headerContent} /> */}
+              <Header headerContent={headerContent} />
               <div className="md:px-16 px-4 mx-auto lg:w-4/5">
                 {children}
               </div>
-              {/* <Footer /> */}
+              <Footer />
             </HydrationOverlay>
           </>
         </main>

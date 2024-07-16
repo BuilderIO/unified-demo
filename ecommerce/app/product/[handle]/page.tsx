@@ -15,6 +15,7 @@ export default async function ProductPage(props: ProductPageProps) {
   const builderProductDataModel = "product-data";
   const builderProductDetailsModel = "product-details-bottom";
 
+
   const productData = await builder
     // Get the page content from Builder with the specified options
     .get(builderProductDataModel, {
