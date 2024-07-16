@@ -27,12 +27,6 @@ const SignInButton: React.FC<SignInButtonProps> = ({ text }) => (
 );
 
 const Footer: React.FC = () => {
-  const [isMounted, setIsMounted] = React.useState(false);
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-
   const navItems = [
     "WOMEN",
     "MEN",
@@ -55,8 +49,8 @@ const Footer: React.FC = () => {
             )}
           </nav>
           <div className="flex items-center">
-            {isMounted && <CartSlider variant="white"/>}
-            {isMounted && <AuthSlider variant="white"/>}
+            <CartSlider variant="white"/>
+            <AuthSlider variant="white"/>
           </div>
       </div>
         <p className="mt-8 text-lg text-zinc-400 max-md:max-w-full">
