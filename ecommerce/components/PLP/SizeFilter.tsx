@@ -29,8 +29,8 @@ export const SizeFilter: React.FC<SizeFilterProps> = ({
         {sizes.map((size) => (
           <div
             key={size}
-            className={`justify-center items-center p-2.5 bg-neutral-100 h-[50px] w-[50px] cursor-pointer ${
-              selectedSizes.includes(size) ? 'bg-blue-500 text-white' : ''
+            className={`text-center p-2.5 bg-neutral-100 h-[50px] w-[50px] cursor-pointer leading-8 ${
+              selectedSizes.includes(size) ? 'bg-blue-500 font-black' : ''
             }`}
             onClick={() => handleSizeChange(size)}
           >
@@ -43,7 +43,7 @@ export const SizeFilter: React.FC<SizeFilterProps> = ({
           <div
             key={label}
             className={`flex-1 justify-center p-2.5 text-center bg-neutral-100 cursor-pointer ${
-              selectedSizes.includes(label) ? 'bg-blue-500 text-white' : ''
+              selectedSizes.includes(label) ? 'bg-blue-500 font-black' : ''
             }`}
             onClick={() => handleSizeChange(label)}
           >

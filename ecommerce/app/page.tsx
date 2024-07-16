@@ -1,6 +1,5 @@
 // "use client"
 import { builder } from "@builder.io/sdk";
-import { Builder, Columns } from "@builder.io/react";
 import { RenderBuilderContent } from "../components/builder";
 
 // Builder Public API Key set in .env file

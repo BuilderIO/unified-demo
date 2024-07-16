@@ -1,6 +1,5 @@
 import { Header } from "@/components/Layout/Header";
 import { builder } from "@builder.io/sdk";
-import { BuilderContent } from "@builder.io/react"
 import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 import "./globals.css";
 import Footer from "@/components/Layout/Footer";
