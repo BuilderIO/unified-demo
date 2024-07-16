@@ -19,12 +19,17 @@ import { BuilderContent } from '@builder.io/react';
 
 
 export function Header({ headerContent }: any) {
+  const [isMounted, setIsMounted] = React.useState(false);
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <BuilderContent model="header-links" content={headerContent}>
       {(data) => (  
           <header className="bg-secondary p-3 w-full flex flex-1 justify-between">
             <NavigationMenuItem className="flex md:hidden">
-              <SideNav />
+              {isMounted && <SideNav />}
             </NavigationMenuItem>
             <Button variant="link" asChild>
               <Link href="/" passHref>
@@ -36,7 +41,7 @@ export function Header({ headerContent }: any) {
                 />
               </Link>
             </Button>
-            <NavigationMenu className="hidden md:flex space-x-5">
+            {isMounted && <NavigationMenu className="hidden md:flex space-x-5">
               <NavigationMenuList className="justify-around w-full">
                 {data?.headerLinks.map((item:any, index:number) => {
                   return(
@@ -50,10 +55,10 @@ export function Header({ headerContent }: any) {
                   )
                 })}
               </NavigationMenuList>
-            </NavigationMenu>
+            </NavigationMenu>}
             <div className="flex items-center">
-              <CartSlider variant="black"/>
-              <AuthSlider variant="black"/>
+              {isMounted && <CartSlider variant="black"/>}
+              {isMounted &&  <AuthSlider variant="black"/>}
             </div>
           </header>
         )
