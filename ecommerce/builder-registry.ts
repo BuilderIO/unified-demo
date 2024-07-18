@@ -9,8 +9,11 @@ import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import "@builder.io/widgets"
 
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+
 Builder.register("editor.settings", {
-  styleStrictMode: true, // optional
+  styleStrictMode: false, 
+  allowOverridingTokens: true,// optional
   models:['page'],
   designTokens: {
     colors: [

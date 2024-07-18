@@ -2,8 +2,8 @@
 import ProductDetails from "@/components/PDP/ProductDetails";
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "@/components/builder";
-import { headers } from 'next/headers';
 
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 interface ProductPageProps {
   params: {
@@ -12,9 +12,6 @@ interface ProductPageProps {
 }
 
 export default async function ProductPage(props: ProductPageProps) {
-  const headersList = headers();
-  const apiKey = headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!
-  builder.init(apiKey || process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
   const builderProductDataModel = "product-data";
   const builderProductDetailsModel = "product-details-bottom";
 
@@ -42,8 +39,6 @@ export default async function ProductPage(props: ProductPageProps) {
     })
     // Convert the result to a promise
     .toPromise();
-
-    console.log('PRODUCT DATA from page: ', productData)
 
   return (
     <>

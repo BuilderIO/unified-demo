@@ -1,8 +1,8 @@
 import { builder } from "@builder.io/sdk";
 import CategoryLanding from "@/components/PLP/CategoryLanding";
 import { capitalizeWord } from "@/lib/utils";
-import { headers } from 'next/headers';
 
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 interface CategoryPageProps {
   params: {
@@ -11,9 +11,6 @@ interface CategoryPageProps {
 }
 
 export default async function CategoryPage(props: CategoryPageProps) {
-  const headersList = headers();
-  const apiKey = headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!
-  builder.init(apiKey || process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
   const plpTileModel = "plp-tile";
   const plpProductDataModel = "product-data";
 
@@ -34,16 +31,13 @@ export default async function CategoryPage(props: CategoryPageProps) {
         }
       }
     })
-
-    console.log('Tile Content: ', plpTileContent)
-
   return (
     <>
       {/* Render the Builder page */}
         <div className="flex gap-3 self-center mt-5 mr-auto text-base text-neutral-400">
           <div className="grow">{capitalizeWord(props?.params?.category)}</div>
         </div>
-        <div className="self-center mt-5 text-4xl font-semibold text-black tracking-[7.14px] max-md:max-w-full">
+        <div className="self-center mt-5 text-4xl text-black tracking-[7.14px] max-md:max-w-full">
           {props?.params?.category.toUpperCase()}
         </div>
       <CategoryLanding products={productDetailsContent} plpTiles={plpTileContent}/>
