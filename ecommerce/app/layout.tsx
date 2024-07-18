@@ -3,14 +3,17 @@ import { builder } from "@builder.io/sdk";
 import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 import "./globals.css";
 import Footer from "@/components/Layout/Footer";
+import { headers } from 'next/headers';
+
+const headersList = headers();
+builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+  
   const headerContent = await builder.get('header-links', {fields: 'data'}).toPromise();
   
   return (
@@ -18,13 +21,13 @@ export default async function RootLayout({
       <body>
         <main>
           <>
-            <HydrationOverlay>
+            {/* <HydrationOverlay> */}
               <Header headerContent={headerContent} />
               <div className="md:px-16 px-4 mx-auto lg:w-4/5">
                 {children}
               </div>
               <Footer />
-            </HydrationOverlay>
+            {/* </HydrationOverlay> */}
           </>
         </main>
       </body>

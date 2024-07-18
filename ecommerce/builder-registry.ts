@@ -9,8 +9,6 @@ import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import "@builder.io/widgets"
 
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
-
 Builder.register("insertMenu", {
   name: "Heros",
   items: [
@@ -284,9 +282,8 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
   inputs: [
     {
       name: "childBlocks",
-      type: "string",
-      hideFromUI: true,
-      defaultValue: [],
+      type: "uiBlocks",
+      hideFromUI: true
     },
     {
       name: "header",

@@ -1,9 +1,10 @@
 // "use client"
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "../components/builder";
+import { headers } from 'next/headers';
 
-// Builder Public API Key set in .env file
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+const headersList = headers();
+builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
 
 interface PageProps {
   params: {
@@ -12,6 +13,8 @@ interface PageProps {
 }
 
 export default async function Homepage(props: PageProps) {
+  await import('isolated-vm');
+
   const builderModelName = "homepage";
   const content = await builder
     // Get the page content from Builder with the specified options
