@@ -1,9 +1,10 @@
 "use client"
-import { NextResponse } from 'next/server';
 import { ComponentProps } from "react";
 import { BuilderComponent, Builder, builder, useIsPreviewing } from "@builder.io/react";
 import DefaultErrorPage from "next/error";
 import "../builder-registry";
+
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 type BuilderPageProps = ComponentProps<typeof BuilderComponent>;
 

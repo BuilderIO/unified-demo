@@ -43,7 +43,7 @@ export function Header({ headerContent }: any) {
                     <Button key={index} variant="link" className="text-md">
                       <Link href={item.path || '/'} legacyBehavior passHref >
                         {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                          <span className={item.highlight ? "text-rose-500" : ""}>{item.label}</span>
+                          <span className={`uppercase ${item.highlight ? "text-rose-500" : ""}`}>{item.label}</span>
                         {/* </NavigationMenuLink> */}
                       </Link>
                     </Button>

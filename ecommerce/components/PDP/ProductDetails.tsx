@@ -189,7 +189,6 @@ type ProductDetailsProps = {
 
 
 const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
-  console.log('PRODUCT DATA from outside hero', product)
   const [selectedColor, setSelectedColor] = useState(product?.data?.colors?.[0]?.label || null);
   const [selectedSize, setSelectedSize] = useState(product?.data?.sizes?.[0]?.label || null);
   const [selectedImage, setSelectedImage] = useState(product?.data?.images?.[0]);
@@ -198,14 +197,13 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
   return (
     <BuilderContent model="product-data" content={product}>
       {(productData) => {
-        console.log('PRODUCT DATA in hero: ', productData)
         const colorOptions: ColorOption[] = productData?.colors;
         const sizeOptions: SizeOption[] = productData?.sizes;
         const specificationDetails: SpecificationItem = productData?.details;
         const imageOptions: ImageOption[] = productData?.images;
 
         return (
-          <div className="flex flex-col">
+          <div className="flex flex-col mb-10">
             <div className="w-full max-md:max-w-full">
                 <div className="flex gap-3 text-base text-neutral-400 m-2">
                   <Button variant="link" asChild>
