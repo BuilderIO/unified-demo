@@ -40,3 +40,14 @@ export function rgbaToHex(rgbaString:string) {
 export function capitalizeWord(word:string) {
   return word.charAt(0).toUpperCase()+word.slice(1)
 }
+
+export function getBuilderApiKey(hostlist:any) {
+  const host = typeof hostlist==="string" ? 'localhost' : hostlist.get('host');
+  const hostPrefix = host.split(/[-:]/)[0];
+
+  switch (hostPrefix) {
+    case 'tim': return '50b344f9116e4820a020e382058146e0';
+    case 'localhost': return 'a87584e551b6472fa0f0a2eb10f2c0ff';
+    default: return 'a87584e551b6472fa0f0a2eb10f2c0ff'
+  }
+}

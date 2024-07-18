@@ -3,7 +3,6 @@
  */
 "use client"
 import React, { useState, useEffect } from "react";
-import { Button } from '../ui/button'
 import { CartSlider } from "./CartSlider";
 import { AuthSlider } from "./AuthSlider";
 
@@ -16,17 +15,10 @@ const NavItem: React.FC<NavItemProps> = ({ text, isHighlighted }) => (
   <div className={isHighlighted ? "text-rose-500" : "text-white"}>{text}</div>
 );
 
-type SignInButtonProps = {
-  text: string;
-};
-
-const SignInButton: React.FC<SignInButtonProps> = ({ text }) => (
-  <Button variant="secondary" className="bg-white text-black">
-    {text}
-  </Button>
-);
-
 const Footer: React.FC = () => {
+  const [ isMounted, setIsMounted ] = useState(false);
+  useEffect(() => setIsMounted(true));
+  
   const navItems = [
     "WOMEN",
     "MEN",
@@ -49,8 +41,8 @@ const Footer: React.FC = () => {
             )}
           </nav>
           <div className="flex items-center">
-            <CartSlider variant="white"/>
-            <AuthSlider variant="white"/>
+            {isMounted && <CartSlider variant="white"/>}
+            {isMounted && <AuthSlider variant="white"/>}
           </div>
       </div>
         <p className="mt-8 text-lg text-zinc-400 max-md:max-w-full">

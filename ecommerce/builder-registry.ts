@@ -284,9 +284,8 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
   inputs: [
     {
       name: "childBlocks",
-      type: "string",
-      hideFromUI: true,
-      defaultValue: [],
+      type: "uiBlocks",
+      hideFromUI: true
     },
     {
       name: "header",

@@ -4,10 +4,9 @@ import { BuilderComponent, Builder, builder, useIsPreviewing } from "@builder.io
 import DefaultErrorPage from "next/error";
 import "../builder-registry";
 
-type BuilderPageProps = ComponentProps<typeof BuilderComponent>;
-
-// Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+
+type BuilderPageProps = ComponentProps<typeof BuilderComponent>;
 
 export function RenderBuilderContent(props: BuilderPageProps) {
   // Call the useIsPreviewing hook to determine if
