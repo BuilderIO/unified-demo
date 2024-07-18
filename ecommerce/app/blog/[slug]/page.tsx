@@ -2,16 +2,16 @@ import { builder } from "@builder.io/sdk";
 // import { RenderBuilderContent } from "../../components/builder";
 import { headers } from 'next/headers';
 
-const headersList = headers();
-builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
 
-interface PageProps {
+interface BlogPageProps {
   params: {
     slug: string[];
   };
 }
 
-export default async function Page(props: PageProps) {
+export default async function BlogPage(props: BlogPageProps) {
+  const headersList = headers();
+  builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
 //   const builderModelName = "page";
 
 //   const content = await builder
