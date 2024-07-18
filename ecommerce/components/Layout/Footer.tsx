@@ -28,9 +28,9 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="flex justify-center items-center px-16 py-20 mt-20 bg-neutral-800 max-md:px-5">
+    <footer className="flex justify-center items-center px-16 py-20 bg-neutral-800 max-md:px-5">
       <div className="flex flex-col mt-5 w-full max-w-[1209px] max-md:mt-10 max-md:max-w-full">
-        <div className="flex gap-5 justify-between w-full text-base font-semibold tracking-[3.15px] max-md:flex-wrap max-md:max-w-full">
+        <div className="flex gap-5 justify-between w-full text-base tracking-[3.15px] max-md:flex-wrap max-md:max-w-full">
           <nav className="flex gap-5 justify-between my-auto max-md:flex-wrap">
             {navItems.map((item, index) =>
               typeof item === "string" ? (
