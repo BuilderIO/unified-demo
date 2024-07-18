@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from 'next/server';
 export function middleware(request: NextRequest) {
   const hostname = request.nextUrl.hostname.split(/[-:]/)[0];
 
-  console.log('HOSTNAME ', hostname)
 
   let env = {
     NEXT_PUBLIC_BUILDER_API_KEY: process.env.NEXT_PUBLIC_BUILDER_API_KEY!
@@ -44,7 +43,6 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  console.log('HOST NAME ', env)
   const response = NextResponse.next();
   // Set custom headers with environment variables
   response.headers.set('x-env-NEXT_PUBLIC_BUILDER_API_KEY', env.NEXT_PUBLIC_BUILDER_API_KEY);
