@@ -9,6 +9,55 @@ import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import "@builder.io/widgets"
 
+Builder.register("editor.settings", {
+  styleStrictMode: true, // optional
+  models:['page'],
+  designTokens: {
+    colors: [
+      { name: "Background", value: "var(--background, #ffffff)" },
+      { name: "Text", value: "#282635" },
+      { name: "Textmuted", value: "#666666" },
+      { name: "Primary", value: "#5059F6" },
+      { name: "Secondary", value: "#FF4C7D" },
+      { name: "Highlight", value: "#B6DDDB" },
+      { name: "Muted", value: "#E2E2E2" },
+      { name: "Accent", value: "#DBFF00" },
+    ],
+    spacing: [
+      { name: "Large", value: "var(--space-large, 20px)" },
+      { name: "Small", value: "var(--space-small, 10px)" },
+      { name: "Tiny", value: "5px" },
+    ],
+    fontFamily: [
+      { name: 'Primary', value: 'var(--primary-font, Raleway)' },
+      { name: 'Secondary', value: 'var(--secondary-font, DM Sans)' },
+    ],
+    fontSize: [
+      { name: 'Small', value: 'var(--font-size-small, 12px)' },
+      { name: 'Medium', value: 'var(--font-size-medium, 14px)' },
+      { name: 'Large', value: 'var(--font-size-large, 16px)' },
+    ],
+    fontWeight: [
+      { name: 'Light', value: 'var(--font-weight-light, 200)' },
+      { name: 'Normal', value: 'var(--font-weight-regular, 400)' },
+      { name: 'Medium', value: 'var(--font-weight-medium, 600)' },
+      { name: 'Bold', value: 'var(--font-weight-bold, 800)' },
+    ],
+    letterSpacing: [
+      { name: 'Tight', value: 'var(--letter-spacing-tight, -0.02em)' },
+      { name: 'Normal', value: 'var(--letter-spacing-normal, 0em)' },
+      { name: 'Relaxed', value: 'var(--letter-spacing-wide, 0.02em)' },
+      { name: 'Loose', value: 'var(--letter-spacing-wide, 0.04em)' },
+    ],
+    lineHeight: [
+      { name: 'None', value: 'var(--line-height-none, 1)' },
+      { name: 'Tight', value: 'var(--line-height-tight, 1.2)' },
+      { name: 'Normal', value: 'var(--line-height-normal, 1.5)' },
+      { name: 'Relaxed', value: 'var(--line-height-relaxed, 1.8)' },
+      { name: 'Loose', value: 'var(--line-height-loose, 2)' },
+    ],
+  },
+});
 Builder.register("insertMenu", {
   name: "Heros",
   items: [
