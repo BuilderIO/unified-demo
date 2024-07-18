@@ -10,9 +10,10 @@ interface PageProps {
 }
 
 export default async function Homepage(props: PageProps) {
-  await import('isolated-vm');
   const headersList = headers();
-  builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
+  const apiKey = headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!
+  builder.init(apiKey || process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+  await import('isolated-vm');
 
   const builderModelName = "homepage";
   const content = await builder

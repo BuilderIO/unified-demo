@@ -11,7 +11,8 @@ interface PageProps {
 
 export default async function Page(props: PageProps) {
   const headersList = headers();
-  builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
+  const apiKey = headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!
+  builder.init(apiKey || process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
   const builderModelName = "figma-imports";
 
   const content = await builder

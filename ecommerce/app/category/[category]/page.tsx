@@ -12,7 +12,8 @@ interface CategoryPageProps {
 
 export default async function CategoryPage(props: CategoryPageProps) {
   const headersList = headers();
-  builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
+  const apiKey = headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!
+  builder.init(apiKey || process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
   const plpTileModel = "plp-tile";
   const plpProductDataModel = "product-data";
 
