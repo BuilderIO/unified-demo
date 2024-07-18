@@ -1,10 +1,9 @@
+"use server"
 import ProductDetails from "@/components/PDP/ProductDetails";
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "@/components/builder";
 import { headers } from 'next/headers';
 
-const headersList = headers();
-builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
 
 interface ProductPageProps {
   params: {
@@ -13,6 +12,8 @@ interface ProductPageProps {
 }
 
 export default async function ProductPage(props: ProductPageProps) {
+  const headersList = headers();
+  builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
   const builderProductDataModel = "product-data";
   const builderProductDetailsModel = "product-details-bottom";
 

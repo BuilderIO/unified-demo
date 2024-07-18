@@ -2,8 +2,6 @@ import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "../../components/builder";
 import { headers } from 'next/headers';
 
-const headersList = headers();
-builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
 
 interface PageProps {
   params: {
@@ -11,9 +9,11 @@ interface PageProps {
   };
 }
 
-export const revalidate = 500;
+// export const revalidate = 500;
 
 export default async function Page(props: PageProps) {
+  const headersList = headers();
+  builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
   const builderModelName = "page";
 
   const content = await builder

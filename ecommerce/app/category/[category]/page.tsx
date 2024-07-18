@@ -3,8 +3,6 @@ import CategoryLanding from "@/components/PLP/CategoryLanding";
 import { capitalizeWord } from "@/lib/utils";
 import { headers } from 'next/headers';
 
-const headersList = headers();
-builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
 
 interface CategoryPageProps {
   params: {
@@ -13,6 +11,8 @@ interface CategoryPageProps {
 }
 
 export default async function CategoryPage(props: CategoryPageProps) {
+  const headersList = headers();
+  builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
   const plpTileModel = "plp-tile";
   const plpProductDataModel = "product-data";
 
