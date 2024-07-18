@@ -34,7 +34,10 @@ export function middleware(request: NextRequest) {
       NEXT_PUBLIC_BUILDER_API_KEY: '4fd379f37fc94196b23e235fe472eee6'
     };
   }
-  //on localhost add .env.local file with NEXT_PUBLIC_BUILDER_API_KEY of the same value of your hostname
+  /*on localhost add .env.local file with NEXT_PUBLIC_BUILDER_API_KEY
+   of the same value of your hostname
+   refer to .env.example for the format
+   */
   else if (hostname === 'localhost') {
     env = {
       NEXT_PUBLIC_BUILDER_API_KEY: process.env.NEXT_PUBLIC_BUILDER_API_KEY!
