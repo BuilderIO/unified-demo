@@ -3,8 +3,10 @@ import { builder } from "@builder.io/sdk";
 import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 import "./globals.css";
 import Footer from "@/components/Layout/Footer";
+import { headers } from 'next/headers';
 
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+const headersList = headers();
+builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
 
 export default async function RootLayout({
   children,

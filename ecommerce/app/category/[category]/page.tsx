@@ -1,9 +1,10 @@
 import { builder } from "@builder.io/sdk";
 import CategoryLanding from "@/components/PLP/CategoryLanding";
 import { capitalizeWord } from "@/lib/utils";
+import { headers } from 'next/headers';
 
-// Builder Public API Key set in .env file
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
+const headersList = headers();
+builder.init(headersList.get('x-env-NEXT_PUBLIC_BUILDER_API_KEY')!);
 
 interface CategoryPageProps {
   params: {
