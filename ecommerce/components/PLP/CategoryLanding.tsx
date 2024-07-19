@@ -67,7 +67,9 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
             <div className="flex flex-col ml-5 w-[69%] max-md:ml-0 max-md:w-full">
               <div className="flex flex-col grow max-md:mt-10 max-md:max-w-full">
                 <div className="flex flex-row flex-wrap gap-1.5 justify-center items-center max-md:max-w-full">
-                  {products.map((product:BuilderContent, index:any) => (
+                  {products.map((product:BuilderContent, index:any) => {
+                    console.log('PRODUCT: ', product)
+                    return (
                     <>
                       <ProductCard 
                         key={index}
@@ -80,7 +82,7 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
                       </div>
                       }
                     </>
-                  ))}
+                  )})}
                 </div>
               </div>
             </div>

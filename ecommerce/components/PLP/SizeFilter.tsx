@@ -25,12 +25,12 @@ export const SizeFilter: React.FC<SizeFilterProps> = ({
 
   return (
     <>
-      <div className="flex flex-row flex-wrap gap-2.5 px-px mt-4 whitespace-nowrap">
+      <div className="flex flex-row flex-wrap gap-2.5 px-px mt-4 whitespace-nowrap justify-center">
         {sizes.map((size) => (
           <div
             key={size}
             className={`text-center p-2.5 bg-neutral-100 h-[50px] w-[50px] cursor-pointer leading-8 ${
-              selectedSizes.includes(size) ? 'bg-blue-500 font-black' : ''
+              selectedSizes.includes(size) ? 'bg-blue-500 font-semibold shadow-md' : ''
             }`}
             onClick={() => handleSizeChange(size)}
           >
@@ -42,8 +42,8 @@ export const SizeFilter: React.FC<SizeFilterProps> = ({
         {sizeLabels.map((label) => (
           <div
             key={label}
-            className={`flex-1 justify-center p-2.5 text-center bg-neutral-100 cursor-pointer ${
-              selectedSizes.includes(label) ? 'bg-blue-500 font-black' : ''
+            className={`justify-center p-2.5 text-center bg-neutral-100 cursor-pointer w-[31%] ${
+              selectedSizes.includes(label) ? 'bg-blue-500 font-semibold shadow-md' : ''
             }`}
             onClick={() => handleSizeChange(label)}
           >
