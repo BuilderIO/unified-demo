@@ -43,7 +43,7 @@ export function Header({ headerContent }: any) {
                     <Button key={index} variant="link" className="text-md">
                       <Link href={item.path || '/'} legacyBehavior passHref >
                         {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                          <span className={`uppercase ${item.highlight ? "text-rose-500" : ""}`}>{item.label}</span>
+                          <span className={`uppercase font-normal ${item.highlight ? "text-rose-500" : ""}`}>{item.label}</span>
                         {/* </NavigationMenuLink> */}
                       </Link>
                     </Button>
@@ -77,7 +77,7 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <div className="text-sm font-light leading-none">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
