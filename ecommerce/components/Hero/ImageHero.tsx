@@ -31,7 +31,7 @@ const ImageHero: React.FC<ImageHeroProps> = ({
   };
 
   return (
-    <div className={`flex overflow-hidden relative flex-col justify-center ${alignmentClasses[alignment]} w-full min-h-[442px] max-md:pr-5 max-md:max-w-full ${makeFullBleed ? 'w-screen  ml-[calc(50%-50vw)] max-h-full' : ''}`}>
+    <div className={`flex overflow-hidden rounded-md mt-4 relative flex-col justify-center ${alignmentClasses[alignment]} w-full min-h-[442px] max-md:pr-5 max-md:max-w-full ${makeFullBleed ? 'w-screen  ml-[calc(50%-50vw)] max-h-full' : ''}`}>
       <img
         loading="lazy"
         src={backgroundImage}
