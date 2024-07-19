@@ -23,7 +23,7 @@ const IconCard: React.FC<IconCardProps> = ({ icon, title, description, altText, 
         <div className="w-16 h-16 flex items-center justify-center">
         <img src={icon} alt={altText} className="w-full h-full" />
         </div>
-        <h3 className="mt-6 text-xl font-semibold">{title}</h3>
+        <h3 className="mt-6 text-xl font-medium">{title}</h3>
         <div className="mt-4 text-base" dangerouslySetInnerHTML={{ __html: description }}></div>
       </div>
     </div>
