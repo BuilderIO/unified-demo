@@ -23,7 +23,7 @@ const SplitHero: React.FC<SplitHeroProps> = ({ imageAlignment, title, subTitle, 
       <div className="flex flex-col grow px-10 w-full bg-white max-md:px-5 max-md:max-w-full justify-center">
         <div className="flex flex-col justify-center max-md:max-w-full">
         <div className="flex flex-col mt-16 text-gray-800 max-md:mt-10 max-md:max-w-full">
-          <h2 className="text-5xl leading-[53px] max-md:max-w-full">{title}</h2>
+          <h2 className="mt-6 text-2xl text-center tracking-[5.25px] max-md:max-w-full font-medium">{title}</h2>
           <span className="mt-3 text-xl leading-8 max-md:max-w-full" dangerouslySetInnerHTML={{ __html: subTitle }}></span>
         </div>
           {hasCTA && 
