@@ -18,13 +18,13 @@ Builder.register("editor.settings", {
   designTokens: {
     colors: [
       { name: "Background", value: "var(--background, #ffffff)" },
-      { name: "Text", value: "#282635" },
-      { name: "Textmuted", value: "#666666" },
-      { name: "Primary", value: "#5059F6" },
-      { name: "Secondary", value: "#FF4C7D" },
-      { name: "Highlight", value: "#B6DDDB" },
-      { name: "Muted", value: "#E2E2E2" },
-      { name: "Accent", value: "#DBFF00" },
+      { name: "Text", value: "var(--primary, #000000)" },
+      { name: "Textmuted", value: "var(--muted, #ffffff)" },
+      { name: "Primary", value: "var(--primary, #000000)" },
+      { name: "Secondary", value: "var(--secondary, #ffffff)" },
+      { name: "Deconstructive", value: "var(--deconstructive, #c8e2ee)" },
+      { name: "Muted", value: "var(--muted, #ffffff)" },
+      { name: "Accent", value: "var(--accent, #F35959)" },
     ],
     spacing: [
       { name: "Large", value: "var(--space-large, 20px)" },
@@ -32,8 +32,7 @@ Builder.register("editor.settings", {
       { name: "Tiny", value: "5px" },
     ],
     fontFamily: [
-      { name: 'Primary', value: 'var(--primary-font, Raleway)' },
-      { name: 'Secondary', value: 'var(--secondary-font, DM Sans)' },
+      { name: 'Primary', value: 'var(--primary-font, Poppins)' }
     ],
     fontSize: [
       { name: 'Small', value: 'var(--font-size-small, 12px)' },
