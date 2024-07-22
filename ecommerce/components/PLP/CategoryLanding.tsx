@@ -21,7 +21,6 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  console.log({products, plpTiles})
 
   return (
     <div className="box-border flex relative flex-col shrink-0">
@@ -68,7 +67,6 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
               <div className="flex flex-col grow max-md:mt-10 max-md:max-w-full">
                 <div className="flex flex-row flex-wrap gap-1.5 justify-center items-center max-md:max-w-full">
                   {products.map((product:BuilderContent, index:any) => {
-                    console.log('PRODUCT: ', product)
                     return (
                     <>
                       <ProductCard 

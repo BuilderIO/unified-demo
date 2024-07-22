@@ -88,7 +88,6 @@ const ImageSelector: FC<ImageSelectorProps> = ({
   selectedImage,
   onImageChange,
 }) => {
-  console.log('INSIDE IMAGE SELECTOR: ',  options, selectedImage)
   return (
   <RadioGroup
   // @ts-ignore

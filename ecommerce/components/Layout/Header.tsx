@@ -22,7 +22,9 @@ export function Header({ headerContent }: any) {
   return (
     <BuilderContent model="header-links" content={headerContent}>
       {(data) => (  
-          <header className="bg-secondary p-3 w-full flex flex-1 justify-between">
+          <header className="w-full flex flex-1 border-y mb-4">
+            <div className="md:px-16 px-4 mx-auto lg:w-4/5 p-3 flex justify-between">
+
             <NavigationMenuItem className="flex md:hidden">
               <SideNav />
             </NavigationMenuItem>
@@ -54,6 +56,7 @@ export function Header({ headerContent }: any) {
             <div className="flex items-center">
               <CartSlider variant="black"/>
               <AuthSlider variant="black"/>
+            </div>
             </div>
           </header>
         )

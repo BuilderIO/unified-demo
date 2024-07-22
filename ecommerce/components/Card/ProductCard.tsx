@@ -14,17 +14,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, classes }) => {
  // data binding, use product.value.data
   let productData = product?.data || product?.value?.data;
   return (
-    <div className={`flex flex-col grow text-sm leading-5 text-gray-800 m-2 max-md:mt-4 ${classes || ''}`}>
-      <a href={`/product/${productData?.handle}`} >
-        <img loading="lazy" src={productData?.images[0]?.image} alt={`${productData?.images[0]?.altText}`} className="w-full aspect-[0.76] object-cover" />
-        <div className="flex flex-col mt-2 h-full">
-          <div className="mt-1">{productData?.productName}</div>
-          <div className="text-xs text-stone-500 mt-1">{productData?.colors?.[0]?.label}</div>
-          <div className="mt-1 justify-self-end">${productData?.price}</div>
+     <article className="flex flex-col text-base tracking-wider text-center max-w-[339px] m-2">
+       <a href={`/product/${productData?.handle}`} >
+        <img loading="lazy" src={productData?.images[0]?.image} alt={`${productData?.images[0]?.altText}`}  className="w-full aspect-[0.81] border-zinc-300" />
+        <div className="flex flex-col mt-5 w-full">
+          <div className="flex gap-5 justify-between w-full text-black text-left">
+            <span>{productData?.productName.length < 16 ? productData?.productName : productData?.productName.substring(0,16)+'...'}</span>
+            <p className="font-semibold">${productData?.price}</p>
+          </div>
+          <p className="mt-2 text-left text-stone-500">{productData?.colors?.[0]?.label}</p>
         </div>
-      </a>
-    </div>
+       </a>
+   </article>
   );
 };
 
 export default ProductCard;
+
