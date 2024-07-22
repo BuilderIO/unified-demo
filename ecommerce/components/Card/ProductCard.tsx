@@ -10,13 +10,13 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, classes }) => {
- // product.data if its in a visual editor repeat, otherwise for a straight
- // data binding, use product.value.data
+  // product.data if its in a visual editor repeat, otherwise for a straight
+  // data binding, use product.value.data
   let productData = product?.data || product?.value?.data;
   return (
-     <div className={`flex flex-col text-base tracking-wider text-center self-start m-2 ${classes}`}>
-       <a href={`/product/${productData?.handle}`} >
-        <img loading="lazy" src={productData?.images[0]?.image} alt={`${productData?.images[0]?.altText}`}  className="w-full aspect-[0.81] border-zinc-300" />
+    <div className={`flex flex-col text-base tracking-wider text-center self-start ${classes}`}>
+      <a href={`/product/${productData?.handle}`} >
+        <img loading="lazy" src={productData?.images[0]?.image} alt={`${productData?.images[0]?.altText}`} className="w-full aspect-[0.81] border-zinc-300" />
         <div className="flex flex-col mt-5 w-full">
           <div className="flex gap-5 justify-between w-full text-black text-left">
             <div className="text-ellipsis overflow-hidden break-words">{productData?.productName}</div>
@@ -24,8 +24,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, classes }) => {
           </div>
           <p className="mt-2 text-left text-stone-500">{productData?.colors?.[0]?.label}</p>
         </div>
-       </a>
-   </div>
+      </a>
+    </div>
   );
 };
 
