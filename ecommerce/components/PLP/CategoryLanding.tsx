@@ -75,7 +75,9 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
                           product={product}
                         />
                         {index === 3 && plpTiles.length &&
-                          <div className="flex flex-col grow text-sm leading-5 text-gray-800 max-md:mt-4 box-border relative shrink-0 max-w-[32%]" >
+                          <div
+                            key={`${index}-ad-tile`}
+                            className="flex flex-col grow text-sm leading-5 text-gray-800 max-md:mt-4 box-border relative shrink-0 max-w-[32%]" >
                             <RenderBuilderContent model="plp-tile" content={plpTiles[0]} />
                           </div>
                         }
