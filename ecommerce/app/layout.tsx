@@ -21,7 +21,7 @@ export default async function RootLayout({
           <>
             {/* <HydrationOverlay> */}
               <Header headerContent={headerContent} />
-              <div className="md:px-16 px-4 mx-auto lg:w-4/5">
+              <div className="container">
                 {children}
               </div>
               <Footer />
