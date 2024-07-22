@@ -30,10 +30,11 @@ export function Header({ headerContent }: any) {
               <Link href="/" passHref>
                 <img
                   className="h-6"
-                  src="https://cdn.builder.io/api/v1/image/assets%2Ff5348105e75441b59830f1e489577801%2F6ad04e7727854622abc5cb8b6e539000"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fc4c7ed8ebc674760916f9356fbd7110d"
                   alt="Logo"
                   loading="lazy"
-                />
+                /> 
+                SHOPAHOLIC
               </Link>
             </Button>
             <NavigationMenu className="hidden md:flex space-x-5">
@@ -60,7 +61,6 @@ export function Header({ headerContent }: any) {
             <div className="flex items-center">
               <CartSlider variant="black" />
               <AuthSlider variant="black" />
-            </div>
             </div>
           </header>
         </div>
