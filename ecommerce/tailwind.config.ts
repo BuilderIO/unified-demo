@@ -44,6 +44,10 @@ const config = {
           DEFAULT: "var(--accent)",
           foreground: "var(--accent-foreground)",
         },
+        energetic: {
+          DEFAULT: "var(--energetic)",
+          foreground: "var(--energetic-foreground)",
+        },
         popover: {
           DEFAULT: "var(--popover)",
           foreground: "var(--popover-foreground)",

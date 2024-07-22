@@ -19,12 +19,13 @@ Builder.register("editor.settings", {
     colors: [
       { name: "Background", value: "var(--background, #ffffff)" },
       { name: "Text", value: "var(--primary, #000000)" },
-      { name: "Textmuted", value: "var(--muted, #ffffff)" },
+      { name: "Textmuted", value: "var(--muted, #e2e8f0)" },
       { name: "Primary", value: "var(--primary, #000000)" },
       { name: "Secondary", value: "var(--secondary, #ffffff)" },
-      { name: "Deconstructive", value: "var(--deconstructive, #c8e2ee)" },
-      { name: "Muted", value: "var(--muted, #ffffff)" },
+      { name: "Deconstructive", value: "var(--deconstructive, #18B4F4)" },
+      { name: "Muted", value: "var(--muted, #C8E2EE)" },
       { name: "Accent", value: "var(--accent, #F35959)" },
+      { name: "Energetic", value: "var(--energetic, #A97FF2)" },
     ],
     spacing: [
       { name: "Large", value: "var(--space-large, 20px)" },
