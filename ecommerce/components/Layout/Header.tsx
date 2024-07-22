@@ -1,8 +1,8 @@
-"use client";
-import * as React from "react";
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
+"use client"
+import * as React from "react"
+import Link from "next/link"
+import { Button } from "../ui/button"
+import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,60 +11,56 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { AuthSlider } from "./AuthSlider";
-import { CartSlider } from "./CartSlider";
-import { SideNav } from "./SideNav";
-import { BuilderContent } from "@builder.io/react";
+} from "@/components/ui/navigation-menu"
+import { AuthSlider } from "./AuthSlider"
+import { CartSlider } from "./CartSlider"
+import { SideNav } from "./SideNav"
+import { BuilderContent } from '@builder.io/react';
+
 
 export function Header({ headerContent }: any) {
   return (
     <BuilderContent model="header-links" content={headerContent}>
-      {(data) => (
-        <div className="border-b">
-          <header className="container p-3 w-full flex flex-1 justify-between">
+      {(data) => (  
+          <header className="w-full flex flex-1 border-y mb-4">
+            <div className="px-4 p-3 flex justify-between container">
+
             <NavigationMenuItem className="flex md:hidden">
               <SideNav />
             </NavigationMenuItem>
             <Button variant="link" asChild>
               <Link href="/" passHref>
-                <img
+              <img
                   className="h-6"
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fc4c7ed8ebc674760916f9356fbd7110d"
-                  alt="Logo"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Ff5348105e75441b59830f1e489577801%2F6ad04e7727854622abc5cb8b6e539000"
+                  alt="Builder.io Logo"
                   loading="lazy"
-                /> 
-                SHOPAHOLIC
+                />
               </Link>
             </Button>
             <NavigationMenu className="hidden md:flex space-x-5">
               <NavigationMenuList className="justify-around w-full">
-                {data?.headerLinks.map((item: any, index: number) => {
-                  return (
+                {data?.headerLinks.map((item:any, index:number) => {
+                  return(
                     <Button key={index} variant="link" className="text-md">
-                      <Link href={item.path || "/"} legacyBehavior passHref>
+                      <Link href={item.path || '/'} legacyBehavior passHref >
                         {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                        <span
-                          className={`text-xs font-semibold text-black tracking-[3.15px] uppercase ${
-                            item.highlight ? "text-rose-500" : ""
-                          }`}
-                        >
-                          {item.label}
-                        </span>
+                          <span className={`uppercase font-normal ${item.highlight ? "text-rose-500" : ""}`}>{item.label}</span>
                         {/* </NavigationMenuLink> */}
                       </Link>
                     </Button>
-                  );
+                  )
                 })}
               </NavigationMenuList>
             </NavigationMenu>
             <div className="flex items-center">
-              <CartSlider variant="black" />
-              <AuthSlider variant="black" />
+              <CartSlider variant="black"/>
+              <AuthSlider variant="black"/>
+            </div>
             </div>
           </header>
-        </div>
-      )}
+        )
+      }
     </BuilderContent>
   );
 }
@@ -91,6 +87,6 @@ const ListItem = React.forwardRef<
         </a>
       </NavigationMenuLink>
     </li>
-  );
-});
-ListItem.displayName = "ListItem";
+  )
+})
+ListItem.displayName = "ListItem"

@@ -20,12 +20,12 @@ interface SplitHeroProps {
 }
 
 const SplitHero: React.FC<SplitHeroProps> = ({ imageAlignment, splitWidth, textAlignment, title, subTitle, image, altText, hasCTA, buttonText, buttonLink, makeFullBleed }) => {
-  const textWidth = imageAlignment === 'right' ? splitWidth === "1/2" ? "w-1/2" : "w-2/3" : splitWidth === "1/2" ? "w-1/2" : "w-2/3";
-  const imageWidth = imageAlignment === 'right' ? splitWidth === "1/2" ? "w-1/2" : "w-1/3" : splitWidth === "1/2" ? "w-1/2" : "w-1/3";
+  const textWidth = imageAlignment === 'right' ? splitWidth === "1/2" ? "md:w-1/2" : "md:w-2/3" : splitWidth === "1/2" ? "md:w-1/2" : "md:w-2/3";
+  const imageWidth = imageAlignment === 'right' ? splitWidth === "1/2" ? "md:w-1/2" : "md:w-1/3" : splitWidth === "1/2" ? "md:w-1/2" : "md:w-1/3";
   
   const textContent = (
-    <div className={`flex flex-col ${textWidth} max-md:ml-0`}>
-      <div className="flex flex-col grow px-10 bg-white max-md:px-5 justify-center">
+    <div className={`flex flex-col ${textWidth} my-3`}>
+      <div className="flex flex-col grow md:px-10 bg-white justify-center">
         <div className="flex flex-col justify-center">
         <div className="flex flex-col text-gray-800 max-md:mt-10">
           <h2 className={`mt-6 text-2xl text-${textAlignment} tracking-[5.25px] font-medium`}>{title}</h2>
