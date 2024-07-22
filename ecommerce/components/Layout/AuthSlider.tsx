@@ -21,7 +21,7 @@ export const AuthSlider: React.FC<AuthSliderProps> = ({ variant }) => {
   return (
     <Sheet key="side">
         <SheetTrigger asChild>
-          <Button variant={variant === "white" ? "outline" : "default"}>Login</Button>
+          <Button className="px-5 py-2.5 bg-black text-white" variant={variant === "white" ? "outline" : "default"}>Sign In</Button>
         </SheetTrigger>
         <SheetContent side="right">
         <SheetHeader>

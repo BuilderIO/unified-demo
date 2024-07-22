@@ -21,7 +21,6 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  console.log({products, plpTiles})
 
   return (
     <div className="box-border flex relative flex-col shrink-0">
@@ -67,20 +66,21 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
             <div className="flex flex-col ml-5 w-[69%] max-md:ml-0 max-md:w-full">
               <div className="flex flex-col grow max-md:mt-10 max-md:max-w-full">
                 <div className="flex flex-row flex-wrap gap-1.5 justify-center items-center max-md:max-w-full">
-                  {products.map((product:BuilderContent, index:any) => (
+                  {products.map((product:BuilderContent, index:any) => {
+                    return (
                     <>
-                      <ProductCard
+                      <ProductCard 
                         key={index}
-                        classes="box-border flex relative flex-col shrink-0 mx-auto w-[32%]"
+                        classes="box-border flex relative flex-col shrink-0 mx-auto max-w-[32%]"
                         product={product}
                       />
                       {index === 3 && plpTiles.length && 
-                      <div className="box-border flex relative flex-col shrink-0 mx-auto w-[32%]" >
+                      <div className="flex flex-col grow text-sm leading-5 text-gray-800 m-2 max-md:mt-4 box-border flex relative flex-col shrink-0 mx-auto max-w-[32%]" >
                         <RenderBuilderContent model="plp-tile" content={plpTiles[0]} />
                       </div>
                       }
                     </>
-                  ))}
+                  )})}
                 </div>
               </div>
             </div>

@@ -61,6 +61,7 @@ export function Header({ headerContent }: any) {
               <CartSlider variant="black" />
               <AuthSlider variant="black" />
             </div>
+            </div>
           </header>
         </div>
       )}

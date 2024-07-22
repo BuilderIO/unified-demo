@@ -110,6 +110,27 @@ Builder.registerComponent(SplitHero, {
       required: true,
     },
     {
+      name: "textAlignment",
+      type: "string",
+      defaultValue: "left",
+      enum: ["left", "center", "right"],
+      required: true,
+    },
+    {
+      name: "splitWidth",
+      type: "string",
+      defaultValue: "1/2",
+      enum: [
+        {
+          label: "50 : 50",
+          value: "1/2"
+        },{
+          label: "1 : 3",
+          value: "1/3"
+        }],
+      required: true,
+    },
+    {
       name: "image",
       type: "file",
       defaultValue:
