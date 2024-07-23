@@ -17,7 +17,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, classes }) => {
   return (
     <div className={`flex flex-col text-base tracking-wider text-center self-start ${classes}`}>
       <a href={`/product/${productData?.handle}`} >
-        <img loading="lazy" src={productData?.images[0]?.image} alt={`${productData?.images[0]?.altText}`} className="w-full aspect-[0.81] border-zinc-300 rounded-md" />
+        <div className="flex justify-center aspect-[0.81]">
+          <img loading="lazy" src={productData?.images[0]?.image} alt={`${productData?.images[0]?.altText}`} className="w-full border-zinc-300 rounded-md object-cover" />
+        </div>
         <div className="flex flex-col mt-5 w-full">
           <div className="flex gap-5 justify-between w-full text-black text-left">
             <div className="text-ellipsis overflow-hidden break-words">{productData?.productName}</div>
