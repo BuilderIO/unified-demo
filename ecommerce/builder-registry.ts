@@ -7,14 +7,14 @@ import ImageHero from "./components/Hero/ImageHero";
 import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
-import "@builder.io/widgets"
+import "@builder.io/widgets";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 Builder.register("editor.settings", {
-  styleStrictMode: false, 
-  allowOverridingTokens: true,// optional
-  models:['page'],
+  styleStrictMode: false,
+  allowOverridingTokens: true, // optional
+  models: ["page"],
   designTokens: {
     colors: [
       { name: "Primary", value: "var(--primary, #000000)" },
@@ -32,32 +32,37 @@ Builder.register("editor.settings", {
       { name: "Small", value: "var(--space-small, 10px)" },
       { name: "Tiny", value: "5px" },
     ],
-    fontFamily: [
-      { name: 'Primary', value: 'var(--primary-font, Poppins)' }
-    ],
+    fontFamily: [{ name: "Primary", value: "var(--primary-font, Poppins)" }],
     fontSize: [
-      { name: 'Small', value: 'var(--font-size-small, 12px)' },
-      { name: 'Medium', value: 'var(--font-size-medium, 14px)' },
-      { name: 'Large', value: 'var(--font-size-large, 16px)' },
+      { name: "Small", value: "var(--font-size-small, 12px)" },
+      { name: "Medium", value: "var(--font-size-medium, 14px)" },
+      { name: "Large", value: "var(--font-size-large, 16px)" },
     ],
     fontWeight: [
-      { name: 'Light', value: 'var(--font-weight-light, 200)' },
-      { name: 'Normal', value: 'var(--font-weight-regular, 400)' },
-      { name: 'Medium', value: 'var(--font-weight-medium, 600)' },
-      { name: 'Bold', value: 'var(--font-weight-bold, 800)' },
+      { name: "Light", value: "var(--font-weight-light, 200)" },
+      { name: "Normal", value: "var(--font-weight-regular, 400)" },
+      { name: "Medium", value: "var(--font-weight-medium, 600)" },
+      { name: "Bold", value: "var(--font-weight-bold, 800)" },
     ],
     letterSpacing: [
-      { name: 'Tight', value: 'var(--letter-spacing-tight, -0.02em)' },
-      { name: 'Normal', value: 'var(--letter-spacing-normal, 0em)' },
-      { name: 'Relaxed', value: 'var(--letter-spacing-wide, 0.02em)' },
-      { name: 'Loose', value: 'var(--letter-spacing-wide, 0.04em)' },
+      { name: "Tight", value: "var(--letter-spacing-tight, -0.02em)" },
+      { name: "Normal", value: "var(--letter-spacing-normal, 0em)" },
+      { name: "Relaxed", value: "var(--letter-spacing-wide, 0.02em)" },
+      { name: "Loose", value: "var(--letter-spacing-wide, 0.04em)" },
     ],
     lineHeight: [
-      { name: 'None', value: 'var(--line-height-none, 1)' },
-      { name: 'Tight', value: 'var(--line-height-tight, 1.2)' },
-      { name: 'Normal', value: 'var(--line-height-normal, 1.5)' },
-      { name: 'Relaxed', value: 'var(--line-height-relaxed, 1.8)' },
-      { name: 'Loose', value: 'var(--line-height-loose, 2)' },
+      { name: "None", value: "var(--line-height-none, 1)" },
+      { name: "Tight", value: "var(--line-height-tight, 1.2)" },
+      { name: "Normal", value: "var(--line-height-normal, 1.5)" },
+      { name: "Relaxed", value: "var(--line-height-relaxed, 1.8)" },
+      { name: "Loose", value: "var(--line-height-loose, 2)" },
+    ],
+    borderRadius: [
+      { name: "None", value: "0px" },
+      { name: "Small", value: "calc(var(--radius, 0.5rem) - 4px)" },
+      { name: "Medium", value: "calc(var(--radius, 0.5rem) - 2px)" },
+      { name: "Large", value: "calc(var(--radius, 0.5rem))" },
+      { name: "XL", value: "calc(var(--radius, 0.5rem) + 4px)" },
     ],
   },
 });
@@ -123,11 +128,13 @@ Builder.registerComponent(SplitHero, {
       enum: [
         {
           label: "50 : 50",
-          value: "1/2"
-        },{
+          value: "1/2",
+        },
+        {
           label: "1 : 3",
-          value: "1/3"
-        }],
+          value: "1/3",
+        },
+      ],
       required: true,
     },
     {
@@ -166,7 +173,7 @@ Builder.registerComponent(SplitHero, {
       showIf: (options) => {
         return options.get("hasCTA") == true;
       },
-      defaultValue: '/'
+      defaultValue: "/",
     },
     {
       name: "buttonText",
@@ -256,10 +263,10 @@ Builder.registerComponent(ProductCard, {
       required: true,
       defaultValue: {
         "@type": "@builder.io/core:Reference",
-        "id": "b0196147be5d4e6388bbdff62ee3ae7d",
-        "model": "product-data"
-      }
-    }
+        id: "b0196147be5d4e6388bbdff62ee3ae7d",
+        model: "product-data",
+      },
+    },
     // {
     //   name: "product",
     //   type: "object",
@@ -356,7 +363,7 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
     {
       name: "childBlocks",
       type: "uiBlocks",
-      hideFromUI: true
+      hideFromUI: true,
     },
     {
       name: "header",
@@ -366,7 +373,7 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
     {
       name: "makeFullBleed",
       type: "boolean",
-      defaultValue: false
-    }
+      defaultValue: false,
+    },
   ],
 });
