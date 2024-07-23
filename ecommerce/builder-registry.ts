@@ -1,5 +1,7 @@
 "use client";
+import "@builder.io/widgets";
 import { builder, Builder, withChildren } from "@builder.io/react";
+import { Button } from "./components/ui/button";
 import Counter from "./components/Counter/Counter";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
 import IconCard from "./components/Card/IconCard";
@@ -17,15 +19,19 @@ Builder.register("editor.settings", {
   models: ["page"],
   designTokens: {
     colors: [
-      { name: "Primary", value: "var(--primary, #000000)" },
-      { name: "Secondary", value: "var(--secondary, #ffffff)" },
-      { name: "Deconstructive", value: "var(--deconstructive, #18B4F4)" },
-      { name: "Muted", value: "var(--muted, #C8E2EE)" },
-      { name: "Accent", value: "var(--accent, #F35959)" },
-      { name: "Energetic", value: "var(--energetic, #A97FF2)" },
-      { name: "Background", value: "var(--background, #ffffff)" },
-      { name: "Text", value: "var(--primary, #000000)" },
-      { name: "Textmuted", value: "var(--muted, #e2e8f0)" },
+      { name: "Primary", value: "var(--color-primary, #000000)" },
+      { name: "Secondary", value: "var(--color-secondary, #ffffff)" },
+      { name: "Deconstructive", value: "var(--color-deconstructive, #18B4F4)" },
+      { name: "Muted", value: "var(--color-muted, #C8E2EE)" },
+      { name: "Accent", value: "var(--color-accent, #F35959)" },
+      { name: "Energetic", value: "var(--color-energetic, #A97FF2)" },
+      { name: "Background", value: "var(--color-background, #ffffff)" },
+      { name: "Text", value: "var(--color-primary, #000000)" },
+      { name: "Text Muted", value: "var(--color-muted, #e2e8f0)" },
+      {
+        name: "Background Light",
+        value: "var(--color-background-light, #FAFAFA)",
+      },
     ],
     spacing: [
       { name: "Large", value: "var(--space-large, 20px)" },
@@ -56,13 +62,6 @@ Builder.register("editor.settings", {
       { name: "Normal", value: "var(--line-height-normal, 1.5)" },
       { name: "Relaxed", value: "var(--line-height-relaxed, 1.8)" },
       { name: "Loose", value: "var(--line-height-loose, 2)" },
-    ],
-    borderRadius: [
-      { name: "None", value: "0px" },
-      { name: "Small", value: "calc(var(--radius, 0.5rem) - 4px)" },
-      { name: "Medium", value: "calc(var(--radius, 0.5rem) - 2px)" },
-      { name: "Large", value: "calc(var(--radius, 0.5rem))" },
-      { name: "XL", value: "calc(var(--radius, 0.5rem) + 4px)" },
     ],
   },
 });

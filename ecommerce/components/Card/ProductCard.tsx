@@ -6,8 +6,8 @@
 import React from "react";
 
 interface ProductCardProps {
-  product: any,
-  classes: string;
+  product: any;
+  classes?: string;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, classes }) => {
@@ -15,17 +15,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, classes }) => {
   // data binding, use product.value.data
   let productData = product?.data || product?.value?.data;
   return (
-    <div className={`flex flex-col text-base tracking-wider text-center self-start ${classes}`}>
-      <a href={`/product/${productData?.handle}`} >
-        <div className="flex justify-center aspect-[0.81]">
-          <img loading="lazy" src={productData?.images[0]?.image} alt={`${productData?.images[0]?.altText}`} className="w-full border-zinc-300 rounded-md object-cover" />
-        </div>
+    <div
+      className={`flex flex-col text-base tracking-wider text-center self-start m-2 ${classes}`}
+    >
+      <a href={`/product/${productData?.handle}`}>
+        <img
+          loading="lazy"
+          src={productData?.images[0]?.image}
+          alt={`${productData?.images[0]?.altText}`}
+          className="w-full aspect-[0.81] border-zinc-300 object-contain"
+        />
         <div className="flex flex-col mt-5 w-full">
           <div className="flex gap-5 justify-between w-full text-black text-left">
-            <div className="text-ellipsis overflow-hidden break-words">{productData?.productName}</div>
+            <div className="text-ellipsis overflow-hidden break-words">
+              {productData?.productName}
+            </div>
             <p className="font-semibold">${productData?.price}</p>
           </div>
-          <p className="mt-2 text-left text-stone-500">{productData?.colors?.[0]?.label}</p>
+          <p className="mt-2 text-left text-stone-500">
+            {productData?.colors?.[0]?.label}
+          </p>
         </div>
       </a>
     </div>
@@ -33,4 +42,3 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, classes }) => {
 };
 
 export default ProductCard;
-
