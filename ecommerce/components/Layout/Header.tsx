@@ -21,18 +21,18 @@ import { BuilderContent } from '@builder.io/react';
 export function Header({ headerContent }: any) {
   return (
     <BuilderContent model="header-links" content={headerContent}>
-      {(data) => (  
-          <header className="w-full flex flex-1 border-y mb-4">
-            <div className="px-4 p-3 flex justify-between container">
+      {(data) => (
+        <header className="w-full flex flex-1 border-y mb-4">
+          <div className="px-4 p-3 flex justify-between container">
 
             <NavigationMenuItem className="flex md:hidden">
               <SideNav />
             </NavigationMenuItem>
             <Button variant="link" asChild>
               <Link href="/" passHref>
-              <img
+                <img
                   className="h-6"
-                  src="https://cdn.builder.io/api/v1/image/assets%2Ff5348105e75441b59830f1e489577801%2F6ad04e7727854622abc5cb8b6e539000"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F692369ff646645349e68a86b43fc7a38"
                   alt="Builder.io Logo"
                   loading="lazy"
                 />
@@ -40,12 +40,12 @@ export function Header({ headerContent }: any) {
             </Button>
             <NavigationMenu className="hidden md:flex space-x-5">
               <NavigationMenuList className="justify-around w-full">
-                {data?.headerLinks.map((item:any, index:number) => {
-                  return(
+                {data?.headerLinks.map((item: any, index: number) => {
+                  return (
                     <Button key={index} variant="link" className="text-md">
                       <Link href={item.path || '/'} legacyBehavior passHref >
                         {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                          <span className={`uppercase font-normal ${item.highlight ? "text-rose-500" : ""}`}>{item.label}</span>
+                        <span className={`uppercase ${item.highlight ? "text-rose-500" : ""}`}>{item.label}</span>
                         {/* </NavigationMenuLink> */}
                       </Link>
                     </Button>
@@ -54,12 +54,12 @@ export function Header({ headerContent }: any) {
               </NavigationMenuList>
             </NavigationMenu>
             <div className="flex items-center">
-              <CartSlider variant="black"/>
-              <AuthSlider variant="black"/>
+              <CartSlider variant="black" />
+              <AuthSlider variant="black" />
             </div>
-            </div>
-          </header>
-        )
+          </div>
+        </header>
+      )
       }
     </BuilderContent>
   );
