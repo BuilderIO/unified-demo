@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@builder.io/dev-tools": "^1.0.2",
-    "@builder.io/react": "^3.2.11",
+    "@builder.io/dev-tools": "^1.0.19",
+    "@builder.io/react": "^3.2.12",
     "@builder.io/react-hydration-overlay": "^0.0.8",
-    "@builder.io/sdk": "^2.2.4",
+    "@builder.io/sdk": "^2.2.6",
     "@builder.io/widgets": "^1.2.24",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-checkbox": "^1.1.1",
