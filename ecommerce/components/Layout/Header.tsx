@@ -16,46 +16,44 @@ import { AuthSlider } from "./AuthSlider"
 import { CartSlider } from "./CartSlider"
 import { SideNav } from "./SideNav"
 import { BuilderContent } from '@builder.io/react';
+import styles from './header.module.css'
+import Image from 'next/image';
 
 
 export function Header({ headerContent }: any) {
   return (
     <BuilderContent model="header-links" content={headerContent}>
       {(data) => (  
-          <header className="w-full flex flex-1 border-y mb-4">
-            <div className="px-4 p-3 flex justify-between container">
+          <header className={styles.header}>
+            <div className={styles.container}>
 
             <NavigationMenuItem className="flex md:hidden">
               <SideNav />
             </NavigationMenuItem>
-            <Button variant="link" asChild>
+            <Button variant="link" asChild className={styles.mainLink}>
               <Link href="/" passHref>
-              <img
-                  className="h-6"
-                  src="https://cdn.builder.io/api/v1/image/assets%2Ff5348105e75441b59830f1e489577801%2F6ad04e7727854622abc5cb8b6e539000"
-                  alt="Builder.io Logo"
-                  loading="lazy"
-                />
+                <Image src={'/shopaholic.svg'} alt='Shopaholic' width="160" height="30" className={styles.logo}/>
               </Link>
             </Button>
             <NavigationMenu className="hidden md:flex space-x-5">
-              <NavigationMenuList className="justify-around w-full">
+              <NavigationMenuList className={styles.nav}>
                 {data?.headerLinks.map((item:any, index:number) => {
                   return(
-                    <Button key={index} variant="link" className="text-md">
-                      <Link href={item.path || '/'} legacyBehavior passHref >
+                      <Link href={item.path || '/'} legacyBehavior passHref key={index}>
                         {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                          <span className={`uppercase font-normal ${item.highlight ? "text-rose-500" : ""}`}>{item.label}</span>
+                          <span className={styles.navLink + " " + (item.highlight ? styles.highlight : "")}>{item.label}</span>
                         {/* </NavigationMenuLink> */}
                       </Link>
-                    </Button>
                   )
                 })}
               </NavigationMenuList>
             </NavigationMenu>
-            <div className="flex items-center">
+            <div className={styles.actions}>
               <CartSlider variant="black"/>
-              <AuthSlider variant="black"/>
+              <div className="hidden md:flex">
+                <AuthSlider variant="black"/>
+              </div>
+              
             </div>
             </div>
           </header>

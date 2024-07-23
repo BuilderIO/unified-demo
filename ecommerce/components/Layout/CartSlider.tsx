@@ -1,5 +1,6 @@
 "use client"
 import { IoCartOutline } from 'react-icons/io5'
+import Image from 'next/image';
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
@@ -23,7 +24,7 @@ type CartSliderProps = {
     <Sheet key="side">
         <SheetTrigger asChild>
         <Button variant="link" >
-            <IoCartOutline className={`h-6 w-6 text-${variant}`}/>
+            <Image src={'/cart.svg'} width='17' height='20' alt="Cart" className='min-w-15 max-w-15'/>
         </Button>
         </SheetTrigger>
         <SheetContent side="right">
