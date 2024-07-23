@@ -9,6 +9,7 @@ import ImageHero from "./components/Hero/ImageHero";
 import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
+import { Collection } from "./components/Collection/Collection";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -26,7 +27,7 @@ Builder.register("editor.settings", {
       { name: "Energetic", value: "var(--color-energetic, #A97FF2)" },
       { name: "Background", value: "var(--color-background, #ffffff)" },
       { name: "Text", value: "var(--color-primary, #000000)" },
-      { name: "Textmuted", value: "var(--color-muted, #e2e8f0)" },
+      { name: "Text Muted", value: "var(--color-muted, #e2e8f0)" },
       {
         name: "Background Light",
         value: "var(--color-background-light, #FAFAFA)",
@@ -288,7 +289,7 @@ Builder.registerComponent(ProductCard, {
     //       name: "name",
     //       type: "string",
     //       required: true,
-    //       defaultValue: "Long Sleeve Sweatshirt in White",
+    //       defaultValue: "Long Sleeve Swezatshirt in White",
     //     },
     //     {
     //       name: "price",
@@ -386,6 +387,37 @@ Builder.registerComponent(withChildren(Button), {
       meta: {
         ts: "ReactNode",
       },
+    },
+    {
+      name: "variant",
+      type: "string",
+      defaultValue: "default",
+      enum: ["default", "secondary", "tertiary", "outline", "link"],
+    },
+  ],
+});
+
+Builder.registerComponent(Collection, {
+  name: "Collection",
+  inputs: [
+    {
+      name: "collection",
+      type: "string",
+      defaultValue: "all",
+      enum: [
+        {
+          label: "Featured",
+          value: "all",
+        },
+        {
+          label: "Eyewear",
+          value: "womens-eyewear",
+        },
+        {
+          label: "Handbags",
+          value: "handbags",
+        },
+      ],
     },
   ],
 });
