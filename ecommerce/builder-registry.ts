@@ -289,7 +289,7 @@ Builder.registerComponent(ProductCard, {
     //       name: "name",
     //       type: "string",
     //       required: true,
-    //       defaultValue: "Long Sleeve Swezatshirt in White",
+    //       defaultValue: "Long Sleeve Sweatshirt in White",
     //     },
     //     {
     //       name: "price",
