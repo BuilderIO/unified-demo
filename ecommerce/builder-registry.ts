@@ -399,6 +399,7 @@ Builder.registerComponent(withChildren(Button), {
 
 Builder.registerComponent(Collection, {
   name: "Collection",
+  noWrap: true,
   inputs: [
     {
       name: "collection",

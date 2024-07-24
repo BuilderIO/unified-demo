@@ -4,6 +4,7 @@ import ProductCard from "../Card/ProductCard";
 export function Collection(props: {
   // Faked for now
   collection: string;
+  attributes?: any;
 }) {
   const useShopStyle = !(!props.collection || props.collection === "all");
 
@@ -36,7 +37,12 @@ export function Collection(props: {
 
   // Scrolling flex row of product cards
   return (
-    <div className="flex flex-row overflow-auto min-h-96">
+    <div
+      {...props.attributes}
+      className={`${
+        props.attributes?.className || ""
+      } flex flex-row overflow-auto min-h-96 max-w-full`}
+    >
       {products.data?.map((product) => (
         <ProductCard
           classes="w-64 shrink-0"
