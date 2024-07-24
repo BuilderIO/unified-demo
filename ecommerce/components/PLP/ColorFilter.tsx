@@ -35,7 +35,7 @@ export const ColorFilter: React.FC<ColorFilterProps> = ({
         {colors.map((color) => (
           <div
             key={color.name}
-            className="flex flex-col justify-center items-center w-[27%] max-md:w-[45%] max-sm:justify-center max-sm:items-center cursor-pointer"
+            className="flex flex-col justify-center items-center w-[27%] max-md:w-[44%] max-sm:justify-center max-sm:items-center cursor-pointer"
             onClick={() => handleColorChange(color.name)}
           >
             <div
