@@ -32,7 +32,7 @@ export function Collection(props: {
         ).then((res) => res.json())
       ).results;
     },
-  });
+  }); 
 
   // Scrolling flex row of product cards
   return (
