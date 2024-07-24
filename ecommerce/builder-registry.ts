@@ -9,7 +9,7 @@ import ImageHero from "./components/Hero/ImageHero";
 import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
-import { Collection } from "./components/Collection/Collection";
+import "@builder.io/widgets";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -373,51 +373,6 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
       name: "makeFullBleed",
       type: "boolean",
       defaultValue: false,
-    },
-  ],
-});
-
-Builder.registerComponent(withChildren(Button), {
-  name: "Button",
-  inputs: [
-    {
-      name: "children",
-      type: "string",
-      hideFromUI: true,
-      meta: {
-        ts: "ReactNode",
-      },
-    },
-    {
-      name: "variant",
-      type: "string",
-      defaultValue: "default",
-      enum: ["default", "secondary", "tertiary", "outline", "link"],
-    },
-  ],
-});
-
-Builder.registerComponent(Collection, {
-  name: "Collection",
-  inputs: [
-    {
-      name: "collection",
-      type: "string",
-      defaultValue: "all",
-      enum: [
-        {
-          label: "Featured",
-          value: "all",
-        },
-        {
-          label: "Eyewear",
-          value: "womens-eyewear",
-        },
-        {
-          label: "Handbags",
-          value: "handbags",
-        },
-      ],
     },
   ],
 });
