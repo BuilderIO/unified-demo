@@ -35,13 +35,12 @@ export const ColorFilter: React.FC<ColorFilterProps> = ({
         {colors.map((color) => (
           <div
             key={color.name}
-            className="flex flex-col justify-center items-center w-[27%] max-md:w-[44%] max-sm:justify-center max-sm:items-center cursor-pointer"
+            className="flex flex-col justify-center items-center w-[29%] max-md:w-[44%] cursor-pointer"
             onClick={() => handleColorChange(color.name)}
           >
             <div
-              className={`shrink-0 rounded-full ${color.bgColor} h-[50px] w-[50px] ${
-                selectedColors.includes(color.name) ? 'ring-2 ring-offset-2 ring-black' : ''
-              }`}
+              className={`shrink-0 rounded-full ${color.bgColor} h-[50px] w-[50px] ${selectedColors.includes(color.name) ? 'ring-2 ring-offset-2 ring-black' : ''
+                }`}
             />
             <div className="mt-4">{color.name}</div>
           </div>

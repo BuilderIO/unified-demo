@@ -16,14 +16,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, classes }) => {
   let productData = product?.data || product?.value?.data;
   return (
     <div
-      className={`flex flex-col text-base tracking-wider text-center self-start m-2 ${classes}`}
+      className={`flex flex-col text-base tracking-wider text-center self-start ${classes}`}
     >
       <a href={`/product/${productData?.handle}`}>
         <img
           loading="lazy"
           src={productData?.images[0]?.image}
           alt={`${productData?.images[0]?.altText}`}
-          className="w-full aspect-[0.81] border-zinc-300 object-contain"
+          className="w-full aspect-[0.81] border-zinc-300 object-cover rounded-md"
         />
         <div className="flex flex-col mt-5 w-full">
           <div className="flex gap-5 justify-between w-full text-black text-left">
