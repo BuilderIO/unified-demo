@@ -24,11 +24,11 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
 
   return (
     <div className="box-border flex relative flex-col shrink-0">
-      <div className="flex flex-col mt-9 w-full max-md:px-5 max-md:mt-10 max-md:max-w-full">
-        <div className="max-md:max-w-full">
-          <div className="flex gap-5 max-sm:flex-col max-md:gap-0">
-            <div className="flex flex-col w-[31%] max-md:ml-0 max-sm:w-full">
-              <div className="flex flex-col text-base tracking-wider text-black max-md:mt-10">
+      <div className="flex flex-col mt-9 w-full md:px-5 md:mt-10 md:max-w-full">
+        <div className="md:max-w-full">
+          <div className="flex gap-5 max-sm:flex-col md:gap-0">
+            <div className="flex flex-col w-[31%] md:ml-0 max-sm:w-full">
+              <div className="flex flex-col text-base tracking-wider text-black md:mt-10">
                 <Accordion type="multiple" className="w-full" defaultValue={["category", "color", "size"]}>
                   <AccordionItem value="category">
                     <AccordionTrigger>Category
@@ -63,21 +63,21 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
                 </Accordion>
               </div>
             </div>
-            <div className="flex flex-col ml-5 w-[69%] max-md:ml-0 max-sm:w-full">
-              <div className="flex flex-col grow max-md:mt-10 max-md:max-w-full">
-                <div className="flex flex-row flex-wrap gap-1.5 justify-around items-center max-md:max-w-full">
+            <div className="flex flex-col ml-5 w-[69%] md:ml-0 max-sm:w-full">
+              <div className="flex flex-col grow md:mt-10 md:max-w-full">
+                <div className="flex flex-row flex-wrap gap-1.5 justify-start items-center md:max-w-full">
                   {products.map((product:BuilderContent, index:any) => {
                     return (
                       <>
                         <ProductCard
                           key={index}
-                          classes="box-border relative shrink-0 max-w-[32%]"
+                          classes="box-border relative shrink-0 lg:w-[30%] sm:w-[45%] w-full"
                           product={product}
                         />
                         {index === 3 && plpTiles.length &&
                           <div
                             key={`${index}-ad-tile`}
-                            className="flex flex-col grow text-sm leading-5 text-gray-800 max-md:mt-4 box-border relative shrink-0 max-w-[32%]" >
+                            className="flex flex-col text-base tracking-wider text-center m-2 box-border relative shrink-0 lg:w-[30%] sm:w-[45%] w-full" >
                             <RenderBuilderContent model="plp-tile" content={plpTiles[0]} />
                           </div>
                         }
