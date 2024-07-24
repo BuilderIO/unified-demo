@@ -71,13 +71,13 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
                       <>
                         <ProductCard
                           key={index}
-                          classes="box-border relative shrink-0 lg:w-[30%] sm:w-[45%] w-full"
+                          classes="box-border relative shrink-0 lg:w-[30%] sm:w-[45%] w-[40%]"
                           product={product}
                         />
                         {index === 3 && plpTiles.length &&
                           <div
                             key={`${index}-ad-tile`}
-                            className="flex flex-col text-base tracking-wider text-center m-2 box-border relative shrink-0 lg:w-[30%] sm:w-[45%] w-full" >
+                            className="flex flex-col text-base tracking-wider text-center m-2 box-border relative shrink-0 lg:w-[30%] sm:w-[45%] w-[40%]" >
                             <RenderBuilderContent model="plp-tile" content={plpTiles[0]} />
                           </div>
                         }
