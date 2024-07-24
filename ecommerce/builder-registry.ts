@@ -10,6 +10,7 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import { Collection } from "./components/Collection/Collection";
+import "@builder.io/widgets";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 

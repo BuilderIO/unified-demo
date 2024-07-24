@@ -17,7 +17,7 @@ type CategoryLandingProps = {
   plpTiles: any;
 }
 
-const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
+const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
@@ -50,13 +50,13 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
                       />
                     </AccordionContent>
                   </AccordionItem>
-                 <AccordionItem value="size">
+                  <AccordionItem value="size">
                     <AccordionTrigger>Size
                     </AccordionTrigger>
                     <AccordionContent>
                       <SizeFilter
-                      selectedSizes={selectedSizes}
-                      setSelectedSizes={setSelectedSizes}
+                        selectedSizes={selectedSizes}
+                        setSelectedSizes={setSelectedSizes}
                       />
                     </AccordionContent>
                   </AccordionItem>
@@ -68,19 +68,22 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles}) => {
                 <div className="flex flex-row flex-wrap gap-1.5 justify-around items-center max-md:max-w-full">
                   {products.map((product:BuilderContent, index:any) => {
                     return (
-                    <>
-                      <ProductCard 
-                        key={index}
-                        classes="box-border flex relative flex-col shrink-0 mx-auto max-w-[32%]"
-                        product={product}
-                      />
-                      {index === 3 && plpTiles.length && 
-                      <div className="flex flex-col grow text-sm leading-5 text-gray-800 m-2 max-md:mt-4 box-border flex relative flex-col shrink-0 mx-auto max-w-[32%]" >
-                        <RenderBuilderContent model="plp-tile" content={plpTiles[0]} />
-                      </div>
-                      }
-                    </>
-                  )})}
+                      <>
+                        <ProductCard
+                          key={index}
+                          classes="box-border relative shrink-0 max-w-[32%]"
+                          product={product}
+                        />
+                        {index === 3 && plpTiles.length &&
+                          <div
+                            key={`${index}-ad-tile`}
+                            className="flex flex-col grow text-sm leading-5 text-gray-800 max-md:mt-4 box-border relative shrink-0 max-w-[32%]" >
+                            <RenderBuilderContent model="plp-tile" content={plpTiles[0]} />
+                          </div>
+                        }
+                      </>
+                    )
+                  })}
                 </div>
               </div>
             </div>
