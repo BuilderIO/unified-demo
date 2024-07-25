@@ -14,6 +14,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, classes }) => {
   // product.data if its in a visual editor repeat, otherwise for a straight
   // data binding, use product.value.data
   let productData = product?.data || product?.value?.data;
+  console.log('productData', productData)
   return (
     <div
       className={`flex flex-col text-base tracking-wider text-center self-start m-2 ${classes}`}
