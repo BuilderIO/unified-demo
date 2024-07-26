@@ -71,7 +71,7 @@ Builder.register("insertMenu", {
     { name: "TextHero" },
     { name: "ImageHero" },
     { name: "SplitHero" },
-    // { name: "HeroWithChildren" },
+    { name: "HeroWithChildren" },
   ],
   // priority: 2,
 });
