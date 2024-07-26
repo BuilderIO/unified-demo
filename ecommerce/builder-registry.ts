@@ -4,7 +4,6 @@ import { builder, Builder, withChildren } from "@builder.io/react";
 import { Button } from "./components/ui/button";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
-import { Header } from "./components/Layout/Header";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
 import IconCard from "./components/Card/IconCard";
 import ImageHero from "./components/Hero/ImageHero";
@@ -72,7 +71,7 @@ Builder.register("insertMenu", {
     { name: "TextHero" },
     { name: "ImageHero" },
     { name: "SplitHero" },
-    { name: "HeroWithChildren" },
+    // { name: "HeroWithChildren" },
   ],
   // priority: 2,
 });
@@ -145,26 +144,26 @@ Builder.registerComponent(SplitHero, {
       name: "image",
       type: "file",
       defaultValue:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/7a4e831734a935f7272a7299c88ec9fc5b196c12930a374ab8772a8dcb8d9456?placeholderIfAbsent=true",
+        "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F0cde6f8ddd9d482fad53266f8ee0f3ce",
       required: true,
     },
     {
       name: "altText",
       type: "string",
-      defaultValue: "Composable UI Open Source Storefront",
+      defaultValue: "blue jeans",
       required: true,
     },
     {
       name: "title",
       type: "longText",
-      defaultValue: "Composable UI Open Source Storefront",
+      defaultValue: "OUR COMMITMENT TO SUSTAINABILITY",
       required: true,
     },
     {
       name: "subTitle",
       type: "richText",
       defaultValue:
-        "<p>Create impactful, online storefronts with a foundational React and Next.js design system and UI library for modern composable commerce websites.</p>",
+        "<p>Create impactful, bold silhouettes in our chic, cozy classics</p>",
     },
     {
       name: "hasCTA",
@@ -182,7 +181,7 @@ Builder.registerComponent(SplitHero, {
     {
       name: "buttonText",
       type: "string",
-      defaultValue: "Lets Get Started!",
+      defaultValue: "Learn More",
       showIf: (options) => {
         return options.get("hasCTA") == true;
       },
@@ -249,7 +248,7 @@ Builder.registerComponent(TextHero, {
     {
       name: "title",
       type: "string",
-      defaultValue: "Composable UI Features",
+      defaultValue: "Composable Commerce with Builder.io",
       required: true,
     },
   ],
@@ -265,11 +264,6 @@ Builder.registerComponent(ProductCard, {
       type: "reference",
       model: "product-data",
       required: true,
-      defaultValue: {
-        "@type": "@builder.io/core:Reference",
-        id: "b0196147be5d4e6388bbdff62ee3ae7d",
-        model: "product-data",
-      },
     },
     // {
     //   name: "product",
@@ -316,7 +310,7 @@ Builder.registerComponent(ImageHero, {
       name: "title",
       type: "string",
       required: true,
-      defaultValue: "Let's Talk",
+      defaultValue: "SHOP ESSENTIALS",
     },
     {
       name: "alignment",
@@ -330,7 +324,7 @@ Builder.registerComponent(ImageHero, {
       type: "file",
       required: true,
       defaultValue:
-        "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F6d6fd240dcb6499cbab6cd138c125261",
+        "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F61c4f304ac9448b1ad741b83de17e48a",
     },
     {
       name: "buttonLink",
@@ -342,13 +336,13 @@ Builder.registerComponent(ImageHero, {
       name: "buttonText",
       type: "string",
       required: true,
-      defaultValue: "Contact Us",
+      defaultValue: "Shop Now",
     },
     {
       name: "subTitle",
       type: "richText",
       defaultValue:
-        "<p>Reach out to us for more information or with questions about Composable UI.</p>",
+        "<p>Shoppable essentials for your every day life.</p>",
     },
     {
       name: "makeFullBleed",
@@ -372,7 +366,7 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
     {
       name: "header",
       type: "string",
-      defaultValue: "",
+      defaultValue: "WHAT'S DIFFERENT ABOUT SHOPAHOLIC",
     },
     {
       name: "makeFullBleed",
@@ -429,8 +423,4 @@ Builder.registerComponent(Collection, {
       ],
     },
   ],
-});
-
-Builder.registerComponent(Header, {
-  name: "Header",
 });
