@@ -37,21 +37,21 @@ export function Collection(props: {
   // Scrolling flex row of product cards
   return (
     <div className="flex flex-row overflow-auto min-h-96">
-      {products.data?.map((product) => (
+      {products.data?.map((product, index) => (
         <ProductCard
           classes="w-64 shrink-0"
-          key={product.id}
+          key={`${product.id}-${index}`}
           product={
             useShopStyle
               ? {
-                  data: {
-                    images: [{ image: product.image.sizes.Best.url }],
-                    productName: product.name,
-                    price: product.price,
-                    colors: [{ label: product.color }],
-                    handle: product.id,
-                  },
-                }
+                data: {
+                  images: [{ image: product.image.sizes.Best.url }],
+                  productName: product.name,
+                  price: product.price,
+                  colors: [{ label: product.color }],
+                  handle: product.id,
+                },
+              }
               : product
           }
         />
