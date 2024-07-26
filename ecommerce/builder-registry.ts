@@ -362,6 +362,7 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
       name: "childBlocks",
       type: "uiBlocks",
       hideFromUI: true,
+      defaultValue: [],
     },
     {
       name: "header",
