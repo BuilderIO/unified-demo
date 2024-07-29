@@ -28,7 +28,7 @@ export default async function Page(props: PageProps) {
   return (
     <>
       {/* Render the Builder page */}
-      <RenderBuilderContent content={content} model={builderModelName}/>
+      <RenderBuilderContent content={content} model={builderModelName} options={{ enrich: true }}/>
     </>
   );
 }
