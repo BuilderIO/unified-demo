@@ -248,7 +248,7 @@ Builder.registerComponent(TextHero, {
     {
       name: "title",
       type: "string",
-      defaultValue: "Composable Commerce with Shopaholic, by Builder.io",
+      defaultValue: "STEP INTO FRESH STYLES",
       required: true,
     },
   ],
