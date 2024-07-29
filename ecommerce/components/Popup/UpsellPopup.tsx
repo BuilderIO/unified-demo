@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose, DialogPortal, DialogOverlay } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import NextImage from "next/image";
@@ -22,7 +22,6 @@ type UpsellPopupProps = {
 
 const UpsellPopup: React.FC<UpsellPopupProps> = ({ title, subTitle, discounts = [], imageSrc, imageAlt, delay = 0, discountLabel }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -47,7 +46,7 @@ const UpsellPopup: React.FC<UpsellPopupProps> = ({ title, subTitle, discounts = 
           <div className="text-center mt-4 mb-6 text-gray-500">{discountLabel}</div>
           <div className="grid gap-4">
             {discounts.map((discount, index) => (
-              <Button key={index}  className="bg-red-600 text-white w-full py-2 rounded-lg text-lg flex items-center justify-center hover:bg-red-700">
+              <Button key={index} className="bg-red-600 text-white w-full py-2 rounded-lg text-lg flex items-center justify-center hover:bg-red-700">
                 {discount.label}
                 {discount.icon && (
                   <NextImage
@@ -62,7 +61,7 @@ const UpsellPopup: React.FC<UpsellPopupProps> = ({ title, subTitle, discounts = 
             ))}
           </div>
           <div className="text-center mt-6">
-            <Button variant="link" className="text-gray-500 hover:underline" onClick={() => setIsOpen(false)}>No thanks, I'll pay full-price</Button>
+            <Button variant="link" className="text-gray-500 hover:underline" onClick={() => setIsOpen(false)}>No thanks, I&apos;ll pay full-price</Button>
           </div>
           <div className="flex justify-center mt-4">
             <NextImage src={imageSrc} alt={imageAlt} className="h-13 w-13" width={100} height={100} /> {/* Generic image */}
