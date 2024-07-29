@@ -31,12 +31,6 @@ const UpsellPopup: React.FC<UpsellPopupProps> = ({ title, subTitle, discounts = 
     return () => clearTimeout(timer);
   }, [delay]);
 
-  useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isOpen]);
-
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogPortal>
