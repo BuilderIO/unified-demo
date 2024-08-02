@@ -4,7 +4,6 @@ import { builder, Builder, withChildren } from "@builder.io/react";
 import { Button } from "./components/ui/button";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
-import { Header } from "./components/Layout/Header";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
 import IconCard from "./components/Card/IconCard";
 import ImageHero from "./components/Hero/ImageHero";
@@ -384,6 +383,12 @@ Builder.registerComponent(withChildren(Button), {
       component: { name: "Text", options: { text: "<p>Click Me</p>" } },
     },
   ],
+  childRequirements: {
+    message: 'You can only put Text or Image Icons inside a Button',
+    query: {
+      'component.name': { $in: ['Text'] },
+    },
+  },
   image:"https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5803f6cb27764a339296458c0056dc33",
   inputs: [
     {
