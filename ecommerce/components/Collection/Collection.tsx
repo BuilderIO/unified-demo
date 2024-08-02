@@ -33,7 +33,6 @@ export function Collection(props: {
       ).results;
     },
   });
-
   // Scrolling flex row of product cards
   return (
     <div className="flex flex-row overflow-auto min-h-96">
