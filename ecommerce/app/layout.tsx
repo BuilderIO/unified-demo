@@ -16,7 +16,6 @@ export default async function RootLayout({
     .get("header-links", { fields: "data" })
     .toPromise();
   const bannerContent = await builder.get("banner").toPromise();
-
   return (
     <html lang="en">
       <body>

@@ -4,6 +4,7 @@ import { withHydrationOverlay } from "@builder.io/react-hydration-overlay/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    dangerouslyAllowSVG: true,
     domains: ["cdn.builder.io", "shopifycdn.com"],
   },
   experimental: {
