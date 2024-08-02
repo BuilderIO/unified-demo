@@ -13,6 +13,7 @@ interface PageProps {
 
 export default async function Page(props: PageProps) {
   const builderModelName = "page";
+  let loggedInStatus = true;
 
   const content = await builder
     // Get the page content from Builder with the specified options
@@ -28,7 +29,7 @@ export default async function Page(props: PageProps) {
   return (
     <>
       {/* Render the Builder page */}
-      <RenderBuilderContent content={content} model={builderModelName} options={{ enrich: true }}/>
+      <RenderBuilderContent content={content} model={builderModelName} options={{ enrich: true }} data={{loggedInStatus}}/>
     </>
   );
 }

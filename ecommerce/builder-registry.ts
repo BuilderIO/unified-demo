@@ -4,6 +4,7 @@ import { builder, Builder, withChildren } from "@builder.io/react";
 import { Button } from "./components/ui/button";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
+import { Header } from "./components/Layout/Header";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
 import IconCard from "./components/Card/IconCard";
 import ImageHero from "./components/Hero/ImageHero";
@@ -341,8 +342,7 @@ Builder.registerComponent(ImageHero, {
     {
       name: "subTitle",
       type: "richText",
-      defaultValue:
-        "<p>Shoppable essentials for your every day life.</p>",
+      defaultValue: "<p>Shoppable essentials for your every day life.</p>",
     },
     {
       name: "makeFullBleed",
@@ -381,10 +381,10 @@ Builder.registerComponent(withChildren(Button), {
   name: "Button",
   canHaveChildren: true,
   defaultChildren: [
-    { 
-      '@type': '@builder.io/sdk:Element',
-      component: { name: 'Text', options: { text: '<p>Click Me</p>' } }
-    }
+    {
+      "@type": "@builder.io/sdk:Element",
+      component: { name: "Text", options: { text: "<p>Click Me</p>" } },
+    },
   ],
   image:
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNxdWFyZS1hcnJvdy1kb3duLXJpZ2h0Ij48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIi8+PHBhdGggZD0ibTggOCA4IDgiLz48cGF0aCBkPSJNMTYgOHY4SDgiLz48L3N2Zz4=",
