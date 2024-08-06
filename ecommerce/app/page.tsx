@@ -12,6 +12,7 @@ interface PageProps {
 
 export default async function Homepage(props: PageProps) {
   const builderModelName = "homepage";
+
   const content = await builder
     // Get the page content from Builder with the specified options
     .get(builderModelName, {
