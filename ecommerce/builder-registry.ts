@@ -262,7 +262,7 @@ Builder.registerComponent(TextHero, {
 Builder.registerComponent(ProductCard, {
   name: "ProductCard",
   image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F78a59bf73c4b4dfdbe04d5ca66d3e38e",
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fb408305f7a2b481690ef9bea53e42db1",
   inputs: [
     {
       name: "isShopify",
