@@ -93,11 +93,11 @@ if (Builder.isBrowser) {
     });
   }
 }
-
 Builder.register("insertMenu", {
   name: "Popups",
   items: [{ name: "UpsellPopup" }],
 });
+
 Builder.registerComponent(Counter, {
   name: "Counter",
   image:
@@ -262,47 +262,29 @@ Builder.registerComponent(TextHero, {
 Builder.registerComponent(ProductCard, {
   name: "ProductCard",
   image:
-    "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNxdWFyZS1nYW50dC1jaGFydCI+PHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB4PSIzIiB5PSIzIiByeD0iMiIvPjxwYXRoIGQ9Ik05IDhoNyIvPjxwYXRoIGQ9Ik04IDEyaDYiLz48cGF0aCBkPSJNMTEgMTZoNSIvPjwvc3ZnPg==",
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F78a59bf73c4b4dfdbe04d5ca66d3e38e",
   inputs: [
+    {
+      name: "isShopify",
+      type: "boolean",
+      required: true,
+      defaultValue: false,
+    },
     {
       name: "product",
       type: "reference",
       model: "product-data",
       required: true,
+      showIf: (options: any) => options.get('isShopify') === false,
     },
-    // {
-    //   name: "product",
-    //   type: "object",
-    //   required: true,
-    //   showIf: (options)
-    //   subFields: [
-    //     {
-    //       name: "color",
-    //       type: "string",
-    //       required: true,
-    //       defaultValue: "Jordan",
-    //     },
-    //     {
-    //       name: "image",
-    //       type: "file",
-    //       required: true,
-    //       defaultValue:
-    //         "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5c249595e3d44970a88805b335f91953",
-    //     },
-    //     {
-    //       name: "name",
-    //       type: "string",
-    //       required: true,
-    //       defaultValue: "Long Sleeve Sweatshirt in White",
-    //     },
-    //     {
-    //       name: "price",
-    //       type: "string",
-    //       required: true,
-    //       defaultValue: "$99",
-    //     }
-    //   ]
-    // },
+    {
+      name: "productHandle",
+      friendlyName: 'Product',
+      type: "ShopifyProductHandle",
+      defaultValue: 'black-leather-bag',
+      required: true,
+      showIf: (options: any) => options.get('isShopify') === true,
+    },
   ],
 });
 
@@ -346,8 +328,7 @@ Builder.registerComponent(ImageHero, {
     {
       name: "subTitle",
       type: "richText",
-      defaultValue:
-        "<p>Shoppable essentials for your every day life.</p>",
+      defaultValue: "<p>Shoppable essentials for your every day life.</p>",
     },
     {
       name: "makeFullBleed",
@@ -386,10 +367,10 @@ Builder.registerComponent(withChildren(Button), {
   name: "Button",
   canHaveChildren: true,
   defaultChildren: [
-    { 
-      '@type': '@builder.io/sdk:Element',
-      component: { name: 'Text', options: { text: '<p>Click Me</p>' } }
-    }
+    {
+      "@type": "@builder.io/sdk:Element",
+      component: { name: "Text", options: { text: "<p>Click Me</p>" } },
+    },
   ],
   image:
     "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNxdWFyZS1hcnJvdy1kb3duLXJpZ2h0Ij48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIi8+PHBhdGggZD0ibTggOCA4IDgiLz48cGF0aCBkPSJNMTYgOHY4SDgiLz48L3N2Zz4=",
@@ -439,23 +420,33 @@ Builder.registerComponent(Collection, {
 });
 
 Builder.registerComponent(UpsellPopup, {
-  name: 'UpsellPopup',
-  image: 'https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fec614fc3c6674967a2368226efcf62b9',
+  name: "UpsellPopup",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fec614fc3c6674967a2368226efcf62b9",
   inputs: [
-    { name: 'title', type: 'string', defaultValue: 'Special Offer' },
-    { name: 'subTitle', type: 'string', defaultValue: 'Save up to 50%' },
-    { name: 'delay', type: 'number', defaultValue: 1000 },
-    { name: 'discountLabel', type: 'string', defaultValue: 'Select your discount:' },
+    { name: "title", type: "string", defaultValue: "Special Offer" },
+    { name: "subTitle", type: "string", defaultValue: "Save up to 50%" },
+    { name: "delay", type: "number", defaultValue: 1000 },
     {
-      name: 'discounts',
-      type: 'list',
+      name: "discountLabel",
+      type: "string",
+      defaultValue: "Select your discount:",
+    },
+    {
+      name: "discounts",
+      type: "list",
       subFields: [
-        { name: 'label', type: 'string' },
-        { name: 'icon', type: 'file' },
-        { name: 'iconAlt', type: 'string' },
+        { name: "label", type: "string" },
+        { name: "icon", type: "file" },
+        { name: "iconAlt", type: "string" },
       ],
     },
-    { name: 'imageSrc', type: 'file', defaultValue: 'https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F692369ff646645349e68a86b43fc7a38' },
-    { name: 'imageAlt', type: 'string', defaultValue: 'Promotional Image' },
+    {
+      name: "imageSrc",
+      type: "file",
+      defaultValue:
+        "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F692369ff646645349e68a86b43fc7a38",
+    },
+    { name: "imageAlt", type: "string", defaultValue: "Promotional Image" },
   ],
 });
