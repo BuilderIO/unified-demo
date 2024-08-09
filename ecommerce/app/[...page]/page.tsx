@@ -12,7 +12,7 @@ interface PageProps {
 // export const revalidate = 500;
 
 export default async function Page(props: PageProps) {
-  const builderModelName = "dev";
+  const builderModelName = "page";
 
   const content = await builder
     // Get the page content from Builder with the specified options
