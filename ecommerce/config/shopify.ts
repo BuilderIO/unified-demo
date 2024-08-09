@@ -14,6 +14,4 @@ if (!process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN) {
     apiVersion: '2024-01'
   }
 
-  console.log('shopifyConfig:', shopifyConfig);
-
   export default shopifyConfig;
