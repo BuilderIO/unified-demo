@@ -11,7 +11,6 @@ interface HeroWithChildrenProps {
 }
 
 const HeroWithChildren: React.FC<HeroWithChildrenProps> = (props:any) => {
-  console.log("PROPS: ", props)
   return (
     <div className={`flex flex-col justify-between items-center p-20 bg-neutral-50 max-md:px-5 ${props.makeFullBleed ? 'w-screen  ml-[calc(50%-50vw)] max-h-full' : ''}`}>
       <h2 className="mt-6 text-2xl text-center text-black tracking-[5.25px] max-md:max-w-full font-medium">
