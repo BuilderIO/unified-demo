@@ -1,9 +1,7 @@
-// ShopifyProduct.tsx
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import ProductCard from "../Card/ProductCard";
-import { getProduct } from '@/lib/shopify/api';
-import shopifyConfig from '@/config/shopify';
+import { getProduct } from "@/lib/shopify/api";
+import shopifyConfig from "@/config/shopify";
 
 const ShopifyProduct = ({ productHandle }: { productHandle: string }) => {
   const [product, setProduct] = useState<any>(null);
@@ -13,10 +11,12 @@ const ShopifyProduct = ({ productHandle }: { productHandle: string }) => {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const fetchedProduct = await getProduct(shopifyConfig, { handle: productHandle });
+        const fetchedProduct = await getProduct(shopifyConfig, {
+          handle: productHandle,
+        });
         setProduct(fetchedProduct);
       } catch (error) {
-        console.error('Error fetching product:', error);
+        console.error("Error fetching product:", error);
       } finally {
         setLoading(false);
       }
@@ -32,19 +32,21 @@ const ShopifyProduct = ({ productHandle }: { productHandle: string }) => {
 
   const productData = {
     data: {
-      images: product.images.map((image: { src: string, altText: string }) => ({
-        image: image.src, altText: image.altText || 'Product image'
-      })),
+      images: product.images.map(
+        (image: { src: string; altText: string }) => ({
+          image: image.src,
+          altText: image.altText || "Product image",
+        })
+      ),
       productName: product.title,
       price: Math.round(product.variants[0].priceV2.amount),
-      // description: product.description,
     },
   };
 
   return (
     <div className="shopify-product">
       <ProductCard
-        classes="w-64 shrink-0 m-1"
+        classes="w-72" // Ensure consistent width
         product={productData}
       />
     </div>
