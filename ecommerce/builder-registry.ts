@@ -93,11 +93,11 @@ if (Builder.isBrowser) {
     });
   }
 }
-
 Builder.register("insertMenu", {
   name: "Popups",
   items: [{ name: "UpsellPopup" }],
 });
+
 Builder.registerComponent(Counter, {
   name: "Counter",
   image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F000c4b516154412498592db34d340789",
@@ -260,44 +260,25 @@ Builder.registerComponent(ProductCard, {
   image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fb408305f7a2b481690ef9bea53e42db1",
   inputs: [
     {
+      name: "isShopify",
+      type: "boolean",
+      defaultValue: false,
+    },
+    {
       name: "product",
       type: "reference",
       model: "product-data",
       required: true,
+      showIf: (options: any) => options.get('isShopify') === false,
     },
-    // {
-    //   name: "product",
-    //   type: "object",
-    //   required: true,
-    //   showIf: (options)
-    //   subFields: [
-    //     {
-    //       name: "color",
-    //       type: "string",
-    //       required: true,
-    //       defaultValue: "Jordan",
-    //     },
-    //     {
-    //       name: "image",
-    //       type: "file",
-    //       required: true,
-    //       defaultValue:
-    //         "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5c249595e3d44970a88805b335f91953",
-    //     },
-    //     {
-    //       name: "name",
-    //       type: "string",
-    //       required: true,
-    //       defaultValue: "Long Sleeve Sweatshirt in White",
-    //     },
-    //     {
-    //       name: "price",
-    //       type: "string",
-    //       required: true,
-    //       defaultValue: "$99",
-    //     }
-    //   ]
-    // },
+    {
+      name: "productHandle",
+      friendlyName: 'Product',
+      type: "ShopifyProductHandle",
+      defaultValue: 'black-leather-bag',
+      required: true,
+      showIf: (options: any) => options.get('isShopify') === true,
+    },
   ],
 });
 
@@ -435,23 +416,33 @@ Builder.registerComponent(Collection, {
 });
 
 Builder.registerComponent(UpsellPopup, {
-  name: 'UpsellPopup',
-  image: 'https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fec614fc3c6674967a2368226efcf62b9',
+  name: "UpsellPopup",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fec614fc3c6674967a2368226efcf62b9",
   inputs: [
-    { name: 'title', type: 'string', defaultValue: 'Special Offer' },
-    { name: 'subTitle', type: 'string', defaultValue: 'Save up to 50%' },
-    { name: 'delay', type: 'number', defaultValue: 1000 },
-    { name: 'discountLabel', type: 'string', defaultValue: 'Select your discount:' },
+    { name: "title", type: "string", defaultValue: "Special Offer" },
+    { name: "subTitle", type: "string", defaultValue: "Save up to 50%" },
+    { name: "delay", type: "number", defaultValue: 1000 },
     {
-      name: 'discounts',
-      type: 'list',
+      name: "discountLabel",
+      type: "string",
+      defaultValue: "Select your discount:",
+    },
+    {
+      name: "discounts",
+      type: "list",
       subFields: [
-        { name: 'label', type: 'string' },
-        { name: 'icon', type: 'file' },
-        { name: 'iconAlt', type: 'string' },
+        { name: "label", type: "string" },
+        { name: "icon", type: "file" },
+        { name: "iconAlt", type: "string" },
       ],
     },
-    { name: 'imageSrc', type: 'file', defaultValue: 'https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F692369ff646645349e68a86b43fc7a38' },
-    { name: 'imageAlt', type: 'string', defaultValue: 'Promotional Image' },
+    {
+      name: "imageSrc",
+      type: "file",
+      defaultValue:
+        "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F692369ff646645349e68a86b43fc7a38",
+    },
+    { name: "imageAlt", type: "string", defaultValue: "Promotional Image" },
   ],
 });
