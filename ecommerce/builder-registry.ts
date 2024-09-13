@@ -278,10 +278,7 @@ Builder.registerComponent(ProductCard, {
       type: "reference",
       model: "product-data",
       required: true,
-      showIf: (options: any) => {
-        console.log('HELLO: ', options.get("isShopify"))
-        return options.get("isShopify") !== true
-      },
+      showIf: function(options: any) { return options.get('isShopify') !== true },
       defaultValue: {
         "@type": "@builder.io/core:Reference",
         "id": defaultProductID,
@@ -294,7 +291,7 @@ Builder.registerComponent(ProductCard, {
       type: "ShopifyProductHandle",
       defaultValue: "black-leather-bag",
       required: true,
-      showIf: (options: any) => options.get("isShopify") === true,
+      showIf: function(options: any) { return options.get('isShopify') === true },
     },
   ],
 });
