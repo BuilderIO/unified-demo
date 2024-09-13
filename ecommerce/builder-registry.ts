@@ -262,7 +262,6 @@ Builder.registerComponent(ProductCard, {
     {
       name: "isShopify",
       type: "boolean",
-      required: true,
       defaultValue: false,
     },
     {

@@ -1,6 +1,6 @@
 import React from "react";
 import ShopifyProduct from "@/components/ShopifyProduct/ShopifyProduct";
-import Image from 'next/image'; 
+import Image from "next/image";
 
 interface ProductCardProps {
   product: any;
@@ -9,8 +9,18 @@ interface ProductCardProps {
   productHandle?: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, classes, isShopify = false, productHandle }) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  classes,
+  isShopify = false,
+  productHandle,
+}) => {
+  // Retrieve product data from either the direct data binding or visual editor repeat
   let productData = product?.data || product?.value?.data;
+
+  if (!product) {
+    return <h3>Please select a product</h3>;
+  }
 
   if (isShopify && !productHandle) {
     console.warn("Shopify productHandle is missing");
@@ -18,18 +28,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, classes, isShopify =
   }
 
   return (
-    <div className={`flex flex-col text-base tracking-wider text-center self-start ${classes} relative`}>
+    <div
+      className={`flex flex-col text-base tracking-wider text-center self-start ${classes} relative w-72`}
+    >
       {isShopify ? (
-        <ShopifyProduct productHandle={productHandle ? productHandle : productData?.handle} />
+        <ShopifyProduct
+          productHandle={productHandle ? productHandle : productData?.handle}
+        />
       ) : (
         <a href={`/product/${productData?.handle}`}>
-          <div className="relative w-full h-64"> {/* Ensure the parent div has a defined width and height */}
+          <div className="w-full aspect-[0.81] border-zinc-300 rounded-md overflow-hidden relative">
             <Image
               src={productData?.images[0]?.image}
               alt={productData?.images[0]?.altText}
               layout="fill"
-              objectFit="cover" // This ensures the image covers the area without distorting aspect ratio
-              className="rounded-md"
+              objectFit="cover"
+              className="object-cover"
+              loading="lazy"
             />
           </div>
           <div className="flex flex-col mt-5 w-full">
