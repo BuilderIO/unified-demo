@@ -278,7 +278,7 @@ Builder.registerComponent(ProductCard, {
       type: "reference",
       model: "product-data",
       required: true,
-      showIf: (options: any) => options.get("isShopify") !== true,
+      showIf: (options: any) => options.get("isShopify") != true,
       defaultValue: {
         "@type": "@builder.io/core:Reference",
         "id": defaultProductID,
