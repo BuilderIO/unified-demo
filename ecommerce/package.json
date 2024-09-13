@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@builder.io/dev-tools": "^1.0.19",
-    "@builder.io/react": "^4.0.0",
+    "@builder.io/react": "^5.0.0",
     "@builder.io/react-hydration-overlay": "^0.0.8",
     "@builder.io/sdk": "^2.2.6",
     "@builder.io/widgets": "^1.2.24",
