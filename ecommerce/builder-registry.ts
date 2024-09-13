@@ -44,8 +44,8 @@ Builder.register("editor.settings", {
     fontFamily: [{ name: "Primary", value: "var(--primary-font, Poppins)" }],
     fontSize: [
       { name: "Small", value: "var(--font-size-small, 12px)" },
-      { name: "Medium", value: "var(--font-size-medium, 14px)" },
-      { name: "Large", value: "var(--font-size-large, 16px)" },
+      { name: "Medium", value: "var(--font-size-medium, 24px)" },
+      { name: "Large", value: "var(--font-size-large, 36px)" },
     ],
     fontWeight: [
       { name: "Light", value: "var(--font-weight-light, 200)" },
