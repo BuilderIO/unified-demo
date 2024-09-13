@@ -289,7 +289,6 @@ Builder.registerComponent(ProductCard, {
       name: "productHandle",
       friendlyName: "Product",
       type: "ShopifyProductHandle",
-      defaultValue: "black-leather-bag",
       required: true,
       showIf: function(options: any) { return options.get('isShopify') === true },
     },
