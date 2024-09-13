@@ -11,6 +11,7 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
+import DynamicText from "./components/testing/dynamicText";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 

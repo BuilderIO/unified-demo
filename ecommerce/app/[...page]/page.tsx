@@ -31,7 +31,7 @@ export default async function Page(props: PageProps) {
   return (
     <>
       {/* Render the Builder page */}
-      <RenderBuilderContent locale={locale} content={content} model={builderModelName} options={{ enrich: true }} />
+      <RenderBuilderContent locale={locale} content={content} model={builderModelName} options={{ enrich: true }} data={{username: "tim"}}/>
     </>
   );
 }
