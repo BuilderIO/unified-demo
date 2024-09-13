@@ -4,6 +4,8 @@ import { builder, Builder, withChildren } from "@builder.io/react";
 import { Button } from "./components/ui/button";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
+import Footer from "./components/Layout/Footer";
+import { Header } from "./components/Layout/Header";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
 import IconCard from "./components/Card/IconCard";
 import ImageHero from "./components/Hero/ImageHero";
@@ -100,7 +102,8 @@ Builder.register("insertMenu", {
 
 Builder.registerComponent(Counter, {
   name: "Counter",
-  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F000c4b516154412498592db34d340789",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F000c4b516154412498592db34d340789",
   inputs: [
     {
       name: "initialCount",
@@ -108,10 +111,10 @@ Builder.registerComponent(Counter, {
     },
   ],
 });
-
 Builder.registerComponent(SplitHero, {
   name: "SplitHero",
-  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F87697e0b85624a38a7535fff9bdb744b",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F87697e0b85624a38a7535fff9bdb744b",
   inputs: [
     {
       name: "imageAlignment",
@@ -199,7 +202,8 @@ Builder.registerComponent(SplitHero, {
 
 Builder.registerComponent(IconCard, {
   name: "IconCard",
-  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fa1602969eefa459cbc1cc4e9bff96555",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fa1602969eefa459cbc1cc4e9bff96555",
   inputs: [
     {
       name: "alignment",
@@ -240,7 +244,8 @@ Builder.registerComponent(IconCard, {
 
 Builder.registerComponent(TextHero, {
   name: "TextHero",
-  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F6c33301bb9e94d46ad293b704457b991",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F6c33301bb9e94d46ad293b704457b991",
   inputs: [
     {
       name: "subTitle",
@@ -255,9 +260,13 @@ Builder.registerComponent(TextHero, {
   ],
 });
 
+const isProd = (process.env.NEXT_PUBLIC_BUILDER_API_KEY! === "a87584e551b6472fa0f0a2eb10f2c0ff")
+const defaultProductID = `${isProd ? "" : process.env.NEXT_PUBLIC_BUILDER_API_KEY!+"_"}b0196147be5d4e6388bbdff62ee3ae7d`;
+
 Builder.registerComponent(ProductCard, {
   name: "ProductCard",
-  image: "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fb408305f7a2b481690ef9bea53e42db1",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fb408305f7a2b481690ef9bea53e42db1",
   inputs: [
     {
       name: "isShopify",
@@ -269,23 +278,28 @@ Builder.registerComponent(ProductCard, {
       type: "reference",
       model: "product-data",
       required: true,
-      showIf: (options: any) => options.get('isShopify') === false,
+      showIf: function(options: any) { return options.get('isShopify') !== true },
+      defaultValue: {
+        "@type": "@builder.io/core:Reference",
+        "id": defaultProductID,
+        "model": "product-data"
+      }
     },
     {
       name: "productHandle",
-      friendlyName: 'Product',
+      friendlyName: "Product",
       type: "ShopifyProductHandle",
-      defaultValue: 'black-leather-bag',
       required: true,
-      showIf: (options: any) => options.get('isShopify') === true,
+      showIf: function(options: any) { return options.get('isShopify') === true },
     },
   ],
 });
 
 Builder.registerComponent(ImageHero, {
   name: "ImageHero",
-  image:"https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F1da6aa719e0648b481ccd964186a4bcb",
-    inputs: [
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F1da6aa719e0648b481ccd964186a4bcb",
+  inputs: [
     {
       name: "title",
       type: "string",
@@ -334,8 +348,9 @@ Builder.registerComponent(ImageHero, {
 Builder.registerComponent(withChildren(HeroWithChildren), {
   name: "HeroWithChildren",
   canHaveChildren: true,
-  image:"https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F2bbe97f46ba14868a6925faf5cbb8d18",
-    inputs: [
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F2bbe97f46ba14868a6925faf5cbb8d18",
+  inputs: [
     {
       name: "childBlocks",
       type: "uiBlocks",
@@ -365,12 +380,13 @@ Builder.registerComponent(withChildren(Button), {
     },
   ],
   childRequirements: {
-    message: 'You can only put Text or Image Icons inside a Button',
+    message: "You can only put Text or Image Icons inside a Button",
     query: {
-      'component.name': { $in: ['Text'] },
+      "component.name": { $in: ["Text"] },
     },
   },
-  image:"https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5803f6cb27764a339296458c0056dc33",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5803f6cb27764a339296458c0056dc33",
   inputs: [
     {
       name: "children",
@@ -391,8 +407,9 @@ Builder.registerComponent(withChildren(Button), {
 
 Builder.registerComponent(Collection, {
   name: "Collection",
-  image:"https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F1ae5db0ccbdb4f3caab13e10dc6d7e0c",
-   inputs: [
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F1ae5db0ccbdb4f3caab13e10dc6d7e0c",
+  inputs: [
     {
       name: "collection",
       type: "string",
