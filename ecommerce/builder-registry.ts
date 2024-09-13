@@ -464,11 +464,3 @@ Builder.registerComponent(UpsellPopup, {
     { name: "imageAlt", type: "string", defaultValue: "Promotional Image" },
   ],
 });
-
-Builder.registerComponent(Footer, {
-  name: "Footer",
-});
-
-Builder.registerComponent(Header, {
-  name: "Header",
-});
