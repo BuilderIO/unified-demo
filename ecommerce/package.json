@@ -9,13 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@builder.io/dev-tools": "^1.1.0",
     "@builder.io/react": "^5.0.1",
-=======
-    "@builder.io/dev-tools": "^1.0.19",
-    "@builder.io/react": "^5.0.0",
->>>>>>> b50b5cef33ce58d24fc936879cb8a4097cfa3a44
     "@builder.io/react-hydration-overlay": "^0.0.8",
     "@builder.io/sdk": "^2.2.6",
     "@builder.io/widgets": "^1.2.24",
