@@ -12,7 +12,7 @@ figmaMapping({
         }
         buttonLink="#"
         hasCTA={!!figma.$findOneByName("Button")}
-        image={figma.$findOneByName("Jeans")?.$imageUrl}
+        image={figma.$imageUrl}
         imageAlignment="right"
         splitWidth="1/3"
         subTitle={

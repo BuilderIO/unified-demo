@@ -4,6 +4,6 @@ import { Collection } from "@/components/Collection/Collection";
 figmaMapping({
   componentKey: "cdd285abc6752847b63424a7d063a968c5e70330",
   mapper(figma) {
-    return <Collection collection={figma.Collection || "Featured"} />;
+    return <Collection collection={figma.Collection || "all"} />;
   },
 });
