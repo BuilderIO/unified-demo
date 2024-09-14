@@ -29,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div
-      className={`flex flex-col text-base tracking-wider text-center self-start ${classes} relative w-72`}
+      className={`flex flex-col text-base tracking-wider text-center self-center ${classes} relative w-72`}
     >
       {isShopify ? (
         <ShopifyProduct
