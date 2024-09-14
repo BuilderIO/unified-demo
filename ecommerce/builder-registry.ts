@@ -260,8 +260,8 @@ Builder.registerComponent(TextHero, {
   ],
 });
 
-const isProd = (process.env.NEXT_PUBLIC_BUILDER_API_KEY! === "a87584e551b6472fa0f0a2eb10f2c0ff")
-const defaultProductID = `${isProd ? "" : process.env.NEXT_PUBLIC_BUILDER_API_KEY!+"_"}b0196147be5d4e6388bbdff62ee3ae7d`;
+// const isProd = (process.env.NEXT_PUBLIC_BUILDER_API_KEY! === "a87584e551b6472fa0f0a2eb10f2c0ff")
+// const defaultProductID = `${isProd ? "" : process.env.NEXT_PUBLIC_BUILDER_API_KEY!+"_"}b0196147be5d4e6388bbdff62ee3ae7d`;
 
 Builder.registerComponent(ProductCard, {
   name: "ProductCard",
@@ -279,11 +279,11 @@ Builder.registerComponent(ProductCard, {
       model: "product-data",
       required: true,
       showIf: function(options: any) { return options.get('isShopify') !== true },
-      defaultValue: {
-        "@type": "@builder.io/core:Reference",
-        "id": defaultProductID,
-        "model": "product-data"
-      }
+      // defaultValue: {
+      //   "@type": "@builder.io/core:Reference",
+      //   "id": defaultProductID,
+      //   "model": "product-data"
+      // }
     },
     {
       name: "productHandle",
