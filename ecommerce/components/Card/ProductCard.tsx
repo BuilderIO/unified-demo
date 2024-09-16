@@ -36,7 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           productHandle={productHandle ? productHandle : productData?.handle}
         />
       ) : (
-        <a href={`/product/${productData?.handle}`} className="steven">
+        <a href={`/product/${productData?.handle}`}>
           <div className="w-full aspect-[0.81] border-zinc-300 rounded-md overflow-hidden relative">
             <Image
               src={productData?.images[0]?.image}
