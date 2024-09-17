@@ -5,7 +5,38 @@ import { withHydrationOverlay } from "@builder.io/react-hydration-overlay/next";
 const nextConfig = {
   images: {
     dangerouslyAllowSVG: true,
-    domains: ["cdn.builder.io", "shopifycdn.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.builder.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.shopstyle-cdn.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.shopify.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'burst.shopifycdn.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'shopifycdn.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   experimental: {
     serverComponentsExternalPackages: ["isolated-vm"],

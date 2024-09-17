@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/app/testing/
+/components/testing/
+
 # dependencies
 /node_modules
 /.pnp
@@ -36,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/app/testing
+/components/testing
