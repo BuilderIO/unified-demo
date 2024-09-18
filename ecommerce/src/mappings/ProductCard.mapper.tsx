@@ -10,7 +10,7 @@ figmaMapping({
     return (
       <ProductCard
         product={""}
-        dataSource = "Builder"
+        dataSource={"Builder"}
         shopifyProductHandle={
           figma.$children[1]?.$children[1]?.$textContent
             ?.toLowerCase()

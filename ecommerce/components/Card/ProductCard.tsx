@@ -5,7 +5,7 @@ import Image from "next/image";
 interface ProductCardProps {
   product: any;
   classes?: string;
-  dataSource?: boolean;
+  dataSource?: string;
   shopifyProductHandle?: string;
   commercetoolsProduct?: any;
 }
