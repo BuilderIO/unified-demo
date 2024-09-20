@@ -21,7 +21,7 @@ export default async function Homepage(props: PageProps) {
         urlPath: "/",
         options: {
           enrich: true
-        }
+        },
       },
     })
     // Convert the result to a promise
