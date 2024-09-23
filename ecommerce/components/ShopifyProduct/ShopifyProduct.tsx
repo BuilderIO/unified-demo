@@ -3,16 +3,17 @@ import ProductCard from "../Card/ProductCard";
 import { getProduct } from "@/lib/shopify/api";
 import shopifyConfig from "@/config/shopify";
 
-const ShopifyProduct = ({ productHandle }: { productHandle: string }) => {
+const ShopifyProduct = ({ shopifyProductHandle }: { shopifyProductHandle: string }) => {
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    console.log('dataSource: SHOPIFY!!!')
     const fetchProduct = async () => {
       setLoading(true);
       try {
         const fetchedProduct = await getProduct(shopifyConfig, {
-          handle: productHandle,
+          handle: shopifyProductHandle,
         });
         setProduct(fetchedProduct);
       } catch (error) {
@@ -22,10 +23,10 @@ const ShopifyProduct = ({ productHandle }: { productHandle: string }) => {
       }
     };
 
-    if (productHandle) {
+    if (shopifyProductHandle) {
       fetchProduct();
     }
-  }, [productHandle]);
+  }, [shopifyProductHandle]);
 
   if (loading) return <div>Loading Shopify product...</div>;
   if (!product) return <div>No product found.</div>;
