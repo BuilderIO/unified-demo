@@ -269,16 +269,17 @@ Builder.registerComponent(ProductCard, {
     "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fb408305f7a2b481690ef9bea53e42db1",
   inputs: [
     {
-      name: "isShopify",
-      type: "boolean",
-      defaultValue: false,
+      name: "dataSource",
+      type: "text",
+      enum: ["Shopify", "Commercetools", "Builder"],
+      defaultValue: "Builder",
     },
     {
       name: "product",
       type: "reference",
       model: "product-data",
       required: true,
-      showIf: function(options: any) { return options.get('isShopify') !== true },
+      showIf: function(options: any) { return options.get('dataSource') === "Builder"},
       // defaultValue: {
       //   "@type": "@builder.io/core:Reference",
       //   "id": defaultProductID,
@@ -286,11 +287,18 @@ Builder.registerComponent(ProductCard, {
       // }
     },
     {
-      name: "productHandle",
-      friendlyName: "Product",
+      name: "shopifyProductHandle",
+      friendlyName: "Shopify Product",
       type: "ShopifyProductHandle",
       required: true,
-      showIf: function(options: any) { return options.get('isShopify') === true },
+      showIf: function(options: any) { return options.get('dataSource') === "Shopify"},
+    },
+    {
+      name: "commercetoolsProduct",
+      friendlyName: "Commercetools Product",
+      type: "CommercetoolsProduct",
+      required: true,
+      showIf: function(options: any) { return options.get('dataSource') === "Commercetools"},
     },
   ],
 });
