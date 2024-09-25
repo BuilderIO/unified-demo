@@ -33,7 +33,6 @@ Builder.register("editor.settings", {
       { name: "Background", value: "var(--color-background, #ffffff)" },
       { name: "Text", value: "var(--color-primary, #000000)" },
       { name: "Text Muted", value: "var(--color-muted, #e2e8f0)" },
-      { name: "Brand Green", value: "var(--brand-green, hsl(158.36, 100%, 47.84%))" },
       {
         name: "Background Light",
         value: "var(--color-background-light, #FAFAFA)",
