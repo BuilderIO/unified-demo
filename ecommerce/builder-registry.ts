@@ -13,6 +13,8 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
+import CloudinaryImage from "./components/Blocks/CloudinaryImage";
+
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -269,16 +271,17 @@ Builder.registerComponent(ProductCard, {
     "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fb408305f7a2b481690ef9bea53e42db1",
   inputs: [
     {
-      name: "isShopify",
-      type: "boolean",
-      defaultValue: false,
+      name: "dataSource",
+      type: "text",
+      enum: ["Shopify", "Commercetools", "Builder"],
+      defaultValue: "Builder",
     },
     {
       name: "product",
       type: "reference",
       model: "product-data",
       required: true,
-      showIf: function(options: any) { return options.get('isShopify') !== true },
+      showIf: function(options: any) { return options.get('dataSource') === "Builder"},
       // defaultValue: {
       //   "@type": "@builder.io/core:Reference",
       //   "id": defaultProductID,
@@ -286,11 +289,18 @@ Builder.registerComponent(ProductCard, {
       // }
     },
     {
-      name: "productHandle",
-      friendlyName: "Product",
+      name: "shopifyProductHandle",
+      friendlyName: "Shopify Product",
       type: "ShopifyProductHandle",
       required: true,
-      showIf: function(options: any) { return options.get('isShopify') === true },
+      showIf: function(options: any) { return options.get('dataSource') === "Shopify"},
+    },
+    {
+      name: "commercetoolsProduct",
+      friendlyName: "Commercetools Product",
+      type: "CommercetoolsProduct",
+      required: true,
+      showIf: function(options: any) { return options.get('dataSource') === "Commercetools"},
     },
   ],
 });
@@ -462,4 +472,14 @@ Builder.registerComponent(UpsellPopup, {
     },
     { name: "imageAlt", type: "string", defaultValue: "Promotional Image" },
   ],
+});
+
+Builder.registerComponent(CloudinaryImage, {
+  name: 'CloudinaryImage',
+  image:
+    'https://res.cloudinary.com/cloudinary-marketing/image/upload/v1599098500/creative_source/Logo/Cloud%20Glyph/cloudinary_cloud_glyph_blue_png.png',
+  inputs: [{ 
+    name: 'cloudinaryOptions', 
+    type: 'cloudinaryImageEditor' 
+  }],
 });
