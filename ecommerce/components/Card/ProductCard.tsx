@@ -5,7 +5,7 @@ import Image from "next/image";
 interface ProductCardProps {
   product: any;
   classes?: string;
-  dataSource?: boolean;
+  dataSource?: string;
   shopifyProductHandle?: string;
   commercetoolsProduct?: any;
 }
@@ -41,12 +41,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
       )
       }
-      {(dataSource=="Commercetools") &&
+      {(dataSource==="Commercetools") &&
         <CommercetoolsProduct
           commercetoolsProduct={commercetoolsProduct}
         />
       }
-      {(dataSource=="Builder" || dataSource=="Shopstyle") && 
+      {(dataSource==="Builder" || dataSource==="Shopstyle") && 
         <a href={`/product/${productData?.handle}`}>
           <div className="w-full aspect-[0.81] border-zinc-300 rounded-md overflow-hidden relative">
             <Image
