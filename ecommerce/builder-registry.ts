@@ -13,6 +13,8 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
+import CloudinaryImage from "./components/Blocks/CloudinaryImage";
+
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -470,4 +472,14 @@ Builder.registerComponent(UpsellPopup, {
     },
     { name: "imageAlt", type: "string", defaultValue: "Promotional Image" },
   ],
+});
+
+Builder.registerComponent(CloudinaryImage, {
+  name: 'CloudinaryImage',
+  image:
+    'https://res.cloudinary.com/cloudinary-marketing/image/upload/v1599098500/creative_source/Logo/Cloud%20Glyph/cloudinary_cloud_glyph_blue_png.png',
+  inputs: [{ 
+    name: 'cloudinaryOptions', 
+    type: 'cloudinaryImageEditor' 
+  }],
 });
