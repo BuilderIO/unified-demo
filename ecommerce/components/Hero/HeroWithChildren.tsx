@@ -5,7 +5,7 @@ import React, {ComponentProps } from "react";
 import { BuilderBlocks } from "@builder.io/react";
 
 interface HeroWithChildrenProps {
-  childBlocks: [],
+  childBlocks: any,
   header: string,
   makeFullBleed: boolean
 }

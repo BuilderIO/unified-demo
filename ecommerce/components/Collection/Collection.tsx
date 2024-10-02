@@ -38,7 +38,7 @@ export function Collection(props: {
     <div className="flex flex-row overflow-auto min-h-96">
       {products.data?.map((product, index) => (
         <ProductCard
-          classes="w-64 shrink-0 m-1"
+          classes="w-64 shrink-0 m-1 object-contain"
           key={`${product.id}-${index}`}
           product={
             useShopStyle
@@ -49,6 +49,7 @@ export function Collection(props: {
                   price: product.price,
                   colors: [{ label: product.color }],
                   handle: product.id,
+                  dataSource: "Shopstyle"
                 },
               }
               : product

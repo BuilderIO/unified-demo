@@ -14,7 +14,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'shopifycdn.com',
+        hostname: 'img.shopstyle-cdn.com',
         port: '',
         pathname: '/**',
       },
@@ -27,6 +27,18 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'burst.shopifycdn.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'shopifycdn.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
         port: '',
         pathname: '/**',
       },
