@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose, DialogPortal, DialogOverlay } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose, DialogPortal, DialogOverlay } from "@/src/components/ui/dialog";
+import { Button } from "@/src/components/ui/button";
 import NextImage from "next/image";
 
 type DiscountItem = {

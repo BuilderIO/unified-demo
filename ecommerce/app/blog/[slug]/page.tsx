@@ -1,5 +1,6 @@
 import { builder } from "@builder.io/sdk";
-// import { RenderBuilderContent } from "../../components/builder";
+import { BuilderContent } from "@builder.io/react";
+import { RenderBuilderContent } from "@/src/components/builder";
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 interface BlogPageProps {
@@ -9,24 +10,46 @@ interface BlogPageProps {
 }
 
 export default async function BlogPage(props: BlogPageProps) {
-//   const builderModelName = "page";
+  const builderBlogModelName = "blog-article-data";
+  const builderBlogTemplateModelName = "blog-template";
 
-//   const content = await builder
-//     // Get the page content from Builder with the specified options
-//     .get(builderModelName, {
-//       userAttributes: {
-//         // Use the page path specified in the URL to fetch the content
-//         urlPath: "/" + (props?.params?.page?.join("/") || "")
-//       },
-//     })
-//     // Convert the result to a promise
-//     .toPromise();
+  const blogData = await builder
+    // Get the page content from Builder with the specified options
+    .get(builderBlogModelName, {
+      query: {
+        data: {
+          slug: props?.params?.slug
+        }
+      }
+    })
+    // Convert the result to a promise
+    .toPromise();
+    console.log('BLOG DATA: ', blogData)
+  console.log('PROPS: ', props);
+    const blogTemplate = await builder
+    // Get the page content from Builder with the specified options
+    .get(builderBlogTemplateModelName, {
+      userAttributes: {
+        category: blogData?.data?.category,
+        urlPath: `/blog/${props?.params?.slug}`
+      }
+    })
+    // Convert the result to a promise
+    .toPromise();
+
+    console.log('BLOG TEMPLATE: ', blogTemplate)
 
   return (
     <>
       {/* Render the Builder page */}
-      <div>Welcome to our blog</div>
-      {/* <RenderBuilderContent content={content} model={builderModelName} /> */}
+      {/* <BuilderContent model={builderBlogModelName} content={blogData}> 
+        {(data, loading, content) => {
+          if (loading) return <div>Loading...</div>;
+          return ( */}
+            <RenderBuilderContent content={blogTemplate} model={builderBlogTemplateModelName} data={{ article: blogData?.data }} />
+          {/* );
+        }}
+      </BuilderContent> */}
     </>
   );
 }

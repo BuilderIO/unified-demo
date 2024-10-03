@@ -1,4 +1,4 @@
-import ShopifyProduct from "@/components/ShopifyProduct/ShopifyProduct";
+import ShopifyProduct from "@/src/components/ShopifyProduct/ShopifyProduct";
 import CommercetoolsProduct from "../CommercetoolsProduct/CommercetoolsProduct";
 import Image from "next/image";
 

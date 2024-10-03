@@ -8,7 +8,6 @@ figmaMapping({
       <HeroWithChildren
         header={figma.Header ?? figma.$children[0]?.$children[0]?.$textContent}
         childBlocks={[figma.$children[0]?.$children[1]]}
-        makeFullBleed={false}
       />
     );
   },

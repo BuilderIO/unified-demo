@@ -12,13 +12,12 @@ figmaMapping({
         }
         buttonLink="#"
         hasCTA={!!figma.$findOneByName("Button")}
-        image={figma.$imageUrl}
+        image={figma.$findOneByName("Jeans")?.$imageUrl}
         imageAlignment="right"
         splitWidth="1/3"
         subTitle={
           figma.Subtitle ?? figma.$children[0]?.$children[1]?.$textContent
         }
-        makeFullBleed={false}
         textAlignment="left"
         title={figma.Title ?? figma.$children[0]?.$children[0]?.$textContent}
       />

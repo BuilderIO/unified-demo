@@ -1,5 +1,5 @@
 import { builder } from "@builder.io/sdk";
-import { RenderBuilderContent } from "../components/builder";
+import { RenderBuilderContent } from "@/src/components/builder";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
