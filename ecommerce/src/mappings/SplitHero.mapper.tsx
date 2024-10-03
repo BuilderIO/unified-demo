@@ -11,8 +11,9 @@ figmaMapping({
           figma.ButtonText ?? figma.$findOneByName("Button")?.$textContent
         }
         buttonLink="#"
+        makeFullBleed={false}
         hasCTA={!!figma.$findOneByName("Button")}
-        image={figma.$findOneByName("Jeans")?.$imageUrl}
+        image={figma.$findOneByName("Jeans")?.$imageUrl ?? ""}
         imageAlignment="right"
         splitWidth="1/3"
         subTitle={

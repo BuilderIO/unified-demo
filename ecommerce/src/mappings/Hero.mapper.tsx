@@ -9,6 +9,7 @@ figmaMapping({
         alignment="right"
         backgroundImage={figma.$children[0]?.$imageUrl}
         buttonLink="#"
+        makeFullBleed={false}
         buttonText={
           figma.buttonText ??
           figma.$findOneByName("Button")?.$children[0]?.$textContent ??

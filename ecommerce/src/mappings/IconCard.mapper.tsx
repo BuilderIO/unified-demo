@@ -14,9 +14,3 @@ figmaMapping({
     );
   },
 });
-{figma.$children[0]?.$imageUrl}
-        title={figma.Title ?? ""}
-      />
-    );
-  },
-});
