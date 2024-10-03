@@ -2,6 +2,7 @@
 import "@builder.io/widgets";
 import { builder, Builder, withChildren } from "@builder.io/react";
 import { Button } from "./components/ui/button";
+import CloudinaryImage from "./components/Blocks/CloudinaryImage";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
 import Footer from "./components/Layout/Footer";
@@ -13,8 +14,6 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
-import CloudinaryImage from "./components/Blocks/CloudinaryImage";
-
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -113,6 +112,7 @@ Builder.registerComponent(Counter, {
     },
   ],
 });
+
 Builder.registerComponent(SplitHero, {
   name: "SplitHero",
   image:
@@ -261,7 +261,6 @@ Builder.registerComponent(TextHero, {
     },
   ],
 });
-
 // const isProd = (process.env.NEXT_PUBLIC_BUILDER_API_KEY! === "a87584e551b6472fa0f0a2eb10f2c0ff")
 // const defaultProductID = `${isProd ? "" : process.env.NEXT_PUBLIC_BUILDER_API_KEY!+"_"}b0196147be5d4e6388bbdff62ee3ae7d`;
 
@@ -281,7 +280,9 @@ Builder.registerComponent(ProductCard, {
       type: "reference",
       model: "product-data",
       required: true,
-      showIf: function(options: any) { return options.get('dataSource') === "Builder"},
+      showIf: function (options: any) {
+        return options.get("dataSource") === "Builder";
+      },
       // defaultValue: {
       //   "@type": "@builder.io/core:Reference",
       //   "id": defaultProductID,
@@ -293,14 +294,18 @@ Builder.registerComponent(ProductCard, {
       friendlyName: "Shopify Product",
       type: "ShopifyProductHandle",
       required: true,
-      showIf: function(options: any) { return options.get('dataSource') === "Shopify"},
+      showIf: function (options: any) {
+        return options.get("dataSource") === "Shopify";
+      },
     },
     {
       name: "commercetoolsProduct",
       friendlyName: "Commercetools Product",
       type: "CommercetoolsProduct",
       required: true,
-      showIf: function(options: any) { return options.get('dataSource') === "Commercetools"},
+      showIf: function (options: any) {
+        return options.get("dataSource") === "Commercetools";
+      },
     },
   ],
 });
@@ -475,11 +480,21 @@ Builder.registerComponent(UpsellPopup, {
 });
 
 Builder.registerComponent(CloudinaryImage, {
-  name: 'CloudinaryImage',
+  name: "CloudinaryImage",
   image:
-    'https://res.cloudinary.com/cloudinary-marketing/image/upload/v1599098500/creative_source/Logo/Cloud%20Glyph/cloudinary_cloud_glyph_blue_png.png',
-  inputs: [{ 
-    name: 'cloudinaryOptions', 
-    type: 'cloudinaryImageEditor' 
-  }],
+    "https://res.cloudinary.com/cloudinary-marketing/image/upload/v1599098500/creative_source/Logo/Cloud%20Glyph/cloudinary_cloud_glyph_blue_png.png",
+  inputs: [
+    {
+      name: "cloudinaryOptions",
+      type: "cloudinaryImageEditor",
+    },
+  ],
+});
+
+Builder.registerComponent(Footer, {
+  name: "Footer",
+});
+
+Builder.registerComponent(Header, {
+  name: "Header",
 });

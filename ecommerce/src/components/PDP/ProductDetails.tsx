@@ -6,7 +6,7 @@ import { FC, useState } from "react";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
-import { rgbaToHex, capitalizeWord } from "../../lib/utils";
+import { rgbaToHex, capitalizeWord } from "@/lib/utils";
 import { BuilderContent } from "@builder.io/react";
 import Link from 'next/link';
 
