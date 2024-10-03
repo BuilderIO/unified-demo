@@ -12,7 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/src/components/ui/navigation-menu"
 import { AuthSlider } from "./AuthSlider"
 import { CartSlider } from "./CartSlider"
 import { SideNav } from "./SideNav"
