@@ -1,48 +1,59 @@
-import React from "react";
-import ShopifyProduct from "@/components/ShopifyProduct/ShopifyProduct";
+import ShopifyProduct from "@/src/components/ShopifyProduct/ShopifyProduct";
+import CommercetoolsProduct from "../CommercetoolsProduct/CommercetoolsProduct";
 import Image from "next/image";
 
 interface ProductCardProps {
   product: any;
   classes?: string;
-  isShopify?: boolean;
-  productHandle?: string;
+  dataSource?: string;
+  shopifyProductHandle?: string;
+  commercetoolsProduct?: any;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
   product,
   classes,
-  isShopify = false,
-  productHandle,
+  dataSource = "Builder",
+  shopifyProductHandle,
+  commercetoolsProduct,
 }) => {
   // Retrieve product data from either the direct data binding or visual editor repeat
   let productData = product?.data || product?.value?.data;
-
-  if (!product) {
+  if (dataSource==="Builder" && !product) {
     return <h3>Please select a product</h3>;
   }
-
-  if (isShopify && !productHandle) {
-    console.warn("Shopify productHandle is missing");
+  
+  if (dataSource==="Shopify" && !shopifyProductHandle) {
     return <h3>Product handle is required for Shopify products.</h3>;
+  }
+
+  if (dataSource==="Commercetools" && !commercetoolsProduct) {
+    return <h3>Please select a Commercetools product</h3>;
   }
 
   return (
     <div
-      className={`flex flex-col text-base tracking-wider text-center self-center ${classes} relative w-72`}
+      className={`flex flex-col text-base tracking-wider text-center md:self-start self-center ${classes} relative w-72`}
     >
-      {isShopify ? (
+      {(dataSource==="Shopify" && 
         <ShopifyProduct
-          productHandle={productHandle ? productHandle : productData?.handle}
+          shopifyProductHandle={shopifyProductHandle ? shopifyProductHandle : productData?.handle}
         />
-      ) : (
+      )
+      }
+      {(dataSource==="Commercetools") &&
+        <CommercetoolsProduct
+          commercetoolsProduct={commercetoolsProduct}
+        />
+      }
+      {(dataSource==="Builder" || dataSource==="Shopstyle") && 
         <a href={`/product/${productData?.handle}`}>
           <div className="w-full aspect-[0.81] border-zinc-300 rounded-md overflow-hidden relative">
             <Image
               src={productData?.images[0]?.image}
               alt={productData?.images[0]?.altText}
-              layout="fill"
-              objectFit="cover"
+              fill={true}
+              objectFit={dataSource==="Shopstyle" ? "contain" : "fill"}
               className="object-cover"
               loading="lazy"
             />
@@ -59,7 +70,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </p>
           </div>
         </a>
-      )}
+      }
     </div>
   );
 };
