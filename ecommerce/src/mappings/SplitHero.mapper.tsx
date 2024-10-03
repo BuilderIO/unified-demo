@@ -1,5 +1,5 @@
 import { figmaMapping } from "@builder.io/dev-tools/figma";
-import SplitHero from "@/components/Hero/SplitHero";
+import SplitHero from "@/src/components/Hero/SplitHero";
 
 figmaMapping({
   componentKey: "1143d39901c24e64dd2a65188ff027054138033f",

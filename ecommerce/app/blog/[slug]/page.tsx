@@ -24,8 +24,7 @@ export default async function BlogPage(props: BlogPageProps) {
     })
     // Convert the result to a promise
     .toPromise();
-    console.log('BLOG DATA: ', blogData)
-  console.log('PROPS: ', props);
+
     const blogTemplate = await builder
     // Get the page content from Builder with the specified options
     .get(builderBlogTemplateModelName, {
@@ -36,8 +35,6 @@ export default async function BlogPage(props: BlogPageProps) {
     })
     // Convert the result to a promise
     .toPromise();
-
-    console.log('BLOG TEMPLATE: ', blogTemplate)
 
   return (
     <>

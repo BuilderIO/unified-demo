@@ -1,5 +1,5 @@
 import { figmaMapping } from "@builder.io/dev-tools/figma";
-import ProductCard from "@/components/Card/ProductCard";
+import ProductCard from "@/src/components/Card/ProductCard";
 
 figmaMapping({
   componentKey: "d2f114400698059ab75be459a13d26a99d85f47b",

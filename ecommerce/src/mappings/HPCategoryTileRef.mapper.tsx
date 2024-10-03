@@ -1,5 +1,5 @@
 import { figmaMapping } from "@builder.io/dev-tools/figma";
-import ShopByCategory from "@/components/ShopByCategory/ShopByCategory";
+import ShopByCategory from "@/src/components/ShopByCategory/ShopByCategory";
 
 figmaMapping({
   componentKey: "64131e8d8ff76b31e823376ddba43c00c4571068",
