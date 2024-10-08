@@ -1,12 +1,14 @@
 import ShopifyProduct from "@/src/components/ShopifyProduct/ShopifyProduct";
 import CommercetoolsProduct from "../CommercetoolsProduct/CommercetoolsProduct";
 import ProductBox from "../ui/productBox";
+import SwellProduct from "../SwellProduct/SwellProduct";
 
 interface ProductCardProps {
   product: any;
   classes?: string;
   dataSource?: string;
   shopifyProductHandle?: string;
+  swellProductHandle?: string;
   commercetoolsProduct?: any;
 }
 
@@ -16,7 +18,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   dataSource,
   shopifyProductHandle,
   commercetoolsProduct,
+  swellProductHandle,
+  
 }) => {
+
   // Retrieve product data from either the direct data binding or visual editor repeat
   
 
@@ -28,9 +33,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
     return <h3>Product handle is required for Shopify products.</h3>;
   }
 
+  if (dataSource==="Swell" && !swellProductHandle) {
+    return <h3>Product handle is required for Swell products.</h3>
+  }
+
   if (dataSource==="Commercetools" && !commercetoolsProduct) {
     return <h3>Please select a Commercetools product</h3>;
   }
+
 
   return (
     <div
@@ -39,6 +49,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
       {(dataSource==="Shopify" && 
         <ShopifyProduct
           shopifyProductHandle={shopifyProductHandle ? shopifyProductHandle : product?.handle}
+        />
+      )
+      }
+      {(dataSource==="Swell" && 
+        <SwellProduct
+          swellProductHandle={swellProductHandle ? swellProductHandle : product?.handle}
         />
       )
       }

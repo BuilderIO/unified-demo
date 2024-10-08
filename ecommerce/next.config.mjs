@@ -26,6 +26,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "cdn.swell.store",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "burst.shopifycdn.com",
         port: "",
         pathname: "/**",
