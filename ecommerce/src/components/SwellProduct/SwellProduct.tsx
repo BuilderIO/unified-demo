@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ProductCard from "../Card/ProductCard";
 import { getProduct } from "@/lib/swell/api";
+import ProductBox from "../ui/productBox";
 
 const SwellProduct = ({
   swellProductHandle,
@@ -48,7 +48,7 @@ const SwellProduct = ({
 
   return (
     <div className="swell-product">
-      <ProductCard classes="w-72" product={productData} />
+      <ProductBox productData={productData} dataSource="Swell"/>
     </div>
   );
 };

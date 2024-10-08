@@ -40,6 +40,7 @@ export function Collection(props: {
         <ProductCard
           classes="w-64 shrink-0 m-1 object-contain"
           key={`${product.id}-${index}`}
+          dataSource={useShopStyle ? "Shopstyle" : "Builder"}
           product={
             useShopStyle
               ? {
@@ -49,8 +50,7 @@ export function Collection(props: {
                   price: product.price,
                   colors: [{ label: product.color }],
                   handle: product.id,
-                  dataSource: "Shopstyle"
-                },
+                }
               }
               : product
           }

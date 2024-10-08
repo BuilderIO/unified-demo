@@ -6,7 +6,7 @@ figmaMapping({
   mapper(figma) {
     const exampleProduct = {
       "@type": "@builder.io/core:Reference",
-      id: "50b344f9116e4820a020e382058146e0_088c35a5a6914ac68b99a4ea12abba6a",
+      id: "088c35a5a6914ac68b99a4ea12abba6a",
       model: "product-data",
     };
     return (
