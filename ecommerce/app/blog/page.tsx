@@ -22,9 +22,9 @@ export default async function BlogPage(props: BlogPageProps) {
     <>
       {/* Render the Builder page */}
       {blogData.map((data: any) => (
-        <>
-            <div>{data.data.title}</div>
-        </>
+        <div> 
+            <a href={`/blog/${data.data.slug}`}>{data.data.title}</a>
+        </div>
       ))}
     </>
   );
