@@ -1,5 +1,6 @@
 import ShopifyProduct from "@/src/components/ShopifyProduct/ShopifyProduct";
 import CommercetoolsProduct from "../CommercetoolsProduct/CommercetoolsProduct";
+import SwellProduct from "../SwellProduct/SwellProduct";
 import Image from "next/image";
 
 interface ProductCardProps {
@@ -7,6 +8,7 @@ interface ProductCardProps {
   classes?: string;
   dataSource?: string;
   shopifyProductHandle?: string;
+  swellProductHandle?: string;
   commercetoolsProduct?: any;
 }
 
@@ -16,9 +18,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
   dataSource = "Builder",
   shopifyProductHandle,
   commercetoolsProduct,
+  swellProductHandle,
+  
 }) => {
+
   // Retrieve product data from either the direct data binding or visual editor repeat
   let productData = product?.data || product?.value?.data;
+
   if (dataSource==="Builder" && !product) {
     return <h3>Please select a product</h3>;
   }
@@ -27,9 +33,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
     return <h3>Product handle is required for Shopify products.</h3>;
   }
 
+  if (dataSource==="Swell" && !swellProductHandle) {
+    return <h3>Product handle is required for Swell products.</h3>
+  }
+
   if (dataSource==="Commercetools" && !commercetoolsProduct) {
     return <h3>Please select a Commercetools product</h3>;
   }
+
 
   return (
     <div
@@ -38,6 +49,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
       {(dataSource==="Shopify" && 
         <ShopifyProduct
           shopifyProductHandle={shopifyProductHandle ? shopifyProductHandle : productData?.handle}
+        />
+      )
+      }
+      {(dataSource==="Swell" && 
+        <SwellProduct
+          swellProductHandle={swellProductHandle ? swellProductHandle : productData?.handle}
         />
       )
       }

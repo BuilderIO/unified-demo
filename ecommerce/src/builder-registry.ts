@@ -272,7 +272,7 @@ Builder.registerComponent(ProductCard, {
     {
       name: "dataSource",
       type: "text",
-      enum: ["Shopify", "Commercetools", "Builder"],
+      enum: ["Shopify", "Commercetools", "Builder", "Swell"],
       defaultValue: "Builder",
     },
     {
@@ -296,6 +296,15 @@ Builder.registerComponent(ProductCard, {
       required: true,
       showIf: function (options: any) {
         return options.get("dataSource") === "Shopify";
+      },
+    },
+    {
+      name: "swellProductHandle",
+      friendlyName: "Swell Product",
+      type: "SwellProductHandle",
+      required: true,
+      showIf: function (options: any) {
+        return options.get("dataSource") === "Swell";
       },
     },
     {
