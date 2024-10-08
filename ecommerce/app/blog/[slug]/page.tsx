@@ -11,7 +11,6 @@ interface BlogPageProps {
 export default async function BlogPage(props: BlogPageProps) {
   const builderBlogModelName = "blog-article-data";
   const builderBlogTemplateModelName = "blog-template";
-  console.log('props?.params?.slug', props?.params?.slug) 
 
   const blogData = await builder
     // Get the page content from Builder with the specified options
