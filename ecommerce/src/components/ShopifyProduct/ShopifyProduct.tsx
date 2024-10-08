@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ProductCard from "../Card/ProductCard";
 import { getProduct } from "@/lib/shopify/api";
 import shopifyConfig from "@/config/shopify";
+import ProductBox from "../ui/productBox";
 
 const ShopifyProduct = ({ shopifyProductHandle }: { shopifyProductHandle: string }) => {
   const [product, setProduct] = useState<any>(null);
@@ -43,12 +43,13 @@ const ShopifyProduct = ({ shopifyProductHandle }: { shopifyProductHandle: string
       price: Math.round(product.variants[0].priceV2.amount),
     },
   };
+  console.log('PRODUCT DATA:', productData)
 
   return (
     <div className="shopify-product">
-      <ProductCard
-        classes="w-72" // Ensure consistent width
-        product={productData}
+      <ProductBox
+        productData={productData}
+        dataSource="Shopify"
       />
     </div>
   );
