@@ -15,14 +15,14 @@ export default async function BlogPage(props: BlogPageProps) {
   const blogData = await builder
     // Get the page content from Builder with the specified options
     .getAll(builderBlogModelName, {
-        fields: "data"
+        fields: "data,id"
     })
     // Convert the result to a promise
   return (
     <>
       {/* Render the Builder page */}
       {blogData.map((data: any) => (
-        <div> 
+        <div key={data.id}> 
             <a href={`/blog/${data.data.slug}`}>{data.data.title}</a>
         </div>
       ))}
