@@ -1,4 +1,4 @@
-import ProductCard from "../Card/ProductCard";
+import ProductBox from "../ui/productBox";
 
 const CommercetoolsProduct = ({ commercetoolsProduct }: { commercetoolsProduct: any }) => {
     const product = commercetoolsProduct?.data?.masterData?.current
@@ -10,15 +10,16 @@ const CommercetoolsProduct = ({ commercetoolsProduct }: { commercetoolsProduct: 
             altText: image.altText || "Product image",
             })
         ),
-        productName: product.name["en-US"],
+        productName: product?.name["en-US"],
         price: product?.masterVariant?.prices?.[0]?.value?.centAmount,
         },
     };
     return (
         <div className="commercetools-product">
-        <ProductCard
-            classes="w-72" // Ensure consistent width
-            product={productData}
+        <ProductBox
+            // classes="w-72" // Ensure consistent width
+            productData={productData}
+            dataSource="Commercetools"
         />
         </div>
     );
