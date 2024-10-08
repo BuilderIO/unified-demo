@@ -20,7 +20,7 @@ export function RenderBuilderLiveDataPreview({ dataModelData, dataModelName, tem
   // If "content" has a value or the page is being previewed in Builder,
   // render the BuilderComponent with the specified content and model props.
 
-  if ((dataModelData && templateModelData) || isPreviewing) {
+  if (dataModelData || templateModelData || isPreviewing) {
     console.log("HELLO INSIDE: ", { dataModelData, dataModelName, templateModelData, templateModelName})
     return (
       <>
