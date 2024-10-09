@@ -16,22 +16,9 @@ export function RenderBuilderContent(props: BuilderPageProps) {
   // render the BuilderComponent with the specified content and model props.
 
   // If the "content" is falsy and the page is
-  // const deleteImage = () => {
-  //   console.log('HJREALJWEALJS')
-  //   fetch("https://cdn.builder.io/api/v1/assets/edefdb6d81b048bfb27e3975d366a8ae", {
-  //     method: "DELETE",
-  //     headers: {
-  //       // header with private key
-  //       // 'Access-Control-Allow-Origin':'*',
-  //      "Authorization": "Bearer bpk-8579839ce3ed42fc98036168e024e52c"
-  //     },
-  //   })
-  // }
-  https://cdn.builder.io/api/v1/image/assets%2F
   if (props.content || isPreviewing) {
     return (
       <>
-        {/* <button onClick={deleteImage}>Delete Image</button> */}
         <BuilderComponent{...props} />
       </>
     );
