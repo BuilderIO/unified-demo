@@ -1,5 +1,5 @@
 import { builder } from "@builder.io/sdk";
-import CategoryLanding from "@/components/PLP/CategoryLanding";
+import CategoryLanding from "@/src/components/PLP/CategoryLanding";
 import { capitalizeWord } from "@/lib/utils";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);

@@ -1,7 +1,7 @@
 "use server"
-import ProductDetails from "@/components/PDP/ProductDetails";
+import ProductDetails from "@/src/components/PDP/ProductDetails";
 import { builder } from "@builder.io/sdk";
-import { RenderBuilderContent } from "@/components/builder";
+import { RenderBuilderContent } from "@/src/components/builder";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
