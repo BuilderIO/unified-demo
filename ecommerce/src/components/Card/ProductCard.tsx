@@ -27,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   if (dataSource === "Algolia" && !algoliaSearch) {
     return (
       <div>
-        <h3>Search Our Collection</h3>
+        {/* <h3>Search Our Collection</h3> */}
         <SearchComponent />
       </div>
     );
