@@ -1,12 +1,8 @@
 import React from "react";
-import algoliasearch, { SearchIndex } from "algoliasearch";
 import {
   InstantSearch,
   SearchBox,
-  Hits,
   RefinementList,
-  Pagination,
-  RangeInput,
   connectHits,
 } from "react-instantsearch-dom";
 import { client } from "../../../config/algolia";
@@ -50,7 +46,6 @@ function SearchComponent() {
           </div>
           <p className="text-center text-md mt-3">
             Search by name, category, color, or size
-            {/* , or price */}
           </p>
         </div>
 
@@ -58,7 +53,6 @@ function SearchComponent() {
           <RefinementList attribute="category" className="w-full" />
           <RefinementList attribute="data.colors.label" className="w-full" />
           <RefinementList attribute="data.sizes.label" className="w-full" />
-          {/* <RefinementList attribute="data.price" className="w-full" /> */}
         </div>
 
         <ConnectedHits />

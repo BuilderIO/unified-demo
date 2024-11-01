@@ -23,11 +23,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   swellProductHandle,
   algoliaSearch
 }) => {
-  // console.log("Algolia Search:", algoliaSearch);
+
   if (dataSource === "Algolia" && !algoliaSearch) {
     return (
       <div>
-        {/* <h3>Search Our Collection</h3> */}
         <SearchComponent />
       </div>
     );
@@ -53,12 +52,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <div
       className={`flex flex-col text-base tracking-wider text-center md:self-start self-center ${classes} relative w-72`}
     >
-      {dataSource === "Algolia" && (
-        <div>
-          <h1>Search Our Collection</h1>
-          <SearchComponent />
-        </div>
-      )}
 
       {dataSource === "Shopify" && (
         <ShopifyProduct
