@@ -32,6 +32,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "algolia",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "burst.shopifycdn.com",
         port: "",
         pathname: "/**",

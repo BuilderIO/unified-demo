@@ -272,7 +272,7 @@ Builder.registerComponent(ProductCard, {
     {
       name: "dataSource",
       type: "text",
-      enum: ["Shopify", "Commercetools", "Builder", "Swell"],
+      enum: ["Shopify", "Commercetools", "Builder", "Swell", "Algolia"],
       defaultValue: "Builder",
     },
     {
@@ -314,6 +314,15 @@ Builder.registerComponent(ProductCard, {
       required: true,
       showIf: function (options: any) {
         return options.get("dataSource") === "Commercetools";
+      },
+    },
+    {
+      name: "algoliaSearch",
+      friendlyName: "Algolia Search",
+      type: "AlgoliaSearch",
+      required: true,
+      showIf: function (options: any) {
+        return options.get("dataSource") === "AlgoliaSearch";
       },
     },
   ],

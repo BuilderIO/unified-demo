@@ -2,6 +2,7 @@ import ShopifyProduct from "@/src/components/ShopifyProduct/ShopifyProduct";
 import CommercetoolsProduct from "../CommercetoolsProduct/CommercetoolsProduct";
 import ProductBox from "../ui/productBox";
 import SwellProduct from "../SwellProduct/SwellProduct";
+import SearchComponent from "../AlgoliaSearch/AlgoliaSearch";
 
 interface ProductCardProps {
   product: any;
@@ -10,6 +11,7 @@ interface ProductCardProps {
   shopifyProductHandle?: string;
   swellProductHandle?: string;
   commercetoolsProduct?: any;
+  algoliaSearch?: any;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -19,11 +21,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
   shopifyProductHandle,
   commercetoolsProduct,
   swellProductHandle,
-  
+  algoliaSearch
 }) => {
 
-  // Retrieve product data from either the direct data binding or visual editor repeat
-  
+  if (dataSource === "Algolia" && !algoliaSearch) {
+    return (
+      <div>
+        <SearchComponent />
+      </div>
+    );
+  }
 
   if (dataSource==="Builder" && !product) {
     return <h3>Please select a product</h3>;
@@ -41,31 +48,31 @@ const ProductCard: React.FC<ProductCardProps> = ({
     return <h3>Please select a Commercetools product</h3>;
   }
 
-
   return (
     <div
       className={`flex flex-col text-base tracking-wider text-center md:self-start self-center ${classes} relative w-72`}
     >
-      {(dataSource==="Shopify" && 
+
+      {dataSource === "Shopify" && (
         <ShopifyProduct
-          shopifyProductHandle={shopifyProductHandle ? shopifyProductHandle : product?.handle}
+          shopifyProductHandle={
+            shopifyProductHandle ? shopifyProductHandle : product?.handle
+          }
         />
-      )
-      }
-      {(dataSource==="Swell" && 
+      )}
+      {dataSource === "Swell" && (
         <SwellProduct
-          swellProductHandle={swellProductHandle ? swellProductHandle : product?.handle}
+          swellProductHandle={
+            swellProductHandle ? swellProductHandle : product?.handle
+          }
         />
-      )
-      }
-      {(dataSource==="Commercetools") &&
-        <CommercetoolsProduct
-          commercetoolsProduct={commercetoolsProduct}
-        />
-      }
-      {(dataSource==="Builder" || dataSource==="Shopstyle") && 
+      )}
+      {dataSource === "Commercetools" && (
+        <CommercetoolsProduct commercetoolsProduct={commercetoolsProduct} />
+      )}
+      {(dataSource === "Builder" || dataSource === "Shopstyle") && (
         <ProductBox productData={product} dataSource={dataSource} />
-      }
+      )}
     </div>
   );
 };
