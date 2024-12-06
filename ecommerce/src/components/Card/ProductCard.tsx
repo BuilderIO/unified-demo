@@ -23,8 +23,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
 
   // Retrieve product data from either the direct data binding or visual editor repeat
-  
-
   if (dataSource==="Builder" && !product) {
     return <h3>Please select a product</h3>;
   }
@@ -39,6 +37,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   if (dataSource==="Commercetools" && !commercetoolsProduct) {
     return <h3>Please select a Commercetools product</h3>;
+  }
+
+  if(!dataSource){
+    dataSource="Builder"
   }
 
 

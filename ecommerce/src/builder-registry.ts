@@ -1,10 +1,12 @@
 "use client";
 import "@builder.io/widgets";
 import { builder, Builder, withChildren } from "@builder.io/react";
+import { AccordionItem } from "./components/ui/accordion";
 import { Button } from "./components/ui/button";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
+import DynamicText from "./components/testing/dynamicText";
 import Footer from "./components/Layout/Footer";
 import { Header } from "./components/Layout/Header";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
@@ -71,6 +73,8 @@ Builder.register("editor.settings", {
 });
 Builder.register("insertMenu", {
   name: "Heros",
+  description: "this is something",
+  docsLink: "https://www.builder.io/c/docs/custom-react-components",
   items: [
     { name: "TextHero" },
     { name: "ImageHero" },
@@ -124,6 +128,8 @@ Builder.registerComponent(SplitHero, {
       defaultValue: "right",
       enum: ["left", "right"],
       required: true,
+      helperText: "hey this is helper text",
+      description: "this is a description",
     },
     {
       name: "textAlignment",
@@ -380,6 +386,9 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
       type: "uiBlocks",
       hideFromUI: true,
       defaultValue: [],
+      onChange: (options: any) => {
+        console.log("hello", options);
+      },
     },
     {
       name: "header",
@@ -498,12 +507,4 @@ Builder.registerComponent(CloudinaryImage, {
       type: "cloudinaryImageEditor",
     },
   ],
-});
-
-Builder.registerComponent(Footer, {
-  name: "Footer",
-});
-
-Builder.registerComponent(Header, {
-  name: "Header",
 });
