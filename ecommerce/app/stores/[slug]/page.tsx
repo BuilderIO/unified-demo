@@ -39,12 +39,12 @@ export default async function StorePage(props: PageProps) {
         <div className="flex gap-4 mt-3.5 text-lg text-black">
           <div className="w-[260px]">
             {storeData?.data?.address?.split("\n").map((line:string, index:number) => (
-              <React.Fragment key={index}>
+              <div key={index}>
                 {line}
                 {index < storeData.data.address.split("\n").length - 1 && (
                   <br />
                 )}
-              </React.Fragment>
+              </div>
             ))}
           </div>
         </div>

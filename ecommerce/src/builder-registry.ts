@@ -92,6 +92,7 @@ if (Builder.isBrowser) {
         { name: "Columns" },
         { name: "Builder:Carousel" },
         { name: "Collection" },
+        { name: "Accordion" },
       ],
     });
   }
@@ -400,7 +401,8 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
 });
 
 Builder.registerComponent(withChildren(Button), {
-  name: "Button",
+  name: "Core:Button",
+  override: true,
   canHaveChildren: true,
   defaultChildren: [
     {
@@ -507,6 +509,7 @@ Builder.registerComponent(CloudinaryImage, {
 
 Builder.registerComponent(Accordion, {
   name: "Accordion",
+  image: 'https://cdn.builder.io/api/v1/image/assets%2FagZ9n5CUKRfbL9t6CaJOyVSK4Es2%2Ffab6c1fd3fe542408cbdec078bca7f35',
   inputs: [
     {
       name: "items",
