@@ -1,14 +1,11 @@
 "use client";
 import "@builder.io/widgets";
 import { builder, Builder, withChildren } from "@builder.io/react";
-import { AccordionItem } from "./components/ui/accordion";
+import Accordion from "./components/Accordion/accordion";
 import { Button } from "./components/ui/button";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
-import DynamicText from "./components/testing/dynamicText";
-import Footer from "./components/Layout/Footer";
-import { Header } from "./components/Layout/Header";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
 import IconCard from "./components/Card/IconCard";
 import ImageHero from "./components/Hero/ImageHero";
@@ -22,7 +19,6 @@ builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 Builder.register("editor.settings", {
   styleStrictMode: false,
   allowOverridingTokens: true, // optional
-  models: ["page"],
   designTokens: {
     colors: [
       { name: "Primary", value: "var(--color-primary, #000000)" },
@@ -505,6 +501,29 @@ Builder.registerComponent(CloudinaryImage, {
     {
       name: "cloudinaryOptions",
       type: "cloudinaryImageEditor",
+    },
+  ],
+});
+
+Builder.registerComponent(Accordion, {
+  name: "Accordion",
+  inputs: [
+    {
+      name: "items",
+      type: "list",
+      subFields: [
+        { name: "title", type: "string", defaultValue: "Accordion Title" },
+        {
+          name: "content",
+          type: "longText",
+          defaultValue: "Accordion Content",
+        },
+      ],
+      defaultValue: [
+        { title: "Sample Title 1", content: "Sample Content 1" },
+        { title: "Sample Title 2", content: "Sample Content 2" },
+        { title: "Sample Title 3", content: "Sample Content 3" },
+      ],
     },
   ],
 });
