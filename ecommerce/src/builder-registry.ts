@@ -1,6 +1,7 @@
 "use client";
 import "@builder.io/widgets";
 import { builder, Builder, withChildren } from "@builder.io/react";
+import Accordion from "./components/Accordion/accordion";
 import { Button } from "./components/ui/button";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
 import { Collection } from "./components/Collection/Collection";
@@ -20,7 +21,6 @@ builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 Builder.register("editor.settings", {
   styleStrictMode: false,
   allowOverridingTokens: true, // optional
-  models: ["page"],
   designTokens: {
     colors: [
       { name: "Primary", value: "var(--color-primary, #000000)" },
@@ -506,4 +506,27 @@ Builder.registerComponent(Footer, {
 
 Builder.registerComponent(Header, {
   name: "Header",
+});
+
+Builder.registerComponent(Accordion, {
+  name: "Accordion",
+  inputs: [
+    {
+      name: "items",
+      type: "list",
+      subFields: [
+        { name: "title", type: "string", defaultValue: "Accordion Title" },
+        {
+          name: "content",
+          type: "longText",
+          defaultValue: "Accordion Content",
+        },
+      ],
+      defaultValue: [
+        { title: "Sample Title 1", content: "Sample Content 1" },
+        { title: "Sample Title 2", content: "Sample Content 2" },
+        { title: "Sample Title 3", content: "Sample Content 3" },
+      ],
+    },
+  ],
 });
