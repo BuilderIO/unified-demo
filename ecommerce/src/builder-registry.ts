@@ -391,11 +391,13 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
       name: "header",
       type: "string",
       defaultValue: "WHAT'S DIFFERENT ABOUT SHOPAHOLIC",
+      broadcast: true,
     },
     {
       name: "makeFullBleed",
       type: "boolean",
       defaultValue: false,
+      broadcast: true,
     },
   ],
 });
