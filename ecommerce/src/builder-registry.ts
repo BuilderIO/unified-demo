@@ -69,8 +69,6 @@ Builder.register("editor.settings", {
 });
 Builder.register("insertMenu", {
   name: "Heros",
-  description: "this is something",
-  docsLink: "https://www.builder.io/c/docs/custom-react-components",
   items: [
     { name: "TextHero" },
     { name: "ImageHero" },
