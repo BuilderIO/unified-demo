@@ -1,6 +1,5 @@
 import { builder } from "@builder.io/sdk";
 import { RenderBuilderContent } from "@/src/components/builder";
-import Link from "next/link";
 import React from "react";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
@@ -30,12 +29,12 @@ export default async function StorePage(props: PageProps) {
       <img
         loading="lazy"
         src={storeData?.data?.storeImage}
-        alt={storeData?.data?.storeName || "Store location"}
+        alt={storeData?.data?.storeName}
         className="object-contain w-full aspect-[1.69]"
       />
       <div className="flex flex-col items-start pr-9 pl-9 mt-6 w-full max-md:px-5">
         <div className="text-2xl font-semibold text-right text-black tracking-[4.83px]">
-          {storeData?.data?.location || "Location Name"}
+          {storeData?.data?.location}
         </div>
         <div className="flex gap-4 mt-3.5 text-lg text-black">
           <div className="w-[260px]">
