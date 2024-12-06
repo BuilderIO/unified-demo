@@ -123,8 +123,6 @@ Builder.registerComponent(SplitHero, {
       defaultValue: "right",
       enum: ["left", "right"],
       required: true,
-      helperText: "hey this is helper text",
-      description: "this is a description",
     },
     {
       name: "textAlignment",
