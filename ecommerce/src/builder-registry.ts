@@ -6,8 +6,6 @@ import { Button } from "./components/ui/button";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
-import Footer from "./components/Layout/Footer";
-import { Header } from "./components/Layout/Header";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
 import IconCard from "./components/Card/IconCard";
 import ImageHero from "./components/Hero/ImageHero";
@@ -92,6 +90,7 @@ if (Builder.isBrowser) {
         { name: "Columns" },
         { name: "Builder:Carousel" },
         { name: "Collection" },
+        { name: "Accordion" },
       ],
     });
   }
@@ -380,22 +379,28 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
       type: "uiBlocks",
       hideFromUI: true,
       defaultValue: [],
+      onChange: (options: any) => {
+        console.log("hello", options);
+      },
     },
     {
       name: "header",
       type: "string",
       defaultValue: "WHAT'S DIFFERENT ABOUT SHOPAHOLIC",
+      broadcast: true,
     },
     {
       name: "makeFullBleed",
       type: "boolean",
       defaultValue: false,
+      broadcast: true,
     },
   ],
 });
 
 Builder.registerComponent(withChildren(Button), {
-  name: "Button",
+  name: "Core:Button",
+  override: true,
   canHaveChildren: true,
   defaultChildren: [
     {
@@ -500,16 +505,9 @@ Builder.registerComponent(CloudinaryImage, {
   ],
 });
 
-Builder.registerComponent(Footer, {
-  name: "Footer",
-});
-
-Builder.registerComponent(Header, {
-  name: "Header",
-});
-
 Builder.registerComponent(Accordion, {
   name: "Accordion",
+  image: 'https://cdn.builder.io/api/v1/image/assets%2FagZ9n5CUKRfbL9t6CaJOyVSK4Es2%2Ffab6c1fd3fe542408cbdec078bca7f35',
   inputs: [
     {
       name: "items",

@@ -6,7 +6,6 @@ interface ProductBoxProps {
 }
 
 const ProductBox:  React.FC<ProductBoxProps> = ({productData, dataSource}) => {
-console.log()
 let product = productData?.data || productData?.value?.data;
 return (
     <a href={`/product/${product?.handle}`}>

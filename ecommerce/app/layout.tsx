@@ -12,16 +12,19 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  await import('isolated-vm');
+
   const headerContent = await builder
     .get("header-links", { fields: "data" })
     .toPromise();
-  const bannerContent = await builder.get("banner").toPromise();
+
+  const bannerContent = await builder.get("banner", {userAttributes: {loggedIn: true}}).toPromise();
   return (
     <html lang="en">
       <body>
         <QueryProvider>
           <main>
-            {bannerContent && <RenderBuilderContent model="banner" content={bannerContent} />}
+            {bannerContent && <RenderBuilderContent model="banner" content={bannerContent} data={{username: "superUser123"}} />}
             <Header headerContent={headerContent} />
             <div className="container">{children}</div>
             <Footer />

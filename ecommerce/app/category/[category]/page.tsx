@@ -31,6 +31,7 @@ export default async function CategoryPage(props: CategoryPageProps) {
         }
       }
     })
+    console.log('DATA', productDetailsContent)
   return (
     <>
       {/* Render the Builder page */}

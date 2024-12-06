@@ -21,12 +21,10 @@ export function RenderBuilderLiveDataPreview({ dataModelData, dataModelName, tem
   // render the BuilderComponent with the specified content and model props.
 
   if (dataModelData || templateModelData || isPreviewing) {
-    console.log("HELLO INSIDE: ", { dataModelData, dataModelName, templateModelData, templateModelName})
     return (
       <>
         <BuilderContent model={dataModelName} content={dataModelData}> 
             {(data, loading, content) => {
-              console.log('HELLO', data, loading, content)
                 if (loading) return <div>Loading...</div>;
                     return (
                         <RenderBuilderContent content={templateModelData} model={templateModelName} data={{ data }} />

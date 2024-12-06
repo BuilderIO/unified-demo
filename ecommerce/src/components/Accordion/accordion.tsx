@@ -50,13 +50,11 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
   return (
     <div>
       {items.map((item, index) => (
-        <div>
-          <AccordionItem
-            key={index}
-            title={item.title}
-            content={item.content}
-          />
-        </div>
+        <AccordionItem
+          key={index}
+          title={item.title}
+          content={item.content}
+        />
       ))}
     </div>
   );

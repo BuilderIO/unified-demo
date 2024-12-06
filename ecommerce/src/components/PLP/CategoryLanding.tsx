@@ -9,7 +9,6 @@ import { ColorFilter } from './ColorFilter';
 import { SizeFilter } from './SizeFilter';
 import { Pagination } from './Pagination';
 import { RenderBuilderContent } from '../builder';
-import { BuilderContent } from '@builder.io/react';
 import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '@/src/components/ui/accordion';
 
 type CategoryLandingProps = {
@@ -65,24 +64,22 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
             </div>
             <div className="flex flex-col max-sm:w-full">
               <div className="flex flex-col grow md:max-w-full">
-                <div className="flex flex-row flex-wrap gap-3 justify-start items-start md:max-w-full">
-                  {products.map((product: BuilderContent, index: any) => {
-                    return (
-                      <>
-                        <ProductCard
-                          key={index}
-                          classes="box-border relative basis-1/2-gap-3 lg:basis-1/3-gap-3 shrink-1 grow-1"
-                          product={product}
-                        />
-                        {index === 3 && plpTiles.length &&
-                          <div
-                            key={`${index}-ad-tile`}
-                            className="flex flex-col text-base tracking-wider text-center box-border relative basis-1/2-gap-3 lg:basis-1/3-gap-3 shrink-1 grow-1" >
-                            <RenderBuilderContent model="plp-tile" content={plpTiles[0]} />
-                          </div>
-                        }
-                      </>
-                    )
+                <div className="flex flex-row flex-wrap gap-3 justify-center items-start md:max-w-full">
+                  {products.map((product: any, index: any) => {
+                    return (index === 3 && plpTiles.length) ? (
+                        <div
+                          key={`${index}-ad-tile`}
+                          className="flex flex-col text-base tracking-wider text-center box-border relative basis-1/2-gap-3 lg:basis-1/3-gap-3 shrink-1 grow-1" >
+                          <RenderBuilderContent model="plp-tile" content={plpTiles[0]} />
+                        </div>
+                    ):(
+                      <ProductCard
+                        key={index}
+                        classes="box-border relative basis-1/2-gap-3 lg:basis-1/3-gap-3 shrink-1 grow-1"
+                        product={product}
+                        dataSource="Builder"
+                      />
+                    )  
                   })}
                 </div>
               </div>
