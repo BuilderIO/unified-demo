@@ -93,6 +93,14 @@ if (Builder.isBrowser) {
         { name: "Accordion" },
       ],
     });
+    Builder.register("insertMenu", {
+      name: "Blocks",
+      items: [
+        { name: "CloudinaryImage" },
+        { name: "Core:Button" },
+        { name: "Counter" },
+      ],
+    });
   }
 }
 Builder.register("insertMenu", {
