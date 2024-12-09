@@ -2,7 +2,6 @@ import ShopifyProduct from "@/src/components/ShopifyProduct/ShopifyProduct";
 import CommercetoolsProduct from "../CommercetoolsProduct/CommercetoolsProduct";
 import ProductBox from "../ui/productBox";
 import SwellProduct from "../SwellProduct/SwellProduct";
-import SearchComponent from "../AlgoliaSearch/AlgoliaSearch";
 
 interface ProductCardProps {
   product: any;
@@ -11,7 +10,6 @@ interface ProductCardProps {
   shopifyProductHandle?: string;
   swellProductHandle?: string;
   commercetoolsProduct?: any;
-  algoliaSearch?: any;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -21,30 +19,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
   shopifyProductHandle,
   commercetoolsProduct,
   swellProductHandle,
-  algoliaSearch
 }) => {
-
-  if (dataSource === "Algolia" && !algoliaSearch) {
-    return (
-      <div>
-        <SearchComponent />
-      </div>
-    );
-  }
-
-  if (dataSource==="Builder" && !product) {
+  if (dataSource === "Builder" && !product) {
     return <h3>Please select a product</h3>;
   }
-  
-  if (dataSource==="Shopify" && !shopifyProductHandle) {
+
+  if (dataSource === "Shopify" && !shopifyProductHandle) {
     return <h3>Product handle is required for Shopify products.</h3>;
   }
 
-  if (dataSource==="Swell" && !swellProductHandle) {
-    return <h3>Product handle is required for Swell products.</h3>
+  if (dataSource === "Swell" && !swellProductHandle) {
+    return <h3>Product handle is required for Swell products.</h3>;
   }
 
-  if (dataSource==="Commercetools" && !commercetoolsProduct) {
+  if (dataSource === "Commercetools" && !commercetoolsProduct) {
     return <h3>Please select a Commercetools product</h3>;
   }
 
@@ -52,7 +40,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <div
       className={`flex flex-col text-base tracking-wider text-center md:self-start self-center ${classes} relative w-72`}
     >
-
       {dataSource === "Shopify" && (
         <ShopifyProduct
           shopifyProductHandle={

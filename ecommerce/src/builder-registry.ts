@@ -14,6 +14,7 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
+import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -92,10 +93,17 @@ if (Builder.isBrowser) {
         { name: "Columns" },
         { name: "Builder:Carousel" },
         { name: "Collection" },
+        { name: "AlgoliaSearchBox" },
       ],
     });
   }
 }
+
+Builder.registerComponent(AlgoliaSearchBox, {
+  name: "AlgoliaSearchBox",
+  inputs: [],
+});
+
 Builder.register("insertMenu", {
   name: "Popups",
   items: [{ name: "UpsellPopup" }],
@@ -112,6 +120,7 @@ Builder.registerComponent(Counter, {
     },
   ],
 });
+
 
 Builder.registerComponent(SplitHero, {
   name: "SplitHero",
@@ -272,7 +281,7 @@ Builder.registerComponent(ProductCard, {
     {
       name: "dataSource",
       type: "text",
-      enum: ["Shopify", "Commercetools", "Builder", "Swell", "Algolia"],
+      enum: ["Shopify", "Commercetools", "Builder", "Swell"],
       defaultValue: "Builder",
     },
     {
@@ -314,15 +323,6 @@ Builder.registerComponent(ProductCard, {
       required: true,
       showIf: function (options: any) {
         return options.get("dataSource") === "Commercetools";
-      },
-    },
-    {
-      name: "algoliaSearch",
-      friendlyName: "Algolia Search",
-      type: "AlgoliaSearch",
-      required: true,
-      showIf: function (options: any) {
-        return options.get("dataSource") === "AlgoliaSearch";
       },
     },
   ],
