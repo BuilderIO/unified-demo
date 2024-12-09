@@ -8,7 +8,6 @@ const ShopifyProduct = ({ shopifyProductHandle }: { shopifyProductHandle: string
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log('dataSource: SHOPIFY!!!')
     const fetchProduct = async () => {
       setLoading(true);
       try {
@@ -43,7 +42,6 @@ const ShopifyProduct = ({ shopifyProductHandle }: { shopifyProductHandle: string
       price: Math.round(product.variants[0].priceV2.amount),
     },
   };
-  console.log('PRODUCT DATA:', productData)
 
   return (
     <div className="shopify-product">
