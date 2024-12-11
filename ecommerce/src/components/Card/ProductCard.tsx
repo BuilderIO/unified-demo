@@ -36,6 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     return <h3>Please select a Commercetools product</h3>;
   }
 
+
   return (
     <div
       className={`flex flex-col text-base tracking-wider text-center md:self-start self-center ${classes} relative w-72`}
