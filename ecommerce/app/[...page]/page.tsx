@@ -1,5 +1,4 @@
 import { builder } from "@builder.io/sdk";
-import { getAsyncProps } from '@builder.io/utils';
 import { RenderBuilderContent } from "@/src/components/builder";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
@@ -23,7 +22,7 @@ export default async function Page(props: PageProps) {
         // Use the page path specified in the URL to fetch the content
         urlPath: "/" + (props?.params?.page?.join("/") || ""),
         locale,
-        // loggedIn: true,
+        loggedIn: true,
       },
       locale
     })

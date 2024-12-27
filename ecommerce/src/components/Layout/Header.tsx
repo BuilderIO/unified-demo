@@ -17,11 +17,9 @@ import { BuilderContent } from '@builder.io/react';
 
 
 export function Header({ headerContent }: any) {
-  console.log("HEADER CONTENT", headerContent);
   return (
     <BuilderContent model="header-links" content={headerContent}>
       {(data) => {
-        console.log('DATA', data?.headerLinks);
         return (
         <header className="w-full flex flex-1 border-y mb-4">
           <div className="px-4 p-3 flex justify-between container">

@@ -14,7 +14,6 @@ export function RenderBuilderContent(props: BuilderPageProps) {
   const isPreviewing = useIsPreviewing();///(Builder.isPreviewing || Builder.isEditing)
   // If "content" has a value or the page is being previewed in Builder,
   // render the BuilderComponent with the specified content and model props.
-  console.log('HELLO: ', props.content)
   // If the "content" is falsy and the page is
   if (props.content || isPreviewing) {
     return (

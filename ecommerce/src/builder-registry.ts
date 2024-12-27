@@ -1,6 +1,6 @@
 "use client";
 import "@builder.io/widgets";
-import { builder, Builder, useIsPreviewing, withChildren } from "@builder.io/react";
+import { builder, Builder, withChildren } from "@builder.io/react";
 import Accordion from "./components/Accordion/accordion";
 import { Button } from "./components/ui/button";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
@@ -394,7 +394,7 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
     "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F2bbe97f46ba14868a6925faf5cbb8d18",
   inputs: [
     {
-      name: "children",
+      name: "childBlocks",
       type: "uiBlocks",
       hideFromUI: true,
       defaultValue: [],
