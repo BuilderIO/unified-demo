@@ -13,6 +13,7 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
+import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -91,6 +92,7 @@ if (Builder.isBrowser) {
         { name: "Builder:Carousel" },
         { name: "Collection" },
         { name: "Accordion" },
+        { name: "AlgoliaSearchBox" },
       ],
     });
     Builder.register("insertMenu", {
@@ -98,11 +100,19 @@ if (Builder.isBrowser) {
       items: [
         { name: "CloudinaryImage" },
         { name: "Core:Button" },
-        { name: "Counter" },
+        { name: "Counter" }
       ],
     });
   }
 }
+
+Builder.registerComponent(AlgoliaSearchBox, {
+  name: "AlgoliaSearchBox",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F03b586220c6c453cbbb24f329b2b9c15",
+  inputs: [],
+});
+
 Builder.register("insertMenu", {
   name: "Popups",
   items: [{ name: "UpsellPopup" }],
@@ -119,6 +129,7 @@ Builder.registerComponent(Counter, {
     },
   ],
 });
+
 
 Builder.registerComponent(SplitHero, {
   name: "SplitHero",

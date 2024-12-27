@@ -13,12 +13,19 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   await import('isolated-vm');
+  const locale="en-US"
 
   const headerContent = await builder
-    .get("header-links", { fields: "data" })
+    .get("header-links", { fields: "data" , options: { locale }})
     .toPromise();
 
-  const bannerContent = await builder.get("banner", {userAttributes: {loggedIn: true}}).toPromise();
+  const bannerContent = await builder.get("banner", {
+    userAttributes: {loggedIn: true},
+    options: {
+      locale
+    }
+  }).toPromise();
+  
   return (
     <html lang="en">
       <body>
