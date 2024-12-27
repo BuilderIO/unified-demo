@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import Link from 'next/link';
+import { Button } from '../ui/button';
 
 interface ImageHeroProps {
   title: string;
@@ -46,9 +47,9 @@ const ImageHero: React.FC<ImageHeroProps> = ({
             <p className="mt-2 text-xl leading-9 max-md:max-w-full" dangerouslySetInnerHTML={{ __html: subTitle || "" }}>
             </p>
           </div>
-          <span className="flex flex-col justify-center mt-8 max-w-full w-[134px]" >
+          <Button className="flex flex-col justify-center mt-8 max-w-full w-[134px]" variant="secondary" size="lg" asChild>
             <Link href={buttonLink}>{buttonText}</Link>
-          </span>
+          </Button>
         </div>
       </div>
     </div>
