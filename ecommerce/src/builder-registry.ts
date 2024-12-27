@@ -13,7 +13,7 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
-import BlogCategory from "./components/testing/BlogCategory";
+import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -92,6 +92,7 @@ if (Builder.isBrowser) {
         { name: "Builder:Carousel" },
         { name: "Collection" },
         { name: "Accordion" },
+        { name: "AlgoliaSearchBox" },
       ],
     });
     Builder.register("insertMenu", {
@@ -99,11 +100,19 @@ if (Builder.isBrowser) {
       items: [
         { name: "CloudinaryImage" },
         { name: "Core:Button" },
-        { name: "Counter" },
+        { name: "Counter" }
       ],
     });
   }
 }
+
+Builder.registerComponent(AlgoliaSearchBox, {
+  name: "AlgoliaSearchBox",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F03b586220c6c453cbbb24f329b2b9c15",
+  inputs: [],
+});
+
 Builder.register("insertMenu", {
   name: "Popups",
   items: [{ name: "UpsellPopup" }],
@@ -120,6 +129,7 @@ Builder.registerComponent(Counter, {
     },
   ],
 });
+
 
 Builder.registerComponent(SplitHero, {
   name: "SplitHero",
@@ -533,28 +543,3 @@ Builder.registerComponent(Accordion, {
     },
   ],
 });
-
-
-// const [categories, setCategories] = useState([]);
-// const isPreviewingInBuilder = useIsPreviewing();
-// if (isPreviewingInBuilder) {
-// fetch("https://cdn.builder.io/api/v3/content/blog-category?apiKey=50b344f9116e4820a020e382058146e0&fields=data.name").then(res => res.json()).then((data) => {
-// //   const categories = data.results.map((category: any) => category.data.name)
-// const builderContext = useContext(BuilderStoreContext)
-
-//   Builder.registerComponent(BlogCategory, {
-//     name: "BlogCategory",
-//     image: 'https://cdn.builder.io/api/v1/image/assets%2FagZ9n5CUKRfbL9t6CaJOyVSK4Es2%2Ffab6c1fd3fe542408cbdec078bca7f35',
-//     inputs: [{
-//       name: "category",
-//       type: "string",
-//       enum: builderContext.state.someStateValue,
-//     },
-//     {
-//       name: 'code',
-//       type: 'javascript',
-//       code: true,
-//     },
-//   ]
-//   });        
-// // });
