@@ -398,8 +398,12 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
       type: "uiBlocks",
       hideFromUI: true,
       defaultValue: [],
-      onChange: (options: any) => {
-        console.log("hello", options);
+      onChange: (options:any) => {
+        const items = options.get("childBlocks");
+        if (Array.isArray(items) && items.length > 3) {
+          options.set("childBlocks", items.slice(0, 3))
+          alert("You can add maximum 3 items");
+        }
       },
     },
     {
@@ -436,14 +440,6 @@ Builder.registerComponent(withChildren(Button), {
   image:
     "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5803f6cb27764a339296458c0056dc33",
   inputs: [
-    {
-      name: "children",
-      type: "string",
-      hideFromUI: true,
-      meta: {
-        ts: "ReactNode",
-      },
-    },
     {
       name: "variant",
       type: "string",
