@@ -6,10 +6,11 @@ interface FigmaIconCardProps extends BaseFigmaProps {
   Icon?: string;
   Title?: string;
   Description?: string;
+  Alignment?: "left" | "center" | "right";
 }
 
 figmaMapping({
-  componentKey: "62dfa5b948acd53bc482428547a0f955a42885ac",
+  componentKey: "41d8f0857eeaf8760328fdfc07620326f1f761e4",
   mapper(figma: FigmaIconCardProps) {
     return (
       <IconCard
@@ -17,6 +18,7 @@ figmaMapping({
         title={figma.Title ?? ""}
         description={figma.Description ?? ""}
         altText={figma.Title ?? ""}
+        alignment={figma.Alignment ?? "center"}
       />
     );
   },
