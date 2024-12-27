@@ -19,8 +19,8 @@ const HeroWithChildren: React.FC<HeroWithChildrenProps> = (props:any) => {
       <BuilderBlocks
         child
         parentElementId={props.builderBlock && props.builderBlock.id}
-        blocks={props.childBlocks}
-        dataPath={`component.options.childBlocks`} 
+        blocks={props.children}
+        dataPath={`component.options.children`} 
         className="w-full"/>
     </div>
   );

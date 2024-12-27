@@ -6,12 +6,9 @@ import { Button } from "../ui/button"
 import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/src/components/ui/navigation-menu"
 import { AuthSlider } from "./AuthSlider"
 import { CartSlider } from "./CartSlider"
@@ -20,9 +17,12 @@ import { BuilderContent } from '@builder.io/react';
 
 
 export function Header({ headerContent }: any) {
+  console.log("HEADER CONTENT", headerContent);
   return (
     <BuilderContent model="header-links" content={headerContent}>
-      {(data) => (
+      {(data) => {
+        console.log('DATA', data?.headerLinks);
+        return (
         <header className="w-full flex flex-1 border-y mb-4">
           <div className="px-4 p-3 flex justify-between container">
 
@@ -41,7 +41,7 @@ export function Header({ headerContent }: any) {
             </Button>
             <NavigationMenu className="hidden md:flex space-x-5">
               <NavigationMenuList className="justify-around w-full">
-                {data?.headerLinks.map((item: any, index: number) => {
+                {data?.headerLinks?.map((item: any, index: number) => {
                   return (
                     <Button key={index} variant="link" className="text-md">
                       <Link href={item.path || '/'} legacyBehavior passHref >
@@ -60,7 +60,7 @@ export function Header({ headerContent }: any) {
             </div>
           </div>
         </header>
-      )
+      )}
       }
     </BuilderContent>
   );

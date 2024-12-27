@@ -1,6 +1,6 @@
 "use client";
 import "@builder.io/widgets";
-import { builder, Builder, withChildren } from "@builder.io/react";
+import { builder, Builder, useIsPreviewing, withChildren } from "@builder.io/react";
 import Accordion from "./components/Accordion/accordion";
 import { Button } from "./components/ui/button";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
@@ -13,6 +13,7 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
+import BlogCategory from "./components/testing/BlogCategory";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -383,12 +384,16 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
     "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F2bbe97f46ba14868a6925faf5cbb8d18",
   inputs: [
     {
-      name: "childBlocks",
+      name: "children",
       type: "uiBlocks",
       hideFromUI: true,
       defaultValue: [],
-      onChange: (options: any) => {
-        console.log("hello", options);
+      onChange: (options:any) => {
+        const items = options.get("childBlocks");
+        if (Array.isArray(items) && items.length > 3) {
+          options.set("childBlocks", items.slice(0, 3))
+          alert("You can add maximum 3 items");
+        }
       },
     },
     {
@@ -425,14 +430,6 @@ Builder.registerComponent(withChildren(Button), {
   image:
     "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F5803f6cb27764a339296458c0056dc33",
   inputs: [
-    {
-      name: "children",
-      type: "string",
-      hideFromUI: true,
-      meta: {
-        ts: "ReactNode",
-      },
-    },
     {
       name: "variant",
       type: "string",
@@ -536,3 +533,28 @@ Builder.registerComponent(Accordion, {
     },
   ],
 });
+
+
+// const [categories, setCategories] = useState([]);
+// const isPreviewingInBuilder = useIsPreviewing();
+// if (isPreviewingInBuilder) {
+// fetch("https://cdn.builder.io/api/v3/content/blog-category?apiKey=50b344f9116e4820a020e382058146e0&fields=data.name").then(res => res.json()).then((data) => {
+// //   const categories = data.results.map((category: any) => category.data.name)
+// const builderContext = useContext(BuilderStoreContext)
+
+//   Builder.registerComponent(BlogCategory, {
+//     name: "BlogCategory",
+//     image: 'https://cdn.builder.io/api/v1/image/assets%2FagZ9n5CUKRfbL9t6CaJOyVSK4Es2%2Ffab6c1fd3fe542408cbdec078bca7f35',
+//     inputs: [{
+//       name: "category",
+//       type: "string",
+//       enum: builderContext.state.someStateValue,
+//     },
+//     {
+//       name: 'code',
+//       type: 'javascript',
+//       code: true,
+//     },
+//   ]
+//   });        
+// // });
