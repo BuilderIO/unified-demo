@@ -4,14 +4,16 @@ import ProductBox from "../ui/productBox";
 interface ProductCardProps {
   classes?: string;
   dataSource?: string;
+  product?: any;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
   classes,
   dataSource,
+  product,
 }) => {
-
-  const [ product, setProduct ] = useState({});
+  dataSource = dataSource || "Builder";
+  const [ productData, setProduct ] = useState(product);
 
   useEffect(() => {
     async function fetchContent() {
@@ -22,17 +24,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
       });
       ;
     }
-    fetchContent();
-  }, []);
+    if (!product) fetchContent();
+  }, [product]);
 
 
   return (
     <div
       className={`flex flex-col text-base tracking-wider text-center md:self-start self-center ${classes} relative w-72`}
     >
-      {(dataSource === "Builder" || dataSource === "Shopstyle") && (
-        <ProductBox productData={product} dataSource={dataSource} />
-      )}
+      <ProductBox productData={productData} dataSource={dataSource} />
     </div>
   );
 };
