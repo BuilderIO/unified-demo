@@ -20,23 +20,39 @@ export default async function StorePage(props: PageProps) {
     })
     .toPromise();
 
+  const storeLocations = await builder
+    .get("store-locations", {
+      userAttributes: {
+        urlPath: `/${storeSlug}`,
+      },
+      prerender: false,
+    })
+    .toPromise();
+
   if (!storeData) {
     return <div>Store not found</div>;
   }
 
   return (
     <>
-      <RenderBuilderContent
-        content={storeData}
-        model="store-locations"
-        data={{
-          storeImage: storeData?.data?.storeImage,
-          storeLocation: storeData?.data?.location,
-          storeAddress: storeData?.data?.address,
-          storeAbbreviation: storeData?.data?.abbreviation,
-          storePhoneNumber: storeData?.data?.phoneNumber,
-        }}
-      />
+      <div>
+        {storeData && (
+          <RenderBuilderContent content={storeData} model="store-data" />
+        )}
+      </div>
+      {storeLocations && (
+        <RenderBuilderContent
+          content={storeLocations}
+          model="store-locations"
+          data={{
+            storeImage: storeData?.data?.storeImage,
+            storeLocation: storeData?.data?.location,
+            storeAddress: storeData?.data?.address,
+            storeAbbreviation: storeData?.data?.abbreviation,
+            storePhoneNumber: storeData?.data?.phoneNumber,
+          }}
+        />
+      )}
     </>
   );
 }
