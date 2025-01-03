@@ -22,7 +22,7 @@ export default async function Page(props: PageProps) {
         // Use the page path specified in the URL to fetch the content
         urlPath: "/" + (props?.params?.page?.join("/") || ""),
         locale,
-        loggedIn: true
+        loggedIn: true,
       },
       locale
     })
@@ -32,7 +32,7 @@ export default async function Page(props: PageProps) {
   return (
     <>
       {/* Render the Builder page */}
-      <RenderBuilderContent locale={locale} content={content} model={builderModelName} options={{ enrich: true }} data={{username: "user@builder"}}/>
+      <RenderBuilderContent locale={locale} content={content} model={builderModelName} options={{ enrich: true }}/>
     </>
   );
 }
