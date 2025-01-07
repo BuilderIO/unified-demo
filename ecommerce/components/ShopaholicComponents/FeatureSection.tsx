@@ -138,7 +138,7 @@ export const FeatureSection: React.FC = () => {
   return (
     <SectionContainer>
       <ContentWrapper>
-        <SectionTitle>WHAT'S DIFFERENT ABOUT SHOPAHOLIC</SectionTitle>
+        <SectionTitle>WHAT&apos;S DIFFERENT ABOUT SHOPAHOLIC</SectionTitle>
         <FeatureGrid>
           {features.map((feature, index) => (
             <FeatureItem key={index}>
