@@ -1,9 +1,7 @@
 "use client";
 import "@builder.io/widgets";
 import { builder, Builder, withChildren } from "@builder.io/react";
-import Accordion from "./components/Accordion/accordion";
 import { Button } from "./components/ui/button";
-import CloudinaryImage from "./components/Blocks/CloudinaryImage";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
@@ -12,8 +10,6 @@ import ImageHero from "./components/Hero/ImageHero";
 import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
-import UpsellPopup from "./components/Popup/UpsellPopup";
-import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -105,13 +101,6 @@ if (Builder.isBrowser) {
     });
   }
 }
-
-Builder.registerComponent(AlgoliaSearchBox, {
-  name: "AlgoliaSearchBox",
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F03b586220c6c453cbbb24f329b2b9c15",
-  inputs: [],
-});
 
 Builder.register("insertMenu", {
   name: "Popups",
@@ -476,70 +465,3 @@ Builder.registerComponent(Collection, {
   ],
 });
 
-Builder.registerComponent(UpsellPopup, {
-  name: "UpsellPopup",
-  image:
-    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2Fec614fc3c6674967a2368226efcf62b9",
-  inputs: [
-    { name: "title", type: "string", defaultValue: "Special Offer" },
-    { name: "subTitle", type: "string", defaultValue: "Save up to 50%" },
-    { name: "delay", type: "number", defaultValue: 1000 },
-    {
-      name: "discountLabel",
-      type: "string",
-      defaultValue: "Select your discount:",
-    },
-    {
-      name: "discounts",
-      type: "list",
-      subFields: [
-        { name: "label", type: "string" },
-        { name: "icon", type: "file" },
-        { name: "iconAlt", type: "string" },
-      ],
-    },
-    {
-      name: "imageSrc",
-      type: "file",
-      defaultValue:
-        "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F692369ff646645349e68a86b43fc7a38",
-    },
-    { name: "imageAlt", type: "string", defaultValue: "Promotional Image" },
-  ],
-});
-
-Builder.registerComponent(CloudinaryImage, {
-  name: "CloudinaryImage",
-  image:
-    "https://res.cloudinary.com/cloudinary-marketing/image/upload/v1599098500/creative_source/Logo/Cloud%20Glyph/cloudinary_cloud_glyph_blue_png.png",
-  inputs: [
-    {
-      name: "cloudinaryOptions",
-      type: "cloudinaryImageEditor",
-    },
-  ],
-});
-
-Builder.registerComponent(Accordion, {
-  name: "Accordion",
-  image: 'https://cdn.builder.io/api/v1/image/assets%2FagZ9n5CUKRfbL9t6CaJOyVSK4Es2%2Ffab6c1fd3fe542408cbdec078bca7f35',
-  inputs: [
-    {
-      name: "items",
-      type: "list",
-      subFields: [
-        { name: "title", type: "string", defaultValue: "Accordion Title" },
-        {
-          name: "content",
-          type: "longText",
-          defaultValue: "Accordion Content",
-        },
-      ],
-      defaultValue: [
-        { title: "Sample Title 1", content: "Sample Content 1" },
-        { title: "Sample Title 2", content: "Sample Content 2" },
-        { title: "Sample Title 3", content: "Sample Content 3" },
-      ],
-    },
-  ],
-});
