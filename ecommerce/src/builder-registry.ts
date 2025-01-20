@@ -19,7 +19,7 @@ builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 Builder.register("editor.settings", {
   styleStrictMode: false,
-  allowOverridingTokens: true, // optional
+  allowOverridingTokens: false, // optional
   designTokens: {
     colors: [
       { name: "Primary", value: "var(--color-primary, #000000)" },
