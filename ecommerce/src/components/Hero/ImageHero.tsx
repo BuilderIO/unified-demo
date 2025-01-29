@@ -44,8 +44,8 @@ const ImageHero: React.FC<ImageHeroProps> = ({
             <h2 className="mt-6 text-2xl tracking-[5.25px] max-md:max-w-full font-medium">
               {title}
             </h2>
-            <p className="mt-2 text-xl leading-9 max-md:max-w-full" dangerouslySetInnerHTML={{ __html: subTitle || "" }}>
-            </p>
+            <div className="mt-2 text-xl leading-9 max-md:max-w-full" dangerouslySetInnerHTML={{ __html: subTitle || "" }}>
+            </div>
           </div>
           <Button className="flex flex-col justify-center mt-8 max-w-full w-[134px]" variant="secondary" size="lg" asChild>
             <Link href={buttonLink}>{buttonText}</Link>
