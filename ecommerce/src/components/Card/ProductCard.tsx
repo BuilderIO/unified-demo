@@ -2,6 +2,7 @@ import ShopifyProduct from "@/src/components/ShopifyProduct/ShopifyProduct";
 import CommercetoolsProduct from "../CommercetoolsProduct/CommercetoolsProduct";
 import ProductBox from "../ui/productBox";
 import SwellProduct from "../SwellProduct/SwellProduct";
+import EmporixProduct from "../EmporixProduct/EmporixProduct";
 
 interface ProductCardProps {
   product: any;
@@ -10,6 +11,7 @@ interface ProductCardProps {
   shopifyProductHandle?: string;
   swellProductHandle?: string;
   commercetoolsProduct?: any;
+  emporixProductHandle?: string;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -19,6 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   shopifyProductHandle,
   commercetoolsProduct,
   swellProductHandle,
+  emporixProductHandle,
 }) => {
   if (dataSource === "Builder" && !product) {
     return <h3>Please select a product</h3>;
@@ -36,6 +39,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
     return <h3>Please select a Commercetools product</h3>;
   }
 
+  if (dataSource === "Emporix" && !emporixProductHandle) {
+    return <h3>Product handle is required for Emporix products.</h3>;
+  }
 
   return (
     <div
@@ -57,6 +63,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
       )}
       {dataSource === "Commercetools" && (
         <CommercetoolsProduct commercetoolsProduct={commercetoolsProduct} />
+      )}
+      {dataSource === "Emporix" && (
+        <EmporixProduct
+          emporixProductHandle={
+            emporixProductHandle ? emporixProductHandle : product?.handle
+          }
+        />
       )}
       {(dataSource === "Builder" || dataSource === "Shopstyle") && (
         <ProductBox productData={product} dataSource={dataSource} />
