@@ -2,6 +2,7 @@
 import "@builder.io/widgets";
 import { builder, Builder, withChildren } from "@builder.io/react";
 import Accordion from "./components/Accordion/accordion";
+import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 import { Button } from "./components/ui/button";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
 import { Collection } from "./components/Collection/Collection";
@@ -13,7 +14,6 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
-import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -100,7 +100,7 @@ if (Builder.isBrowser) {
       items: [
         { name: "CloudinaryImage" },
         { name: "Core:Button" },
-        { name: "Counter" }
+        { name: "Counter" },
       ],
     });
   }
@@ -129,7 +129,6 @@ Builder.registerComponent(Counter, {
     },
   ],
 });
-
 
 Builder.registerComponent(SplitHero, {
   name: "SplitHero",
@@ -290,7 +289,7 @@ Builder.registerComponent(ProductCard, {
     {
       name: "dataSource",
       type: "text",
-      enum: ["Shopify", "Commercetools", "Builder", "Swell"],
+      enum: ["Shopify", "Commercetools", "Builder", "Swell", "Emporix"],
       defaultValue: "Builder",
     },
     {
@@ -332,6 +331,15 @@ Builder.registerComponent(ProductCard, {
       required: true,
       showIf: function (options: any) {
         return options.get("dataSource") === "Commercetools";
+      },
+    },
+    {
+      name: "emporixProductHandle",
+      friendlyName: "Emporix Product",
+      type: "EmporixProductHandle",
+      required: true,
+      showIf: function (options: any) {
+        return options.get("dataSource") === "Emporix";
       },
     },
   ],
@@ -398,10 +406,10 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
       type: "uiBlocks",
       hideFromUI: true,
       defaultValue: [],
-      onChange: (options:any) => {
+      onChange: (options: any) => {
         const items = options.get("childBlocks");
         if (Array.isArray(items) && items.length > 3) {
-          options.set("childBlocks", items.slice(0, 3))
+          options.set("childBlocks", items.slice(0, 3));
           alert("You can add maximum 3 items");
         }
       },
@@ -522,7 +530,8 @@ Builder.registerComponent(CloudinaryImage, {
 
 Builder.registerComponent(Accordion, {
   name: "Accordion",
-  image: 'https://cdn.builder.io/api/v1/image/assets%2FagZ9n5CUKRfbL9t6CaJOyVSK4Es2%2Ffab6c1fd3fe542408cbdec078bca7f35',
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2FagZ9n5CUKRfbL9t6CaJOyVSK4Es2%2Ffab6c1fd3fe542408cbdec078bca7f35",
   inputs: [
     {
       name: "items",
