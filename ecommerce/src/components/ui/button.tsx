@@ -48,7 +48,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button";
 
     // Filter out Builder.io specific props that shouldn't be passed to DOM
-    const { openLinkInNewTab, openlinkinnewtab, ...htmlProps } = props as any;
+    const {
+      openLinkInNewTab,
+      openlinkinnewtab,
+      builderState,
+      builderBlock,
+      ...htmlProps
+    } = props as any;
 
     return (
       <Comp
