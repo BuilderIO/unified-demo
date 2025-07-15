@@ -114,7 +114,11 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
             </div>
           </div>
         </div>
-        <Pagination />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       </div>
     </div>
   );
