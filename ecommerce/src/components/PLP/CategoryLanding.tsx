@@ -86,10 +86,13 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
             <div className="flex flex-col max-sm:w-full">
               <div className="flex flex-col grow md:max-w-full">
                 <div className="flex flex-row flex-wrap gap-3 justify-center items-start md:max-w-full">
-                  {products.map((product: any, index: any) => {
-                    return index === 3 && plpTiles.length ? (
+                  {currentProducts.map((product: any, index: any) => {
+                    const originalIndex = startIndex + index;
+                    return originalIndex === 3 &&
+                      plpTiles.length &&
+                      currentPage === 1 ? (
                       <div
-                        key={`${index}-ad-tile`}
+                        key={`${originalIndex}-ad-tile`}
                         className="flex flex-col text-base tracking-wider text-center box-border relative basis-1/2-gap-3 lg:basis-1/3-gap-3 shrink-1 grow-1"
                       >
                         <RenderBuilderContent
@@ -99,7 +102,7 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
                       </div>
                     ) : (
                       <ProductCard
-                        key={index}
+                        key={originalIndex}
                         classes="box-border relative basis-1/2-gap-3 lg:basis-1/3-gap-3 shrink-1 grow-1"
                         product={product}
                         dataSource="Builder"
