@@ -23,7 +23,7 @@ const ProductBox: React.FC<ProductBoxProps> = ({ productData, dataSource }) => {
           loading="lazy"
         />
       </div>
-      <div className="flex flex-col mt-5 w-full">
+      <div className="flex flex-col mt-3 w-full">
         <div className="flex gap-5 justify-between w-full text-black text-left">
           <div className="text-ellipsis overflow-hidden break-words">
             {product?.productName}
