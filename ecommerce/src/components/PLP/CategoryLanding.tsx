@@ -29,6 +29,18 @@ const CategoryLanding: FC<CategoryLandingProps> = ({ products, plpTiles }) => {
 
   const PRODUCTS_PER_PAGE = 6;
 
+  // Calculate pagination
+  const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
+  const endIndex = startIndex + PRODUCTS_PER_PAGE;
+  const currentProducts = products.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Scroll to top of product list when page changes
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="box-border flex relative flex-col shrink-0">
       <div className="flex flex-col mt-4 w-full md:px-5 md:mt-10 md:max-w-full">
