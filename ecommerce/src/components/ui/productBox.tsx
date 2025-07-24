@@ -14,16 +14,16 @@ const ProductBox: React.FC<ProductBoxProps> = ({ productData, dataSource }) => {
 
   return (
     <a href={`/product/${product?.handle}`}>
-      <div className="w-[200px] h-[300px] border border-zinc-300 rounded-md overflow-hidden relative">
+      <div className="w-full aspect-[2/3] border border-zinc-300 rounded-md overflow-hidden relative flex flex-col">
         <Image
           src={product?.images?.[0]?.image}
           alt={product?.images?.[0]?.altText}
           fill={true}
-          objectFit={dataSource==="Shopstyle" ? "contain" : "cover"}
+          objectFit={dataSource === "Shopstyle" ? "contain" : "cover"}
           loading="lazy"
         />
       </div>
-      <div className="flex flex-col mt-5 w-full">
+      <div className="flex flex-col mt-3 w-full">
         <div className="flex gap-5 justify-between w-full text-black text-left">
           <div className="text-ellipsis overflow-hidden break-words">
             {product?.productName}
