@@ -32,7 +32,12 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
             checked={selectedCategories.includes(category)}
             onCheckedChange={() => handleCategoryChange(category)}
           />
-          <label htmlFor={category.toLowerCase()}>{category}</label>
+          <label
+            htmlFor={category.toLowerCase()}
+            style={{ fontWeight: category === 'Jackets' ? '800' : '400' }}
+          >
+            {category}
+          </label>
         </div>
       ))}
     </>
