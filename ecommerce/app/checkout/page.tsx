@@ -152,10 +152,34 @@ export default function CheckoutPage() {
 
           {/* Payment Form */}
           <div className="lg:order-1">
-            {clientSecret && stripePromise ? (
+            {clientSecret && !demoMode && stripePromise ? (
               <Elements options={stripeOptions} stripe={stripePromise}>
                 <CheckoutForm />
               </Elements>
+            ) : demoMode ? (
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <h3 className="text-lg font-medium mb-2">🎭 Demo Mode</h3>
+                <p className="text-gray-600 mb-4">
+                  This is a demonstration of the checkout flow. Payment processing is simulated.
+                </p>
+                <div className="space-y-4">
+                  <div className="bg-white p-4 rounded border">
+                    <h4 className="font-medium mb-2">Demo Payment</h4>
+                    <p className="text-sm text-gray-600 mb-3">
+                      In a real implementation, this would process the payment through Stripe.
+                    </p>
+                    <button
+                      className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+                      onClick={() => window.location.href = '/checkout/success?demo=true'}
+                    >
+                      Complete Demo Payment
+                    </button>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-500 mt-4">
+                  To enable real payments, configure valid Stripe API keys in the environment variables.
+                </p>
+              </div>
             ) : (
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
                 <h3 className="text-lg font-medium mb-2">Payment Configuration Required</h3>
