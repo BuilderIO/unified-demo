@@ -192,7 +192,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
   const [selectedColor, setSelectedColor] = useState(product?.data?.colors?.[0]?.label || null);
   const [selectedSize, setSelectedSize] = useState(product?.data?.sizes?.[0]?.label || null);
   const [selectedImage, setSelectedImage] = useState(product?.data?.images?.[0]);
-  const { addItem } = useCartStore();
+  const [isAdding, setIsAdding] = useState(false);
+  const { addItem, setCartOpen } = useCartStore();
   
   
   return (
