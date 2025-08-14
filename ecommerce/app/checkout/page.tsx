@@ -122,10 +122,20 @@ export default function CheckoutPage() {
 
           {/* Payment Form */}
           <div className="lg:order-1">
-            {clientSecret && (
+            {clientSecret && stripePromise ? (
               <Elements options={stripeOptions} stripe={stripePromise}>
                 <CheckoutForm />
               </Elements>
+            ) : (
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                <h3 className="text-lg font-medium mb-2">Payment Configuration Required</h3>
+                <p className="text-gray-600 mb-4">
+                  Payment processing is not fully configured. This is a demo checkout page.
+                </p>
+                <p className="text-sm text-gray-500">
+                  To enable real payments, configure your Stripe API keys in the environment variables.
+                </p>
+              </div>
             )}
           </div>
         </div>
