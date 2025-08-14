@@ -11,7 +11,9 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
 // Initialize Stripe (replace with your public key)
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
+const stripePromise = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+  ? loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+  : null;
 
 export default function CheckoutPage() {
   const { items, getTotalPrice, getTotalItems } = useCartStore();
