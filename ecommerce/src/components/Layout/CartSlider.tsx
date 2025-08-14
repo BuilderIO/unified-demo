@@ -22,11 +22,13 @@ type CartSliderProps = {
   const {
     items,
     isOpen,
+    hasHydrated,
     setCartOpen,
     removeItem,
     updateQuantity,
     getTotalPrice,
-    getTotalItems
+    getTotalItems,
+    setHasHydrated
   } = useCartStore();
   const router = useRouter();
 
