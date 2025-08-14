@@ -62,7 +62,7 @@ type CartSliderProps = {
           {items.length === 0 ? (
             <div className="flex-1 flex items-center justify-center">
               <div className="text-center">
-                <IoCartOutline className="h-16 w-16 mx-auto text-gray-300 mb-4" />
+                <ShoppingCart className="h-16 w-16 mx-auto text-gray-300 mb-4" />
                 <p className="text-gray-500 mb-4">Your cart is empty</p>
                 <Button onClick={() => setCartOpen(false)}>
                   Continue Shopping
