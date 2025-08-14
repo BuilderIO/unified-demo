@@ -315,8 +315,10 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
                     <div className="flex flex-col ml-5 w-full max-md:ml-0 max-md:w-full">
                   <Button
                     className="grow justify-center items-center px-5 py-4 mt-16 w-full text-lg font-semibold text-white bg-black tracking-[3.78px] max-md:mt-10 max-md:max-w-full"
-                    onClick={() => {
-                      if (!productData) return;
+                    onClick={async () => {
+                      if (!productData || isAdding) return;
+
+                      setIsAdding(true);
 
                       const cartItem = {
                         id: productData.id || productData.handle || Math.random().toString(36).substring(7),
@@ -330,9 +332,16 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
 
                       addItem(cartItem);
                       console.log("Added to cart:", cartItem);
+
+                      // Brief delay for user feedback, then open cart
+                      setTimeout(() => {
+                        setIsAdding(false);
+                        setCartOpen(true);
+                      }, 300);
                     }}
+                    disabled={isAdding}
                   >
-                    ADD TO CART
+                    {isAdding ? 'ADDING...' : 'ADD TO CART'}
                   </Button>
                 </div>
                   </div>
