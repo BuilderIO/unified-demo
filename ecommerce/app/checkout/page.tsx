@@ -41,6 +41,12 @@ export default function CheckoutPage() {
           }),
         });
 
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Payment API error:', response.status, errorText);
+          return;
+        }
+
         const data = await response.json();
         if (data.error) {
           console.error('Payment configuration error:', data.error);
