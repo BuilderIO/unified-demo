@@ -110,7 +110,7 @@ const ImageSelector: FC<ImageSelectorProps> = ({
         className="flex align-center cursor-pointer">
           <img
             src={option.image}
-            alt={option.altText}
+            alt={option.altText || "Product image thumbnail"}
           />
         </Label>
       </div>
