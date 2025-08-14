@@ -168,12 +168,20 @@ export default function CheckoutPage() {
                     <p className="text-sm text-gray-600 mb-3">
                       In a real implementation, this would process the payment through Stripe.
                     </p>
-                    <button
-                      className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
-                      onClick={() => window.location.href = '/checkout/success?demo=true'}
-                    >
-                      Complete Demo Payment
-                    </button>
+                    <div className="grid grid-cols-2 gap-3">
+                      <button
+                        className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition-colors"
+                        onClick={() => window.location.href = '/checkout/success?demo=true'}
+                      >
+                        Demo Payment Success
+                      </button>
+                      <button
+                        className="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 transition-colors"
+                        onClick={() => window.location.href = '/checkout/success?demo=true&failed=true'}
+                      >
+                        Demo Payment Fail
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 mt-4">
