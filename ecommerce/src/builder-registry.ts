@@ -525,6 +525,12 @@ Builder.registerComponent(CloudinaryImage, {
       name: "cloudinaryOptions",
       type: "cloudinaryImageEditor",
     },
+    {
+      name: "altText",
+      type: "string",
+      friendlyName: "Alt Text",
+      helperText: "Alternative text for accessibility",
+    },
   ],
 });
 
