@@ -49,7 +49,7 @@ type CartSliderProps = {
     <Sheet open={isOpen} onOpenChange={setCartOpen}>
         <SheetTrigger asChild>
         <Button variant="link" className="flex items-center gap-1">
-            {totalItems > 0 && (
+            {hasHydrated && totalItems > 0 && (
               <Badge
                 variant="destructive"
                 className="h-4 w-4 rounded-full p-0 flex items-center justify-center text-xs"
