@@ -21,14 +21,6 @@ if (stripeSecretKey && !isDemoMode) {
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if Stripe is configured
-    if (!stripe) {
-      return NextResponse.json(
-        { error: 'Payment processing is not configured. Please add Stripe API keys.' },
-        { status: 503 }
-      );
-    }
-
     const { amount, currency = 'usd', items } = await request.json();
 
     // Validate the request
@@ -36,6 +28,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Amount must be at least 50 cents' },
         { status: 400 }
+      );
+    }
+
+    // Demo mode - return a fake client secret for testing
+    if (isDemoMode) {
+      console.log('Demo mode: Creating fake payment intent for amount:', amount);
+      return NextResponse.json({
+        clientSecret: 'pi_demo_1234567890_secret_demo123',
+        demoMode: true,
+      });
+    }
+
+    // Real Stripe mode
+    if (!stripe) {
+      return NextResponse.json(
+        { error: 'Payment processing is not configured. Please add valid Stripe API keys.' },
+        { status: 503 }
       );
     }
 
@@ -61,6 +70,16 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error creating payment intent:', error);
+
+    // If Stripe error, fall back to demo mode
+    if (error instanceof Error && error.message.includes('Invalid API Key')) {
+      console.log('Invalid Stripe key detected, falling back to demo mode');
+      return NextResponse.json({
+        clientSecret: 'pi_demo_1234567890_secret_demo123',
+        demoMode: true,
+      });
+    }
+
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
