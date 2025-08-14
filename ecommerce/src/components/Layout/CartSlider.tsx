@@ -62,7 +62,7 @@ type CartSliderProps = {
         </SheetTrigger>
         <SheetContent side="right" className="w-[400px] sm:w-[540px]">
         <SheetHeader>
-            <SheetTitle>Shopping Cart ({totalItems} items)</SheetTitle>
+            <SheetTitle>Shopping Cart ({hasHydrated ? totalItems : 0} items)</SheetTitle>
         </SheetHeader>
 
         <div className="flex flex-col h-full">
