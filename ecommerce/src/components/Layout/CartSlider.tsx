@@ -33,6 +33,10 @@ type CartSliderProps = {
   } = useCartStore();
   const router = useRouter();
 
+  useEffect(() => {
+    setHasHydrated(true)
+  }, [setHasHydrated])
+
   const handleCheckout = () => {
     setCartOpen(false);
     router.push('/checkout');
