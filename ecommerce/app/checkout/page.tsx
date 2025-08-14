@@ -13,10 +13,18 @@ import { ArrowLeft } from 'lucide-react';
 // Initialize Stripe (replace with your public key)
 const getStripePromise = () => {
   const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+  const isDemoMode = !publishableKey || publishableKey.startsWith('pk_test_demo_') || publishableKey.includes('demo');
+
+  if (isDemoMode) {
+    console.log('Running in demo mode - Stripe will be simulated');
+    return null;
+  }
+
   if (!publishableKey) {
     console.warn('NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY not configured');
     return null;
   }
+
   try {
     return loadStripe(publishableKey);
   } catch (error) {
