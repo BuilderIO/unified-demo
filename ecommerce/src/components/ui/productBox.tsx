@@ -17,7 +17,7 @@ const ProductBox: React.FC<ProductBoxProps> = ({ productData, dataSource }) => {
       <div className="w-[200px] h-[300px] border border-zinc-300 rounded-md overflow-hidden relative">
         <Image
           src={product?.images?.[0]?.image}
-          alt={product?.images?.[0]?.altText}
+          alt={product?.images?.[0]?.altText || product?.productName || "Product image"}
           fill={true}
           objectFit={dataSource==="Shopstyle" ? "contain" : "cover"}
           loading="lazy"
