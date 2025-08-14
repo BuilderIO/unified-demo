@@ -315,7 +315,20 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
                   <Button
                     className="grow justify-center items-center px-5 py-4 mt-16 w-full text-lg font-semibold text-white bg-black tracking-[3.78px] max-md:mt-10 max-md:max-w-full"
                     onClick={() => {
-                      console.log("Add to cart clicked");
+                      if (!productData) return;
+
+                      const cartItem = {
+                        id: productData.id || productData.handle || Math.random().toString(36).substring(7),
+                        name: productData.productName || productData.title || 'Product',
+                        price: parseFloat(productData.price || '0'),
+                        image: selectedImage?.image || productData.images?.[0]?.image || '',
+                        size: selectedSize || undefined,
+                        color: selectedColor || undefined,
+                        handle: productData.handle || productData.id,
+                      };
+
+                      addItem(cartItem);
+                      console.log("Added to cart:", cartItem);
                     }}
                   >
                     ADD TO CART
