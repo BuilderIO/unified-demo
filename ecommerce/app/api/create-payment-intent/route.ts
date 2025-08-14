@@ -13,6 +13,14 @@ const stripe = stripeSecretKey ? new Stripe(stripeSecretKey, {
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if Stripe is configured
+    if (!stripe) {
+      return NextResponse.json(
+        { error: 'Payment processing is not configured. Please add Stripe API keys.' },
+        { status: 503 }
+      );
+    }
+
     const { amount, currency = 'usd', items } = await request.json();
 
     // Validate the request
