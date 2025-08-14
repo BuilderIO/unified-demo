@@ -28,7 +28,36 @@ interface CartStore {
 export const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
-      items: [],
+      items: [
+        {
+          id: 'checker-fleece',
+          name: 'Checker Fleece',
+          price: 92,
+          quantity: 1,
+          image: 'https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F8ce3d904a49f4e2f937ae836eb03904f',
+          size: 'M',
+          color: 'Soft Blue',
+          handle: 'checker-fleece',
+        },
+        {
+          id: 'fog-linen-jacket',
+          name: 'Fog Linen Jacket',
+          price: 134,
+          quantity: 2,
+          image: 'https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F846994000b344f70aa99ed4edf7b670b',
+          size: 'L',
+          color: 'Soft Blue',
+          handle: 'fog-linen-jacket',
+        },
+        {
+          id: 'angular-sunglasses',
+          name: 'Angular Sunglasses',
+          price: 31,
+          quantity: 1,
+          image: 'https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F355e4b1dcfe04b5081a3e5fd72cd8ee9',
+          handle: 'angular-sunglasses',
+        },
+      ],
       isOpen: false,
       
       addItem: (item) =>
