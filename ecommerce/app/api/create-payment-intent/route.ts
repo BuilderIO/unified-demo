@@ -2,14 +2,22 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const isDemoMode = !stripeSecretKey || stripeSecretKey.startsWith('sk_test_demo_') || stripeSecretKey.includes('demo');
 
-if (!stripeSecretKey) {
-  console.warn('STRIPE_SECRET_KEY not configured. Stripe payments will not work.');
+if (isDemoMode) {
+  console.log('Running in demo mode - Stripe payments will be simulated');
 }
 
-const stripe = stripeSecretKey ? new Stripe(stripeSecretKey, {
-  apiVersion: '2024-12-18.acacia',
-}) : null;
+let stripe: Stripe | null = null;
+if (stripeSecretKey && !isDemoMode) {
+  try {
+    stripe = new Stripe(stripeSecretKey, {
+      apiVersion: '2024-12-18.acacia',
+    });
+  } catch (error) {
+    console.error('Failed to initialize Stripe:', error);
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
