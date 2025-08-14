@@ -8,6 +8,7 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { rgbaToHex, capitalizeWord } from "@/lib/utils";
 import { BuilderContent } from "@builder.io/react";
+import { useCartStore } from '@/src/store/cartStore';
 import Link from 'next/link';
 
 type ColorOption = {
