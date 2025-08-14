@@ -42,7 +42,12 @@ export default function CheckoutPage() {
         });
 
         const data = await response.json();
-        setClientSecret(data.clientSecret);
+        if (data.error) {
+          console.error('Payment configuration error:', data.error);
+          // Still set loading to false so user can see the cart
+        } else {
+          setClientSecret(data.clientSecret);
+        }
       } catch (error) {
         console.error('Error creating payment intent:', error);
       } finally {
