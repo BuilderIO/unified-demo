@@ -39,6 +39,7 @@ export default function CheckoutPage() {
   const { items, getTotalPrice, getTotalItems } = useCartStore();
   const [clientSecret, setClientSecret] = useState<string>('');
   const [loading, setLoading] = useState(true);
+  const [demoMode, setDemoMode] = useState(false);
 
   // Create payment intent when component mounts
   useEffect(() => {
