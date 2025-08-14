@@ -8,6 +8,7 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { rgbaToHex, capitalizeWord } from "@/lib/utils";
 import { BuilderContent } from "@builder.io/react";
+import { useCartStore } from '@/src/store/cartStore';
 import Link from 'next/link';
 
 type ColorOption = {
@@ -109,7 +110,7 @@ const ImageSelector: FC<ImageSelectorProps> = ({
         className="flex align-center cursor-pointer">
           <img
             src={option.image}
-            alt={option.altText}
+            alt={option.altText || "Product image thumbnail"}
           />
         </Label>
       </div>
@@ -191,6 +192,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
   const [selectedColor, setSelectedColor] = useState(product?.data?.colors?.[0]?.label || null);
   const [selectedSize, setSelectedSize] = useState(product?.data?.sizes?.[0]?.label || null);
   const [selectedImage, setSelectedImage] = useState(product?.data?.images?.[0]);
+  const [isAdding, setIsAdding] = useState(false);
+  const { addItem, setCartOpen } = useCartStore();
   
   
   return (
@@ -216,7 +219,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
                 <div className="flex flex-col max-md:ml-0 md:w-1/2 w-full lg:max-h-80 relative">
                   <ProductImage
                     src={selectedImage?.image}
-                    alt={selectedImage?.altText || ''}
+                    alt={selectedImage?.altText || 'Product image'}
                     className="border border-solid aspect-auto h-full border-zinc-300 max-md:max-w-full object-cover"
                   />
                    <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full mt-5">
@@ -312,11 +315,33 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
                     <div className="flex flex-col ml-5 w-full max-md:ml-0 max-md:w-full">
                   <Button
                     className="grow justify-center items-center px-5 py-4 mt-16 w-full text-lg font-semibold text-white bg-black tracking-[3.78px] max-md:mt-10 max-md:max-w-full"
-                    onClick={() => {
-                      console.log("Add to cart clicked");
+                    onClick={async () => {
+                      if (!productData || isAdding) return;
+
+                      setIsAdding(true);
+
+                      const cartItem = {
+                        id: productData.id || productData.handle || Math.random().toString(36).substring(7),
+                        name: productData.productName || productData.title || 'Product',
+                        price: parseFloat(productData.price || '0'),
+                        image: selectedImage?.image || productData.images?.[0]?.image || '',
+                        size: selectedSize || undefined,
+                        color: selectedColor || undefined,
+                        handle: productData.handle || productData.id,
+                      };
+
+                      addItem(cartItem);
+                      console.log("Added to cart:", cartItem);
+
+                      // Brief delay for user feedback, then open cart
+                      setTimeout(() => {
+                        setIsAdding(false);
+                        setCartOpen(true);
+                      }, 300);
                     }}
+                    disabled={isAdding}
                   >
-                    ADD TO CART
+                    {isAdding ? 'ADDING...' : 'ADD TO CART'}
                   </Button>
                 </div>
                   </div>

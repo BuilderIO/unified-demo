@@ -35,7 +35,7 @@ const ImageHero: React.FC<ImageHeroProps> = ({
       <img
         loading="lazy"
         src={backgroundImage}
-        alt=""
+        alt={title ? `Hero image for ${title}` : "Hero background image"}
         className="object-cover absolute inset-0 size-full"
       />
       <div className={`flex relative flex-col justify-center md:px-16 py-20 max-w-full md:w-2/3 max-md:px-5 items-center text-center ${alignmentClasses[alignment]}`}>

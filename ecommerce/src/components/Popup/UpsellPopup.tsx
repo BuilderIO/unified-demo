@@ -51,7 +51,7 @@ const UpsellPopup: React.FC<UpsellPopupProps> = ({ title, subTitle, discounts = 
                 {discount.icon && (
                   <NextImage
                     src={discount.icon}
-                    alt={discount.iconAlt || ''}
+                    alt={discount.iconAlt || 'Discount icon'}
                     width={30}
                     height={30}
                     className="ml-2"
