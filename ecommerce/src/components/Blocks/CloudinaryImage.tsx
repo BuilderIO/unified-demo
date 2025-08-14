@@ -9,6 +9,7 @@ const CloudinaryImage = (props: any) => {
           src={props.cloudinaryOptions.url}
           width={props.cloudinaryOptions.width}
           height={props.cloudinaryOptions.height}
+          alt={props.cloudinaryOptions.alt || props.cloudinaryOptions.title || "Image"}
         />
       )
 }
