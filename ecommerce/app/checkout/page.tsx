@@ -74,6 +74,9 @@ export default function CheckoutPage() {
           // Still set loading to false so user can see the cart
         } else {
           setClientSecret(data.clientSecret);
+          if (data.demoMode) {
+            setDemoMode(true);
+          }
         }
       } catch (error) {
         console.error('Error creating payment intent:', error);
