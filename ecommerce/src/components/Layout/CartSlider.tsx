@@ -1,5 +1,5 @@
 "use client"
-import { IoCartOutline } from 'react-icons/io5'
+import { ShoppingCart } from 'lucide-react'
 import { Button } from "../ui/button"
 import { Badge } from "../ui/badge"
 import { Minus, Plus, Trash2 } from 'lucide-react'
