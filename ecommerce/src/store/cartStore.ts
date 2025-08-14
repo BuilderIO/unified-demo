@@ -89,7 +89,14 @@ export const useCartStore = create<CartStore>()(
         },
       ],
       isOpen: false,
-      
+      hasHydrated: false,
+
+      setHasHydrated: (state) => {
+        set({
+          hasHydrated: state
+        })
+      },
+
       addItem: (item) =>
         set((state) => {
           const existingItem = state.items.find(
