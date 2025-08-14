@@ -15,8 +15,17 @@ export default function CheckoutSuccessPage() {
   useEffect(() => {
     const paymentIntentId = searchParams.get('payment_intent');
     const redirectStatus = searchParams.get('redirect_status');
-    
-    if (redirectStatus === 'succeeded') {
+    const isDemo = searchParams.get('demo');
+    const demoFailed = searchParams.get('failed');
+
+    if (isDemo) {
+      // Demo mode - check if it's a failure demo
+      if (demoFailed === 'true') {
+        setPaymentStatus('failed');
+      } else {
+        setPaymentStatus('succeeded');
+      }
+    } else if (redirectStatus === 'succeeded') {
       setPaymentStatus('succeeded');
     } else if (redirectStatus === 'failed') {
       setPaymentStatus('failed');
