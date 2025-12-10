@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
 const BynderImage = (props: BynderImageProps) => {
   let description: string =
-    props.bynderAsset?.assets?.[0]?.description ?? 'Bynder Asset';
+    props.bynderAsset?.assets?.[0]?.description ?? "Bynder Asset";
   let asset =
     props.bynderAsset?.additionalInfo?.selectedFile ??
     props.bynderAsset?.assets?.[0]?.files?.webImage;
 
-  console.log({ description, asset, props });
+  // console.log({ description, asset, props });
   if (!props.bynderAsset || !asset) {
-    return 'Choose a Bynder Asset';
+    return "Choose a Bynder Asset";
   }
 
   return (
@@ -20,10 +20,10 @@ const BynderImage = (props: BynderImageProps) => {
       height={asset.height}
       alt={description}
       style={{
-        objectFit: props.imageFit ?? 'inherit',
+        objectFit: props.imageFit ?? "inherit",
         // to fix fitting in a flex parent
         minHeight: 0,
-        width: '100%',
+        width: "100%",
       }}
     />
   );
@@ -45,7 +45,7 @@ type AdditionalInfo = {
 };
 type BynderImageProps = {
   bynderAsset: { assets?: BaseAsset[]; additionalInfo?: AdditionalInfo };
-  imageFit: 'cover' | 'contain' | 'fill' | 'none';
+  imageFit: "cover" | "contain" | "fill" | "none";
 };
 
 interface BaseAsset extends Record<string, any> {

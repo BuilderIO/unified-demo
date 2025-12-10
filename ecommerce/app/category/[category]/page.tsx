@@ -33,7 +33,7 @@ export default async function CategoryPage(props: CategoryPageProps) {
       },
       locale: "en-US",
     });
-  console.log("DATA", productDetailsContent);
+  // console.log("DATA", productDetailsContent);
   return (
     <>
       {/* Render the Builder page */}
