@@ -1,6 +1,15 @@
-'use client'
+"use client";
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose, DialogPortal, DialogOverlay } from "@/src/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+  DialogPortal,
+  DialogOverlay,
+} from "@/src/components/ui/dialog";
 import { Button } from "@/src/components/ui/button";
 import NextImage from "next/image";
 
@@ -20,7 +29,15 @@ type UpsellPopupProps = {
   discountLabel: string;
 };
 
-const UpsellPopup: React.FC<UpsellPopupProps> = ({ title, subTitle, discounts = [], imageSrc, imageAlt, delay = 0, discountLabel }) => {
+const UpsellPopup: React.FC<UpsellPopupProps> = ({
+  title,
+  subTitle,
+  delay = 0,
+  discountLabel,
+  discounts = [],
+  imageSrc,
+  imageAlt,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -43,15 +60,20 @@ const UpsellPopup: React.FC<UpsellPopupProps> = ({ title, subTitle, discounts = 
               {subTitle}
             </DialogDescription>
           </DialogHeader>
-          <div className="text-center mt-4 mb-6 text-gray-500">{discountLabel}</div>
+          <div className="text-center mt-4 mb-6 text-gray-500">
+            {discountLabel}
+          </div>
           <div className="grid gap-4">
             {discounts.map((discount, index) => (
-              <Button key={index} className="bg-red-600 text-white w-full py-2 rounded-lg text-lg flex items-center justify-center hover:bg-red-700">
+              <Button
+                key={index}
+                className="bg-red-600 text-white w-full py-2 rounded-lg text-lg flex items-center justify-center hover:bg-red-700"
+              >
                 {discount.label}
                 {discount.icon && (
                   <NextImage
                     src={discount.icon}
-                    alt={discount.iconAlt || ''}
+                    alt={discount.iconAlt || ""}
                     width={30}
                     height={30}
                     className="ml-2"
@@ -61,13 +83,25 @@ const UpsellPopup: React.FC<UpsellPopupProps> = ({ title, subTitle, discounts = 
             ))}
           </div>
           <div className="text-center mt-6">
-            <Button variant="link" className="text-gray-500 hover:underline" onClick={() => setIsOpen(false)}>No thanks, I&apos;ll pay full-price</Button>
+            <Button
+              variant="link"
+              className="text-gray-500 hover:underline"
+              onClick={() => setIsOpen(false)}
+            >
+              No thanks, I&apos;ll pay full-price
+            </Button>
           </div>
           <div className="flex justify-center mt-4">
-            <NextImage src={imageSrc} alt={imageAlt} className="h-13 w-13" width={100} height={100} /> {/* Generic image */}
+            <NextImage
+              src={imageSrc}
+              alt={imageAlt}
+              className="h-13 w-13"
+              width={100}
+              height={100}
+            />{" "}
+            {/* Generic image */}
           </div>
-          <DialogClose asChild>
-          </DialogClose>
+          <DialogClose asChild></DialogClose>
         </DialogContent>
       </DialogPortal>
     </Dialog>
