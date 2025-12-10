@@ -204,6 +204,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
     product?.data?.images?.[0],
   );
 
+  // FIXME: the BuilderContent component is refetching this model again on the client, and getting the wrong one.
+
   return (
     <BuilderContent model="product-data" content={product}>
       {(productData) => {
@@ -211,9 +213,6 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
         const sizeOptions: SizeOption[] = productData?.sizes;
         const specificationDetails: SpecificationItem = productData?.details;
         const imageOptions: ImageOption[] = productData?.images;
-
-        console.log("Product Data:", productData);
-        console.log("Product Category:", productData?.category);
 
         return (
           <div className="flex flex-col mb-10">
