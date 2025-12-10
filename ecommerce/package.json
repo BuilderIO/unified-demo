@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@builder.io/dev-tools": "^1.5.0",
+    "@builder.io/dev-tools": "^1.6.32",
     "@builder.io/react": "^8.0.6",
     "@builder.io/react-hydration-overlay": "^0.3.0",
     "@builder.io/sdk": "^6.0.3",

@@ -7,6 +7,11 @@ interface ProductBoxProps {
 
 const ProductBox: React.FC<ProductBoxProps> = ({ productData, dataSource }) => {
   let product = productData?.data || productData?.value?.data;
+
+  if (!product?.images?.[0]?.image) {
+    console.error("[ProductBox] No image found to display");
+  }
+
   return (
     <a href={`/product/${product?.handle}`}>
       <div className="w-[200px] h-[300px] border border-zinc-300 rounded-md overflow-hidden relative">

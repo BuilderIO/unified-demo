@@ -2,6 +2,7 @@
 import "@builder.io/widgets";
 import { builder, Builder, withChildren } from "@builder.io/react";
 import Accordion from "./components/Accordion/accordion";
+import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 import { Button } from "./components/ui/button";
 import BynderImage from "./components/Blocks/BynderImage";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
@@ -14,7 +15,6 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
-import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 import CustomText from "./components/CustomText";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
@@ -292,7 +292,7 @@ Builder.registerComponent(ProductCard, {
     {
       name: "dataSource",
       type: "text",
-      enum: ["Shopify", "Commercetools", "Builder", "Swell"],
+      enum: ["Shopify", "Commercetools", "Builder", "Swell", "Emporix"],
       defaultValue: "Builder",
     },
     {
@@ -334,6 +334,15 @@ Builder.registerComponent(ProductCard, {
       required: true,
       showIf: function (options: any) {
         return options.get("dataSource") === "Commercetools";
+      },
+    },
+    {
+      name: "emporixProductHandle",
+      friendlyName: "Emporix Product",
+      type: "EmporixProductHandle",
+      required: true,
+      showIf: function (options: any) {
+        return options.get("dataSource") === "Emporix";
       },
     },
   ],
