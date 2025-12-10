@@ -212,15 +212,20 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
         const specificationDetails: SpecificationItem = productData?.details;
         const imageOptions: ImageOption[] = productData?.images;
 
+        console.log("Product Data:", productData);
+        console.log("Product Category:", productData?.category);
+
         return (
           <div className="flex flex-col mb-10">
             <div className="w-full max-md:max-w-full">
               <div className="flex gap-3 text-base text-neutral-400 m-2">
-                <Button variant="link" asChild>
-                  <Link href={`/category/${productData?.category}`}>
-                    {capitalizeWord(productData?.category)}
-                  </Link>
-                </Button>
+                {productData?.category && (
+                  <Button variant="link" asChild>
+                    <Link href={`/category/${productData?.category}`}>
+                      {capitalizeWord(productData?.category)}
+                    </Link>
+                  </Button>
+                )}
                 {productData?.subCategory && (
                   <Button variant="link" className="flex-auto my-auto">
                     / {capitalizeWord(productData?.subCategory)}
