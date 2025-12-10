@@ -1,22 +1,30 @@
-import { figmaMapping } from "@builder.io/dev-tools/figma";
-import ProductCard from "@/components/Card/ProductCard";
+import { figmaMapping, type BaseFigmaProps } from "@builder.io/dev-tools/figma";
+import ProductCard from "@/src/components/Card/ProductCard";
 
-const isProd = (process.env.NEXT_PUBLIC_BUILDER_API_KEY! === "a87584e551b6472fa0f0a2eb10f2c0ff")
-const defaultProductID = `${isProd ? "" : process.env.NEXT_PUBLIC_BUILDER_API_KEY!+"_"}b0196147be5d4e6388bbdff62ee3ae7d`;
+// ❖ ProductCard
+interface FigmaProductCardProps extends BaseFigmaProps {
+  exampleProduct?: {
+    "@type": "@builder.io/core:Reference";
+    id: string;
+    model: string;
+  }
+}
 
 figmaMapping({
   componentKey: "d2f114400698059ab75be459a13d26a99d85f47b",
-  mapper(figma) {
+  mapper(figma: FigmaProductCardProps) {
+    const exampleProduct = figma.exampleProduct ?? {
+      "@type": "@builder.io/core:Reference",
+      id: "50b344f9116e4820a020e382058146e0_088c35a5a6914ac68b99a4ea12abba6a",
+      model: "product-data",
+    };
+    
     return (
       <ProductCard
-        product={""}
-        dataSource={"Builder"}
-        shopifyProductHandle={
-          figma.$children[1]?.$children[1]?.$textContent
-            ?.toLowerCase()
-            .replace(/\s+/g, "-") ?? ""
-        }
-        commercetoolsProduct={''}
+        commercetoolsProduct=""
+        dataSource="Builder"
+        product={exampleProduct}
+        shopifyProductHandle=""
       />
     );
   },
