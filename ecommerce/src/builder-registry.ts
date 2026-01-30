@@ -4,6 +4,7 @@ import { builder, Builder, withChildren } from "@builder.io/react";
 import Accordion from "./components/Accordion/accordion";
 import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 import { Button } from "./components/ui/button";
+import BynderImage from "./components/Blocks/BynderImage";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
@@ -14,6 +15,7 @@ import ProductCard from "./components/Card/ProductCard";
 import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
+import CustomText from "./components/CustomText";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -99,6 +101,7 @@ if (Builder.isBrowser) {
       name: "Blocks",
       items: [
         { name: "CloudinaryImage" },
+        { name: "BynderImage" },
         { name: "Core:Button" },
         { name: "Counter" },
       ],
@@ -528,6 +531,24 @@ Builder.registerComponent(CloudinaryImage, {
   ],
 });
 
+Builder.registerComponent(BynderImage, {
+  name: "BynderImage",
+  friendlyName: "Custom Image Using Bynder",
+  image: "https://unpkg.com/css.gg@2.0.0/icons/svg/image.svg",
+  inputs: [
+    {
+      name: "bynderAsset",
+      type: "BynderAsset",
+    },
+    {
+      name: "imageFit",
+      type: "string",
+      defaultValue: "cover",
+      enum: ["cover", "contain", "fill", "none"],
+    },
+  ],
+});
+
 Builder.registerComponent(Accordion, {
   name: "Accordion",
   image:
@@ -548,6 +569,33 @@ Builder.registerComponent(Accordion, {
         { title: "Sample Title 1", content: "Sample Content 1" },
         { title: "Sample Title 2", content: "Sample Content 2" },
         { title: "Sample Title 3", content: "Sample Content 3" },
+      ],
+    },
+  ],
+});
+
+Builder.registerComponent(CustomText, {
+  name: "Custom Text",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F2bbe97f46ba14868a6925faf5cbb8d18",
+  inputs: [
+    {
+      name: "text",
+      type: "html",
+    },
+    {
+      name: "links",
+      type: "list",
+      subFields: [
+        // The key to match on
+        { name: "key", type: "string" },
+        // The link body text
+        { name: "label", type: "string" },
+        // The reference to a Data Model
+        { name: "product", type: "reference", model: "product-data" },
+        // Example "open in a new tab" using Enum, could be a boolean value instead
+        { name: "target", type: "string", enum: ["_blank", "_self"] },
+        { name: "rel", type: "string" },
       ],
     },
   ],

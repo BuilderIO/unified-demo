@@ -18,30 +18,35 @@ export default async function CategoryPage(props: CategoryPageProps) {
     // Get the page content from Builder with the specified options
     .getAll(plpTileModel, {
       userAttributes: {
-        category: props?.params?.category.toLowerCase()
-      }
-    })
+        category: props?.params?.category.toLowerCase(),
+      },
+      locale: "en-US",
+    });
 
-    const productDetailsContent = await builder
+  const productDetailsContent = await builder
     // Get the page content from Builder with the specified options
     .getAll(plpProductDataModel, {
       query: {
         data: {
-          category: props?.params?.category.toLowerCase()
-        }
-      }
-    })
-    console.log('DATA', productDetailsContent)
+          category: props?.params?.category.toLowerCase(),
+        },
+      },
+      locale: "en-US",
+    });
+  // console.log("DATA", productDetailsContent);
   return (
     <>
       {/* Render the Builder page */}
-        <div className="flex gap-3 self-center mt-5 mr-auto text-base text-neutral-400">
-          <div className="grow">{capitalizeWord(props?.params?.category)}</div>
-        </div>
-        <div className="self-center mt-5 text-4xl text-black tracking-[7.14px] max-md:max-w-full">
-          {props?.params?.category.toUpperCase()}
-        </div>
-      <CategoryLanding products={productDetailsContent} plpTiles={plpTileContent}/>
+      <div className="flex gap-3 self-center mt-5 mr-auto text-base text-neutral-400">
+        <div className="grow">{capitalizeWord(props?.params?.category)}</div>
+      </div>
+      <div className="self-center mt-5 text-4xl text-black tracking-[7.14px] max-md:max-w-full">
+        {props?.params?.category.toUpperCase()}
+      </div>
+      <CategoryLanding
+        products={productDetailsContent}
+        plpTiles={plpTileContent}
+      />
     </>
   );
 }

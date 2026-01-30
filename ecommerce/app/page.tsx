@@ -1,8 +1,7 @@
-import { builder } from "@builder.io/sdk";
-import { RenderBuilderContent } from "@/src/components/builder";
+import { builder } from '@builder.io/sdk';
+import { RenderBuilderContent } from '@/src/components/builder';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
-
 
 interface PageProps {
   params: {
@@ -11,7 +10,7 @@ interface PageProps {
 }
 
 export default async function Homepage(props: PageProps) {
-  const builderModelName = "homepage";
+  const builderModelName = 'homepage';
 
   const content = await builder
     // Get the page content from Builder with the specified options
@@ -26,8 +25,11 @@ export default async function Homepage(props: PageProps) {
   return (
     <>
       {/* Render the Builder page */}
-      <RenderBuilderContent content={content} model={builderModelName} options={{ enrich: true }} />
+      <RenderBuilderContent
+        content={content}
+        model={builderModelName}
+        options={{ enrich: true }}
+      />
     </>
   );
 }
-
