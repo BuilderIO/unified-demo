@@ -38,7 +38,7 @@ export default async function BlogPage(props: BlogPageProps) {
   return (
     <>
       <div className="flex flex-wrap justify-center gap-4 mt-4">
-        {blogData.map((data: any) => (
+        {blogData?.map((data: any) => (
           <div key={data.id} className="flex">
             <a href={`/blog/${data.data.slug}`}>
               <div className="flex overflow-hidden flex-col self-stretch pb-7 my-auto rounded-lg border border-solid bg-zinc-100 border-zinc-300 min-w-[240px] w-[372px] min-h-[360px]">
@@ -54,7 +54,7 @@ export default async function BlogPage(props: BlogPageProps) {
                     <p>{data.data.title}</p>
                   </div>
                   <div className="flex flex-row justify-start">
-                    {data.data.category.map((category: any) => {
+                    {data.data.category?.map((category: any) => {
                       let blogCategory = blogCategories.find(
                         (blogCategory: any) =>
                           blogCategory.id === category.category.id,
