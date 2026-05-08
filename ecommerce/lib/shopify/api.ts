@@ -9,7 +9,6 @@ export function getAllProducts(config: ShopifyBuy.Config, limit?: number) {
 }
 
 
-
 export async function getAllProductPaths(
   config: ShopifyBuy.Config,
   limit?: number
