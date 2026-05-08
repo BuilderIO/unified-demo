@@ -12,7 +12,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  await import('isolated-vm');
   const locale="en-US"
 
   const headerContent = await builder

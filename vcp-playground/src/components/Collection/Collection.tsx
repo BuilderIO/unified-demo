@@ -28,7 +28,7 @@ export function Collection(props: {
       }
       return (
         await fetch(
-          "https://cdn.builder.io/api/v3/content/product-data?apiKey=f5348105e75441b59830f1e489577801&includeRefs=true&fields=data&limit=10"
+          `https://cdn.builder.io/api/v3/content/product-data?apiKey=${process.env.NEXT_PUBLIC_BUILDER_API_KEY}&includeRefs=true&fields=data&limit=10`
         ).then((res) => res.json())
       ).results;
     },

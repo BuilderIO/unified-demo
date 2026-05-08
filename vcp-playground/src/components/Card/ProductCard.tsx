@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   useEffect(() => {
     async function fetchContent() {
-      await fetch("https://cdn.builder.io/api/v3/content/product-data?apiKey=a87584e551b6472fa0f0a2eb10f2c0ff&query.id=088c35a5a6914ac68b99a4ea12abba6a").then
+      await fetch(`https://cdn.builder.io/api/v3/content/product-data?apiKey=${process.env.NEXT_PUBLIC_BUILDER_API_KEY}&query.id=088c35a5a6914ac68b99a4ea12abba6a`).then
       (async (res) => {
         const data = await res.json();
         setProduct(data.results[0]);
