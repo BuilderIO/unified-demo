@@ -9,28 +9,41 @@ export function Collection(props: {
 
   const products = useQuery<any[]>({
     queryKey: ["products", props.collection],
+    retry: false,
     queryFn: async () => {
-      if (useShopStyle) {
-        const defaultParams = {
-          abbreviatedCategoryHistogram: "true",
-          limit: "20",
-          cat: props.collection,
-          view: "web",
-          useElasticsearch: "true",
-          sorts: "Popular",
-          pid: "shopstyle",
-        };
+      try {
+        if (useShopStyle) {
+          const defaultParams = {
+            abbreviatedCategoryHistogram: "true",
+            limit: "20",
+            cat: props.collection,
+            view: "web",
+            useElasticsearch: "true",
+            sorts: "Popular",
+            pid: "shopstyle",
+          };
 
-        const url = "https://api.shopstyle.com/api/v2/products";
-        const params = new URLSearchParams(defaultParams);
-        return (await fetch(`${url}?${params}`).then((res) => res.json()))
-          .products;
+          const url = "https://api.shopstyle.com/api/v2/products";
+          const params = new URLSearchParams(defaultParams);
+          const response = await fetch(`${url}?${params}`);
+          if (!response.ok) return [];
+          return (await response.json()).products ?? [];
+        }
+
+        const params = new URLSearchParams({
+          apiKey: process.env.NEXT_PUBLIC_BUILDER_API_KEY ?? "",
+          includeRefs: "true",
+          fields: "data",
+          limit: "10",
+        });
+        const response = await fetch(
+          `https://cdn.builder.io/api/v3/content/product-data?${params}`
+        );
+        if (!response.ok) return [];
+        return (await response.json()).results ?? [];
+      } catch {
+        return [];
       }
-      return (
-        await fetch(
-          "https://cdn.builder.io/api/v3/content/product-data?apiKey=f5348105e75441b59830f1e489577801&includeRefs=true&fields=data&limit=10"
-        ).then((res) => res.json())
-      ).results;
     },
   });
   // Scrolling flex row of product cards
