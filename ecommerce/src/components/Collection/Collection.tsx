@@ -13,19 +13,8 @@ export function Collection(props: {
     queryFn: async () => {
       try {
         if (useShopStyle) {
-          const defaultParams = {
-            abbreviatedCategoryHistogram: "true",
-            limit: "20",
-            cat: props.collection,
-            view: "web",
-            useElasticsearch: "true",
-            sorts: "Popular",
-            pid: "shopstyle",
-          };
-
-          const url = "https://api.shopstyle.com/api/v2/products";
-          const params = new URLSearchParams(defaultParams);
-          const response = await fetch(`${url}?${params}`);
+          const params = new URLSearchParams({ cat: props.collection });
+          const response = await fetch(`/api/shopstyle?${params}`);
           if (!response.ok) return [];
           return (await response.json()).products ?? [];
         }
