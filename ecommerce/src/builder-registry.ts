@@ -16,6 +16,7 @@ import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
 import CustomText from "./components/CustomText";
+import HeroCarousel from "./components/Carousel/HeroCarousel";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -77,6 +78,7 @@ Builder.register("insertMenu", {
     { name: "ImageHero" },
     { name: "SplitHero" },
     { name: "HeroWithChildren" },
+    { name: "HeroCarousel" },
   ],
   // priority: 2,
 });
@@ -92,6 +94,7 @@ if (Builder.isBrowser) {
       items: [
         { name: "Columns" },
         { name: "Builder:Carousel" },
+        { name: "HeroCarousel" },
         { name: "Collection" },
         { name: "Accordion" },
         { name: "AlgoliaSearchBox" },
@@ -574,6 +577,34 @@ Builder.registerComponent(Accordion, {
         { title: "Sample Title 2", content: "Sample Content 2" },
         { title: "Sample Title 3", content: "Sample Content 3" },
       ],
+    },
+  ],
+});
+
+Builder.registerComponent(HeroCarousel, {
+  name: "HeroCarousel",
+  friendlyName: "Hero Carousel",
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F2bbe97f46ba14868a6925faf5cbb8d18",
+  inputs: [
+    {
+      name: "slides",
+      type: "list",
+      defaultValue: [],
+      subFields: [
+        {
+          name: "blocks",
+          type: "uiBlocks",
+          hideFromUI: true,
+          defaultValue: [],
+        },
+      ],
+    },
+    {
+      name: "autoAdvanceInterval",
+      friendlyName: "Auto-Advance Timer (seconds, 0 = off)",
+      type: "number",
+      defaultValue: 0,
     },
   ],
 });
