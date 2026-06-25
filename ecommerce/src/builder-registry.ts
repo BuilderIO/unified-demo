@@ -16,6 +16,7 @@ import SplitHero from "./components/Hero/SplitHero";
 import TextHero from "./components/Hero/TextHero";
 import UpsellPopup from "./components/Popup/UpsellPopup";
 import CustomText from "./components/CustomText";
+import Carousel from "./components/Hero/Carousel";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -77,6 +78,7 @@ Builder.register("insertMenu", {
     { name: "ImageHero" },
     { name: "SplitHero" },
     { name: "HeroWithChildren" },
+    { name: "Carousel" },
   ],
   // priority: 2,
 });
@@ -601,6 +603,32 @@ Builder.registerComponent(CustomText, {
         { name: "target", type: "string", enum: ["_blank", "_self"] },
         { name: "rel", type: "string" },
       ],
+    },
+  ],
+});
+
+Builder.registerComponent(withChildren(Carousel), {
+  name: "Carousel",
+  canHaveChildren: true,
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F2bbe97f46ba14868a6925faf5cbb8d18",
+  inputs: [
+    {
+      name: "name",
+      type: "string",
+      defaultValue: "Carousel",
+    },
+    {
+      name: "autoAdvanceTimer",
+      type: "number",
+      defaultValue: 0,
+      helperText: "Auto-advance to next slide in seconds (0 = disabled)",
+    },
+    {
+      name: "children",
+      type: "uiBlocks",
+      hideFromUI: true,
+      defaultValue: [],
     },
   ],
 });
