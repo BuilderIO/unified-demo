@@ -15,6 +15,12 @@ import { CartSlider } from "./CartSlider"
 import { SideNav } from "./SideNav"
 import { BuilderContent } from '@builder.io/react';
 
+function getLocalizedValue(value: any, locale = "en-US") {
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    return value[locale] ?? value.Default ?? "";
+  }
+  return value;
+}
 
 export function Header({ headerContent }: any) {
   return (
@@ -44,7 +50,7 @@ export function Header({ headerContent }: any) {
                     <Button key={index} variant="link" className="text-md">
                       <Link href={item.path || '/'} legacyBehavior passHref >
                         {/* <NavigationMenuLink className={navigationMenuTriggerStyle()}> */}
-                        <span className={`uppercase ${item.highlight ? "text-rose-500" : ""}`}>{item.label}</span>
+                        <span className={`uppercase ${item.highlight ? "text-rose-500" : ""}`}>{getLocalizedValue(item.label)}</span>
                         {/* </NavigationMenuLink> */}
                       </Link>
                     </Button>
