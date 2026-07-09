@@ -8,6 +8,7 @@ import BynderImage from "./components/Blocks/BynderImage";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
+import HeroCarousel from "./components/HeroCarousel/HeroCarousel";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
 import IconCard from "./components/Card/IconCard";
 import ImageHero from "./components/Hero/ImageHero";
@@ -77,6 +78,7 @@ Builder.register("insertMenu", {
     { name: "ImageHero" },
     { name: "SplitHero" },
     { name: "HeroWithChildren" },
+    { name: "HeroCarousel" },
   ],
   // priority: 2,
 });
@@ -394,6 +396,39 @@ Builder.registerComponent(ImageHero, {
       name: "makeFullBleed",
       type: "boolean",
       defaultValue: false,
+    },
+  ],
+});
+
+Builder.registerComponent(HeroCarousel, {
+  name: "HeroCarousel",
+  friendlyName: "Hero Carousel",
+  canHaveChildren: true,
+  image:
+    "https://cdn.builder.io/api/v1/image/assets%2FagZ9n5CUKRfbL9t6CaJOyVSK4Es2%2Fd909a5b91650499c9e0524cc904eeb77",
+  defaultChildren: [],
+  childRequirements: {
+    message: "You can only put Hero components inside a Hero Carousel",
+    query: {
+      "component.name": {
+        $in: ["TextHero", "ImageHero", "SplitHero", "HeroWithChildren"],
+      },
+    },
+  },
+  inputs: [
+    {
+      name: "carouselName",
+      friendlyName: "Carousel Name",
+      type: "string",
+      defaultValue: "Hero Carousel",
+      required: true,
+    },
+    {
+      name: "autoAdvanceSeconds",
+      friendlyName: "Auto-Advance Timer (seconds)",
+      helperText: "Set to 0 to disable auto-advance",
+      type: "number",
+      defaultValue: 0,
     },
   ],
 });

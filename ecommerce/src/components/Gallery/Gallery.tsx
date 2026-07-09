@@ -11,6 +11,7 @@ import ProductCard from "@/src/components/Card/ProductCard";
 import { Collection } from "@/src/components/Collection/Collection";
 import Counter from "@/src/components/Counter/Counter";
 import CustomText from "@/src/components/CustomText";
+import HeroCarousel from "@/src/components/HeroCarousel/HeroCarousel";
 import HeroWithChildren from "@/src/components/Hero/HeroWithChildren";
 import ImageHero from "@/src/components/Hero/ImageHero";
 import SplitHero from "@/src/components/Hero/SplitHero";
@@ -45,7 +46,7 @@ const sampleProduct = {
 const navSections = [
   {
     title: "Heros",
-    items: ["ImageHero", "SplitHero", "TextHero", "HeroWithChildren"],
+    items: ["ImageHero", "SplitHero", "TextHero", "HeroWithChildren", "HeroCarousel"],
   },
   {
     title: "Cards",
@@ -163,7 +164,7 @@ export default function Gallery() {
               </p>
             </div>
             <span className="w-fit rounded-full border border-zinc-300 px-3 py-1 text-xs text-zinc-600">
-              15 components
+              16 components
             </span>
           </div>
         </div>
@@ -229,6 +230,15 @@ export default function Gallery() {
             childBlocks={[]}
             makeFullBleed={false}
           />
+        </ComponentSection>
+
+        <ComponentSection
+          name="HeroCarousel"
+          group="Heros"
+          description="Empty carousel shell that Hero components can be dragged into. Renders dots and arrows for navigation and supports a configurable name and auto-advance timer."
+          inputs="carouselName, autoAdvanceSeconds"
+        >
+          <HeroCarousel carouselName="Homepage Hero Carousel" autoAdvanceSeconds={5} />
         </ComponentSection>
 
         <ComponentSection
