@@ -6,6 +6,7 @@ import AlgoliaSearchBox from "./components/AlgoliaSearchBox/AlgoliaSearchBox";
 import { Button } from "./components/ui/button";
 import BynderImage from "./components/Blocks/BynderImage";
 import CloudinaryImage from "./components/Blocks/CloudinaryImage";
+import Carousel from "./components/Carousel/Carousel";
 import { Collection } from "./components/Collection/Collection";
 import Counter from "./components/Counter/Counter";
 import HeroWithChildren from "./components/Hero/HeroWithChildren";
@@ -77,6 +78,7 @@ Builder.register("insertMenu", {
     { name: "ImageHero" },
     { name: "SplitHero" },
     { name: "HeroWithChildren" },
+    { name: "Carousel" },
   ],
   // priority: 2,
 });
@@ -428,6 +430,35 @@ Builder.registerComponent(withChildren(HeroWithChildren), {
       type: "boolean",
       defaultValue: false,
       broadcast: true,
+    },
+  ],
+});
+
+Builder.registerComponent(withChildren(Carousel), {
+  name: "Carousel",
+  friendlyName: "Carousel",
+  canHaveChildren: true,
+  defaultChildren: [],
+  image: "https://api.iconify.design/mdi:view-carousel.svg?color=%23000000",
+  inputs: [
+    {
+      name: "name",
+      friendlyName: "Carousel Name",
+      type: "string",
+      defaultValue: "Carousel",
+    },
+    {
+      name: "autoAdvance",
+      friendlyName: "Auto-advance",
+      type: "boolean",
+      defaultValue: true,
+    },
+    {
+      name: "autoAdvanceInterval",
+      friendlyName: "Auto-advance interval (ms)",
+      type: "number",
+      defaultValue: 5000,
+      showIf: (options: any) => options.get("autoAdvance") == true,
     },
   ],
 });

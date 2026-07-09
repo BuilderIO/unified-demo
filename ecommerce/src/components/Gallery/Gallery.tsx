@@ -5,6 +5,7 @@ import React from "react";
 import Accordion from "@/src/components/Accordion/accordion";
 import AlgoliaSearchBox from "@/src/components/AlgoliaSearchBox/AlgoliaSearchBox";
 import BynderImage from "@/src/components/Blocks/BynderImage";
+import Carousel from "@/src/components/Carousel/Carousel";
 import CloudinaryImage from "@/src/components/Blocks/CloudinaryImage";
 import IconCard from "@/src/components/Card/IconCard";
 import ProductCard from "@/src/components/Card/ProductCard";
@@ -45,7 +46,7 @@ const sampleProduct = {
 const navSections = [
   {
     title: "Heros",
-    items: ["ImageHero", "SplitHero", "TextHero", "HeroWithChildren"],
+    items: ["ImageHero", "SplitHero", "TextHero", "HeroWithChildren", "Carousel"],
   },
   {
     title: "Cards",
@@ -163,7 +164,7 @@ export default function Gallery() {
               </p>
             </div>
             <span className="w-fit rounded-full border border-zinc-300 px-3 py-1 text-xs text-zinc-600">
-              15 components
+              16 components
             </span>
           </div>
         </div>
@@ -229,6 +230,31 @@ export default function Gallery() {
             childBlocks={[]}
             makeFullBleed={false}
           />
+        </ComponentSection>
+
+        <ComponentSection
+          name="Carousel"
+          group="Heros"
+          description="Empty shell that other components (typically Hero sections) can be dragged into as slides, with dot and arrow navigation and a configurable auto-advance timer."
+          inputs="name, autoAdvance, autoAdvanceInterval, children"
+        >
+          <div className="h-80">
+            <Carousel name="Homepage Carousel" autoAdvance={false} autoAdvanceInterval={5000}>
+              <TextHero
+                title="STEP INTO FRESH STYLES"
+                subTitle="<p>Lightweight layers, polished basics, and accessories made for everyday wear.</p>"
+              />
+              <ImageHero
+                title="SHOP ESSENTIALS"
+                subTitle="<p>Shoppable essentials for your every day life.</p>"
+                buttonText="Shop Now"
+                buttonLink="/category/accessories"
+                backgroundImage={heroImage}
+                alignment="center"
+                makeFullBleed={false}
+              />
+            </Carousel>
+          </div>
         </ComponentSection>
 
         <ComponentSection
