@@ -17,6 +17,7 @@ import SplitHero from "@/src/components/Hero/SplitHero";
 import TextHero from "@/src/components/Hero/TextHero";
 import UpsellPopup from "@/src/components/Popup/UpsellPopup";
 import { Button } from "@/src/components/ui/button";
+import Carousel from "@/src/components/Hero/Carousel";
 
 const heroImage =
   "https://cdn.builder.io/api/v1/image/assets%2Fa87584e551b6472fa0f0a2eb10f2c0ff%2F61c4f304ac9448b1ad741b83de17e48a";
@@ -45,7 +46,7 @@ const sampleProduct = {
 const navSections = [
   {
     title: "Heros",
-    items: ["ImageHero", "SplitHero", "TextHero", "HeroWithChildren"],
+    items: ["ImageHero", "SplitHero", "TextHero", "HeroWithChildren", "Carousel"],
   },
   {
     title: "Cards",
@@ -228,6 +229,18 @@ export default function Gallery() {
             header="WHAT'S DIFFERENT ABOUT SHOPAHOLIC"
             childBlocks={[]}
             makeFullBleed={false}
+          />
+        </ComponentSection>
+
+        <ComponentSection
+          name="Carousel"
+          group="Heros"
+          description="Carousel shell component that accepts hero sections as slides. Features auto-advance timer, navigation dots, and prev/next arrows."
+          inputs="name, autoAdvanceTimer, children"
+        >
+          <Carousel
+            name="Carousel"
+            autoAdvanceTimer={0}
           />
         </ComponentSection>
 
